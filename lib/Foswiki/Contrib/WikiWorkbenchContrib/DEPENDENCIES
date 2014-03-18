@@ -3,3 +3,4 @@ Foswiki::Plugins::FilterPlugin,>=2.08,perl,Required;
 Foswiki::Plugins::FlexFormPlugin,>=2.60,perl,Required.
 Foswiki::Plugins::FlexWebListPlugin,>=1.61,perl,Required.
 Foswiki::Plugins::JQGridPlugin,>=2.0,perl,Required.
+Foswiki::Plugins::NatEditPlugin,>=7.11,perl,Recommended

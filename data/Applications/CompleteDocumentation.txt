@@ -25,6 +25,6 @@ The !WikiWorkbench is a standardized way to write and deploy WikiApplications. I
 %META:FIELD{name="Summary" attributes="c" title="Summary" value="WikiApplication to develop WikiApplications"}%
 %META:FIELD{name="Version" attributes="" title="Version" value="0.9"}%
 %META:FIELD{name="Author" attributes="" title="Author" value="Michael Daum"}%
-%META:FIELD{name="Copyright" attributes="" title="Copyright" value="&copy; 2006-2013 Michael Daum http://michaeldaumconsulting.com"}%
+%META:FIELD{name="Copyright" attributes="" title="Copyright" value="&copy; 2006-2014 Michael Daum http://michaeldaumconsulting.com"}%
 %META:FIELD{name="License" attributes="" title="License" value="Applications.GnuGeneralPublicLicense"}%
 %META:FIELD{name="Dependencies" attributes="" title="Dependencies" value=""}%

@@ -58,7 +58,7 @@ sub renderForDisplay {
 __END__
 Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 
-Copyright (C) 2012-2013 Michael Daum http://michaeldaumconsulting.com
+Copyright (C) 2012-2014 Michael Daum http://michaeldaumconsulting.com
 
 Additional copyrights apply to some or all of the code in this
 file as follows:

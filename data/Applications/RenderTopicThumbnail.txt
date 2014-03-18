@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1376999887" format="1.1" reprev="18" version="18"}%
+%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1391086477" format="1.1" reprev="18" version="20"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -23,12 +23,16 @@ is returned if no image attachment is found.
 ---++ Implementation
 <verbatim class="tml">
 %STARTINCLUDE%%DBCALL{"Applications.RenderTopicThumbnail" 
-  section="%IF{"'%OBJECT%'/attachments[attr=~'.*t.*'" then="thumbnailed" else="defaultthumbnail"}%"
+  section="%IF{
+     "'%ATTACHMENTS{"%OBJECT%" attr=".*t.*" format="yes"}%'='yes'" 
+     then="thumbnailed" 
+     else="defaultthumbnail"
+  }%"
   object="%OBJECT%"
   align="%ALIGN{default="right"}%"
   size="%SIZE{default="48x48>"}%"
   type="%TYPE{default="simple"}%"
-  crop="%CROP{default="northwest"}%"
+  crop="%CROP{default="center"}%"
   sort="%SORT{default="comment:name"}%"
 }%%STOPINCLUDE%
 </verbatim>
@@ -88,8 +92,6 @@ is returned if no image attachment is found.
 }%
 %CLEAR%
 
-
-
 ---++ List of all attachments at %WIKIUSERNAME%
 <a name="sort"></a>
 %ATTACHMENTS{
@@ -108,7 +110,6 @@ is returned if no image attachment is found.
 &copy; 2006-2013 Michael Daum http://michaeldaumconsulting.com
 
 %DBCALL{"Applications.GnuGeneralPublicLicense" section="notice"}%
-
 
 %META:FORM{name="Applications.ApplicationTopic"}%
 %META:FIELD{name="TopicType" title="TopicType" value="DocuTopic, TopicFunction"}%

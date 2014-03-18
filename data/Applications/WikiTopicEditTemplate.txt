@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1371558121" format="1.1" reprev="8" version="8"}%
+%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1387396701" format="1.1" reprev="9" version="9"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
 %TMPL:INCLUDE{"edit"}%
@@ -8,6 +8,7 @@
 %TMPL:DEF{"firsttab"}%%IF{
   "$'URLPARAM{action}'!='form'" 
   then="$percntTMPL:P{\"firsttab::impl\"}$percnt"
+  else="<textarea class='natedit foswikiHidden' data-show-toolbar='false'></textarea>"
 }%%TMPL:END%
 %{</verbatim>}%
 

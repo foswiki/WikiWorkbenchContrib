@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1367243436" format="1.1" reprev="23" version="24"}%
+%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1392975108" format="1.1" reprev="23" version="25"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -34,7 +34,7 @@ This function renders a topic creator form that holds a set of initial input ele
 }%
 
 <noautolink>
-<form class='createTopicForm' action="%SCRIPTURLPATH{"%ACTION{default="edit"}%"}%/%BASEWEB%/" method="%ACTION{default="get"}%">
+<form class='createTopicForm jqValidate' action="%SCRIPTURLPATH{"%ACTION{default="edit"}%"}%/%BASEWEB%/" method="%ACTION{default="get"}%">
 <div class='foswikiFormSteps'>
 <input type="hidden" name="web" value="%BASEWEB%" />
 <input type="hidden" name="onlynewtopic" value="on" />

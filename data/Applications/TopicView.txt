@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="autosave" date="1356278737" format="1.1" version="4"}%
+%META:TOPICINFO{author="ProjectContributor" comment="autosave" date="1387396502" format="1.1" version="5"}%
 %META:TOPICPARENT{name="TopicType"}%
 ---++ Documentation
 %STARTSECTION{"documentation"}%
@@ -9,16 +9,20 @@ of a WikiTopic and its form data. A new view is assigned to a topic by setting t
 
 For example the following will set th view to use the HiddenFormViewTemplate to hide the form table that 
 is normally displayed below the wiki content.
+
 <pre>
    * Set <span></span>VIEW_TEMPLATE = HiddenFormView
 </pre>
+
 Note, that the =...Template= string is appended automatically by the Foswiki engine.
 
 Note also, that we use the <nop>TopicView type to mark even those views that are used during _editting_ a
 wiki topic and is assigned using something like
+
 <pre>
    * Set <span></span>EDIT_TEMPLATE = FormEdit
 </pre>
+
 As such the FormEditTemplate is not used during Foswiki's view operation but during edit. The template
 is then used to render the _view on the editor_ to be used. Edit templates either augment the normal
 Foswiki editor, or even implement a full substitute for its form data.
@@ -39,7 +43,7 @@ Foswiki editor, or even implement a full substitute for its form data.
 
 %META:FORM{name="Applications.TopicType"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicType, DocuTopic"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value="TopicView"}%
+%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
 %META:FIELD{name="Inheritance" attributes="" title="Inheritance" value="ApplicationTopic"}%
-%META:FIELD{name="Summary" attributes="" title="Summary" value="Views and editors"}%
+%META:FIELD{name="Summary" attributes="c" title="Summary" value="Views and editors"}%
 %META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
