@@ -39,6 +39,16 @@ sub renderForDisplay {
   my ($this, $format, $value, $attrs) = @_;
 
 
+  my $displayValue = $this->getDisplayValue($value);
+  $format =~ s/\$value\(display\)/$displayValue/g;
+  $format =~ s/\$value/$value/g;
+
+  return $this->SUPER::renderForDisplay($format, $value, $attrs);
+}
+
+sub getDisplayValue {
+  my ($this, $value) = @_;
+
   unless ($value eq 'none') {
     my $label = $value;
 
@@ -51,7 +61,7 @@ sub renderForDisplay {
     $value = '<a href="%SCRIPTURLPATH{"view"}%/' . $value . '/' . $Foswiki::cfg{HomeTopicName} . '">' . $label . '</a>';
   }
 
-  return $this->SUPER::renderForDisplay($format, $value, $attrs);
+  return $value;
 }
 
 1;
