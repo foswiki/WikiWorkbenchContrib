@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1391157718" format="1.1" reprev="9" version="10"}%
+%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1398190121" format="1.1" reprev="11" version="11"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -19,7 +19,18 @@ showing its title and the summary line.
   format="[[$web.$topic][<span itemprop='name'>$expand(topictitle)</span>]] %IF{
       "defined TITLE_EXTRA and not isempty TITLE_EXTRA" 
       then="<span class='foswikiTopicExtra'>%TITLE_EXTRA%</span>"}% $expand('<div itemprop=\"description\" class=\"foswikiTopicSummary\">' and Summary and '</div>')"
-}%</h1></noautolink>%STOPINCLUDE%
+}%</h1>
+<span class="foswikiRevision">
+  %JQICON{"fa-calendar"}%
+  %REVINFO{"<span itemprop='dateModified' content='$iso'>$date - $hour:$min</span>" rev="%CURREV%"}%
+  <span class='foswikiRevisionSep'>&#124;</span>
+  %JQICON{"fa-flag"}%
+  %MAKETEXT{"Version [_1]" args="%REVINFO{"<span itemprop='version'>$rev</span>" rev="%CURREV%"}%"}%
+  <span class='foswikiRevisionSep'>&#124;</span>
+  %JQICON{"fa-user"}%
+  <span class='foswikiRevisionAuthor' itemprop='author'>%REVINFO{"[[$wikiusername]]" rev="%CURREV%"}%</span> 
+</span>
+</noautolink>%STOPINCLUDE%
 </verbatim>
 
 ---++ Test
@@ -28,7 +39,7 @@ showing its title and the summary line.
 %DBCALL{"Applications.RenderFunctionCallers"}%
 
 ---++ Copyright
-&copy; 2006-2013 Michael Daum http://michaeldaumconsulting.com
+&copy; 2006-2014 Michael Daum http://michaeldaumconsulting.com
 
 %DBCALL{"Applications.GnuGeneralPublicLicense" section="notice"}%
 

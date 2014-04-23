@@ -61,7 +61,7 @@ See the [[CompleteDocumentation]].
 <verbatim class="css">
 %STARTSECTION{"css"}%<literal>
 <style type="text/css">
-.natRevision {
+.foswikiRevision {
   display:none;
 }
 .wwbBox img {
@@ -96,7 +96,7 @@ See the [[CompleteDocumentation]].
 %DBCALL{"Applications.RenderFunctionCallers"}%
 
 ---++ Copyright
-&copy; 2008-2013 Michael Daum http://michaeldaumconsulting.com
+&copy; 2008-2014 Michael Daum http://michaeldaumconsulting.com
 
 %DBCALL{"Applications.GnuGeneralPublicLicense" section="notice"}%
 

@@ -107,7 +107,7 @@ is returned if no image attachment is found.
 %DBCALL{"Applications.RenderFunctionCallers"}%
 
 ---++ Copyright
-&copy; 2006-2013 Michael Daum http://michaeldaumconsulting.com
+&copy; 2006-2014 Michael Daum http://michaeldaumconsulting.com
 
 %DBCALL{"Applications.GnuGeneralPublicLicense" section="notice"}%
 

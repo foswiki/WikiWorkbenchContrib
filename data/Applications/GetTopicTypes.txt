@@ -52,7 +52,7 @@ scratch on as you will be able to create an initial !TopicType !TopicType this w
 %DBCALL{"Applications.RenderFunctionCallers"}%
 
 ---++ Copyright
-&copy; 2006-2013 Michael Daum http://michaeldaumconsulting.com
+&copy; 2006-2014 Michael Daum http://michaeldaumconsulting.com
 
 %DBCALL{"Applications.GnuGeneralPublicLicense" section="notice"}%
 

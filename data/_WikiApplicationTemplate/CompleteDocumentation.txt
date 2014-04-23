@@ -23,6 +23,6 @@
 %META:FIELD{name="Summary" attributes="c" title="Summary" value="TopicTemplate to generate a WikiApplication topic"}%
 %META:FIELD{name="Version" attributes="" title="Version" value=""}%
 %META:FIELD{name="Author" attributes="" title="Author" value=""}%
-%META:FIELD{name="Copyright" attributes="" title="Copyright" value="&copy; 2013 Your Name"}%
+%META:FIELD{name="Copyright" attributes="" title="Copyright" value="&copy; 2014 Your Name"}%
 %META:FIELD{name="License" attributes="" title="License" value="Applications.GnuGeneralPublicLicense"}%
 %META:FIELD{name="Dependencies" attributes="" title="Dependencies" value=""}%

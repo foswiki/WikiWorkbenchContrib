@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1368703686" format="1.1" reprev="15" version="17"}%
+%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1397220662" format="1.1" reprev="15" version="18"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -45,7 +45,7 @@ This uses solr and infintescroll to create a frontpage widget.
 %STARTSECTION{"backend"}%<noautolink>
 %DBQUERY{
   "%URLPARAM{"filter" default="%FILTER%"}%"
-  exclude="^(WebChanges|WebPreferences|WebStatistics|WebTopicLinks|WebIndex|WebNotify|WebHome|WebLinks|TopCategory|Category|ClassifiedTopic|TopicType|WebTopicEditTemplate|WebAtom|WebRss|WebLeftBar|WebSearch.*)$"
+  exclude="^(WebChanges|WebPreferences|WebStatistics|WebTopicLinks|WebIndex|WebNotify|WebHome|WebLinks|TopCategory|Category|ClassifiedTopic|TopicType|WebTopicEditTemplate|WebAtom|WebRss|WebLeftBar|WebSearch.*|WebTagList)$"
   web="%URLPARAM{"web" default="%THEWEB%"}%"
   skip="%CALC{"$EVAL(%URLPARAM{"page" default="%PAGE%"}%*%URLPARAM{"limit" default="%LIMIT%"}%)"}%"
   limit="%URLPARAM{"limit" default="%LIMIT%"}%" 
@@ -63,7 +63,7 @@ This uses solr and infintescroll to create a frontpage widget.
 %DBCALL{"Applications.RenderFunctionCallers"}%
 
 ---++ Copyright
-&copy;2006-2013 Michael Daum http://michaeldaumconsulting.com
+&copy; 2006-2014 Michael Daum http://michaeldaumconsulting.com
 
 %DBCALL{"Applications.GnuGeneralPublicLicense" section="notice"}%
 
