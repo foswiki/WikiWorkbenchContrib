@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1392975108" format="1.1" reprev="23" version="25"}%
+%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1398361812" format="1.1" reprev="23" version="26"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -55,6 +55,7 @@ This function renders a topic creator form that holds a set of initial input ele
   form="%FORM{default="%INCLUDINGWEB%.%INCLUDINGTOPIC%"}%"
   topic="%TEMPLATE{default=""}%"
   fields="TopicTitle"
+  excludeattr="\bH\b"
   format="<div class='foswikiFormStep'><h3>$title:$mandatory</h3>$edit</div>"
   TopicTitle_value="%VALUE{default=""}%"
   TopicTitle_title="%LABEL{default="%MAKETEXT{"Title"}%"}%"

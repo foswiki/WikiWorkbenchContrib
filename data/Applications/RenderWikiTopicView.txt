@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1398190121" format="1.1" reprev="11" version="11"}%
+%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1398678208" format="1.1" reprev="13" version="13"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -9,6 +9,7 @@ showing its title and the summary line.
 
 ---+++ Parameters
    * TITLE_EXTRA: optional addition put behind the topic title
+   * DISPLAYREVISIONINFO: boolean flag to switch on/off revinfo rendered underneath the h1 element
 
 %ENDSECTION{"documentation"}%
 
@@ -20,17 +21,23 @@ showing its title and the summary line.
       "defined TITLE_EXTRA and not isempty TITLE_EXTRA" 
       then="<span class='foswikiTopicExtra'>%TITLE_EXTRA%</span>"}% $expand('<div itemprop=\"description\" class=\"foswikiTopicSummary\">' and Summary and '</div>')"
 }%</h1>
-<span class="foswikiRevision">
+%IF{"'%DISPLAYREVISIONINFO{default="on"}%'='on'"
+   then="$percntDBCALL{\"%WEB%.%TOPIC%\" section=\"revinfo\"}$percnt"
+}%</noautolink>%STOPINCLUDE%
+</verbatim>
+
+---++ Revision Info
+<verbatim class="tml">
+%STARTSECTION{"revinfo"}%<span class="foswikiRevision">
   %JQICON{"fa-calendar"}%
-  %REVINFO{"<span itemprop='dateModified' content='$iso'>$date - $hour:$min</span>" rev="%CURREV%"}%
+  %REVINFO{"<span itemprop='dateModified' content='$iso'>$date - $hour:$min</span>" rev="%CURREV%" topic="%BASEWEB%.%BASETOPIC%"}%
   <span class='foswikiRevisionSep'>&#124;</span>
   %JQICON{"fa-flag"}%
-  %MAKETEXT{"Version [_1]" args="%REVINFO{"<span itemprop='version'>$rev</span>" rev="%CURREV%"}%"}%
+  %MAKETEXT{"Version [_1]" args="%REVINFO{"<span itemprop='version'>$rev</span>" rev="%CURREV%" topic="%BASEWEB%.%BASETOPIC%"}%"}%
   <span class='foswikiRevisionSep'>&#124;</span>
   %JQICON{"fa-user"}%
-  <span class='foswikiRevisionAuthor' itemprop='author'>%REVINFO{"[[$wikiusername]]" rev="%CURREV%"}%</span> 
-</span>
-</noautolink>%STOPINCLUDE%
+  <span class='foswikiRevisionAuthor' itemprop='author'>%REVINFO{"[[$wikiusername]]" rev="%CURREV%" topic="%BASEWEB%.%BASETOPIC%"}%</span> 
+</span>%ENDSECTION{"revinfo"}%
 </verbatim>
 
 ---++ Test

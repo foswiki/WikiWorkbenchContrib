@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1366817328" format="1.1" reprev="15" version="15"}%
+%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1398678574" format="1.1" reprev="19" version="19"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -7,10 +7,15 @@
 ---+++++ Parameters
    * TYPE: the TopicType to be searched for, defaults to BASETOPIC
    * FIELDS: columns of formfields to display, defaults to Topic, Summary, !WikiApplication, Changed
+   * SORT: sorting of rows, defaults to "Changed"
+   * REVERSE: sorting direction, defaults to "off", defaults to "on" if SORT="Changed"
    * ROWS: number of rows to display initially, defauts to 10
    * FILTER: additional filter expression (optional)
    * THEWEB: web to examin, defaults to BASEWEB
+   * ROWNUMBERS: boolean toggle to switch on/off row numbers
    * &lt;field_name>_title: column title for the given field
+   * &lt;field_name>_width: column width for the given field
+   * &lt;field_name>_formatter: column formatter for the given field; possible values: topic, date, integer, number, currency
 %ENDSECTION{"documentation"}%
 
 ---++ Implementation
@@ -24,12 +29,12 @@
   rows="%ROWS{default="10"}%"
   filterbar="on" 
   toolbar="on" 
-  rownumbers="on" 
+  rownumbers="%ROWNUMBERS{default="on"}%" 
   pager="on" 
   width="auto" 
   height="auto"
-  sort="Changed"
-  reverse="on" 
+  sort="%SORT{default="Changed"}%"
+  reverse="%REVERSE{default="%IF{"'%SORT{default="Changed"}%'='Changed'" then="on" else="off"}%"}%" 
   WikiApplication_title="%MAKETEXT{"Application"}%"
   TopicTitle_title="%MAKETEXT{"Title"}%"
   Summary_title="%MAKETEXT{"Summary"}%"
@@ -38,6 +43,20 @@
     split="\s*,\s*"
     format="$percntIF{\"defined $1_title\" 
               then=\"$1_title=\\"$percnt$1_title$percnt\\"\"
+            }$percnt"
+    separator="$n"
+  }%
+  %FORMATLIST{"%FIELDS{default="TopicTitle,Summary,WikiApplication,Changed"}%"
+    split="\s*,\s*"
+    format="$percntIF{\"defined $1_formatter\" 
+              then=\"$1_formatter=\\"$percnt$1_formatter$percnt\\"\"
+            }$percnt"
+    separator="$n"
+  }%
+  %FORMATLIST{"%FIELDS{default="TopicTitle,Summary,WikiApplication,Changed"}%"
+    split="\s*,\s*"
+    format="$percntIF{\"defined $1_width\" 
+              then=\"$1_width=\\"$percnt$1_width$percnt\\"\"
             }$percnt"
     separator="$n"
   }%

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1397220662" format="1.1" reprev="15" version="18"}%
+%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1398413761" format="1.1" reprev="15" version="19"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -45,7 +45,7 @@ This uses solr and infintescroll to create a frontpage widget.
 %STARTSECTION{"backend"}%<noautolink>
 %DBQUERY{
   "%URLPARAM{"filter" default="%FILTER%"}%"
-  exclude="^(WebChanges|WebPreferences|WebStatistics|WebTopicLinks|WebIndex|WebNotify|WebHome|WebLinks|TopCategory|Category|ClassifiedTopic|TopicType|WebTopicEditTemplate|WebAtom|WebRss|WebLeftBar|WebSearch.*|WebTagList)$"
+  exclude="^(WebChanges|WebPreferences|WebStatistics|WebTopicList|WebIndex|WebNotify|WebHome|WebLinks|TopCategory|Category|ClassifiedTopic|TopicType|WebTopicEditTemplate|WebAtom|WebRss|WebLeftBar|WebSearch.*|WebTagList)$"
   web="%URLPARAM{"web" default="%THEWEB%"}%"
   skip="%CALC{"$EVAL(%URLPARAM{"page" default="%PAGE%"}%*%URLPARAM{"limit" default="%LIMIT%"}%)"}%"
   limit="%URLPARAM{"limit" default="%LIMIT%"}%" 
