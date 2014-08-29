@@ -1,0 +1,10 @@
+*.gz
+*.swp
+pub/System/WikiWorkbenchContrib/jquery.topictitle.js
+WikiWorkbenchContrib.md5
+WikiWorkbenchContrib.sha1
+WikiWorkbenchContrib.tgz
+WikiWorkbenchContrib.txt
+WikiWorkbenchContrib.zip
+WikiWorkbenchContrib_installer
+WikiWorkbenchContrib_installer.pl

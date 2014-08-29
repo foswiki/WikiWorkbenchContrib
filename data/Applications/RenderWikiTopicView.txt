@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1398678208" format="1.1" reprev="13" version="13"}%
+%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1402904696" format="1.1" reprev="14" version="14"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -17,7 +17,7 @@ showing its title and the summary line.
 <verbatim class="tml">
 %STARTINCLUDE%<noautolink><h1>
 %DBQUERY{topic="%BASEWEB%.%BASETOPIC%"
-  format="[[$web.$topic][<span itemprop='name'>$expand(topictitle)</span>]] %IF{
+  format="[[$web.$topic][<span itemprop='name'>$percntENCODE{\"$expand(topictitle)\" old=\"[,]\" new=\"&#91;,&#93;\"}$percnt</span>]] %IF{
       "defined TITLE_EXTRA and not isempty TITLE_EXTRA" 
       then="<span class='foswikiTopicExtra'>%TITLE_EXTRA%</span>"}% $expand('<div itemprop=\"description\" class=\"foswikiTopicSummary\">' and Summary and '</div>')"
 }%</h1>
