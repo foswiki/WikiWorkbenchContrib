@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1409330208" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 ---++ Documentation
@@ -19,11 +19,11 @@ all parts of an application are gathered to create documentation and use it for 
 %STOPINCLUDE%
 
 ---++ <nop>%TOPIC% form
-| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* |
-| TopicType | checkbox | 3 |%DBCALL{"Applications.GetTopicTypes" remote="off"}%| Document type  | |
-| <nop>TopicTitle | text | 75 | | title | |
-| Summary | text | 75 | | Short description of the role of this topic | c |
-| WikiApplication| wikiapp | 1 | | Application this topic belongs to | |
+| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default: * |
+| TopicType | checkbox | 3 |%DBCALL{"Applications.GetTopicTypes" remote="off"}%| Document type  | | |
+| <nop>TopicTitle | text | 75 | | title | | |
+| Summary | text | 75 | | Short description of the role of this topic | c | |
+| WikiApplication| wikiapp | 1 | | Application this topic belongs to | | |
 
 
 %META:FORM{name="Applications.TopicType"}%

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1409330208" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -45,7 +45,7 @@ This is used to create a new WikiApplication
 </div>
 </form>
 %ENDTWISTY%
-%ADDTOZONE{"script" tag="WW:NEWWEB" topic="%WEB%.%TOPIC%" section="init" requires="JQUERYPLUGIN"}%
+%ADDTOZONE{"script" id="WW:NEWWEB" topic="%WEB%.%TOPIC%" section="init" requires="JQUERYPLUGIN"}%
 <!-- //wikiapplicationfactory-->%STOPINCLUDE%
 </verbatim>
 

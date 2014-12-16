@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1409330208" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
 
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 ---++ Documentation
@@ -44,12 +44,12 @@ The TopicType topic is the factory to create new <nop>TopicTypes as well.
 %STOPINCLUDE%
 
 ---++ !TopicType form
-| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* |
-| TopicType | checkbox | 4 | TopicType, DataForm, DocuTopic, ApplicationTopic | Document type  | |
-| <nop>TopicTitle | text | 75 | | title | |
-| Inheritance | checkbox | 4 |%DBCALL{"Applications.GetTopicTypes" remote="off"}%| TopicType whose properties are implemented here too (see java's interfaces)  | |
-| Summary | text | 75 | | Short description of the role of this topic | c |
-| WikiApplication| wikiapp | 1 | | Application this topic belongs to | |
+| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
+| TopicType | checkbox | 4 | TopicType, DataForm, DocuTopic, ApplicationTopic | Document type  | | |
+| <nop>TopicTitle | text | 75 | | title | | |
+| Inheritance | checkbox | 4 |%DBCALL{"Applications.GetTopicTypes" remote="off"}%| TopicType whose properties are implemented here too (see java's interfaces)  | | |
+| Summary | text | 75 | | Short description of the role of this topic | c | |
+| WikiApplication| wikiapp | 1 | | Application this topic belongs to | | |
 
 
 %META:FORM{name="Applications.TopicType"}%

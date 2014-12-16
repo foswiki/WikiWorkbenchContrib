@@ -1,9 +1,9 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1409330208" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicTemplate"}%
-| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* |
-| TopicType | label | 1 | WikiTopic | Document type  | |
-| <nop>TopicTitle | text | 75 | | title | |
-| Summary | text | 75 | | Short description of the role of this topic | |
+| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
+| TopicType | label | 1 | WikiTopic | Document type  | | |
+| <nop>TopicTitle | text | 75 | | title | | |
+| Summary | text | 75 | | Short description of the role of this topic | | |
 
 
 %META:FORM{name="Applications.ApplicationTopic"}%

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1409330208" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 %DBCALL{"RenderTopicInstaller" TYPE="%TOPIC%" PARENT="TopicType"}%
 
@@ -39,10 +39,10 @@ See also: [[WebTopicEditTemplate]]
 %STOPINCLUDE%
 
 ---++ WikiTopic form
-| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* |
-| TopicType | label | 1 | WikiTopic | Document type  | |
-| <nop>TopicTitle | text | 75 | | title | c |
-| Summary | text | 75 | | short description of the role of this topic | c |
+| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
+| TopicType | label | 1 | WikiTopic | Document type  | | | 
+| <nop>TopicTitle | text | 75 | | title | c | | 
+| Summary | text | 75 | | short description of the role of this topic | c | | 
 
 
 %META:FORM{name="Applications.TopicType"}%

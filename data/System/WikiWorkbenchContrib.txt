@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1409330208" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
 ---+!! %TOPIC%
 %SHORTDESCRIPTION%
 
@@ -157,6 +157,7 @@ target webs...
 |  Version: | %$VERSION% |
 |  Release: | %$RELEASE% |
 |  Change History: | |
+|  16 Dec 2014 | added "Default" column to form definitions |
 |  29 Aug 2014 | using new RENDERFORMDEF in !FlexFormPlugin for !DataForm definition insights |
 |  22 Apr 2014 | improved rendering of revision info in <nop>WikiTopics; remove traces of <nop>NatSkin css classes |
 |  04 Apr 2014 | fix wikiapp formfield to work on foswiki >= 1.2.0 |

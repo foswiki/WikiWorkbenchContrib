@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1409330208" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -21,20 +21,20 @@ This uses solr and infintescroll to create a frontpage widget.
 <div class="jqInfiniteScroll recentChanges {itemSelector:'.clsIndexItem', localMode:true, bufferPx:200}">
 %DBCALL{"%WEB%.%TOPIC%" 
   section="backend" 
-  LIMIT="%IF{"defined LIMIT" then="%LIMIT%" else="20"}%"
-  PAGE="%IF{"defined PAGE" then="%PAGE%" else="0"}%"
-  THEWEB="%IF{"defined THEWEB" then="%THEWEB%" else="%BASEWEB%"}%"
-  FILTER="%IF{"defined FILTER" then="%FILTER%"}%"
+  LIMIT="%LIMIT{default="20"}%"
+  PAGE="%PAGE{default="0"}%"
+  THEWEB="%THEWEB{default="%BASEWEB%"}%"
+  FILTER="%FILTER{default=""}%"
 }%
 </div>
 <div class="jqInfiniteScrollNavi foswikiHidden">
-  <a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%?page=1;section=backend;skin=text;web=%IF{"defined THEWEB" then="%THEWEB%" else="%BASEWEB%"}%;filter=%IF{"defined FILTER" then="%FILTER%"}%;limit=%IF{"defined LIMIT" then="%LIMIT%" else="50"}%" class='jqInfiniteScrollNext'>More</a>
+  <a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%?page=1&section=backend&skin=text&web=%THEWEB{default="%BASEWEB%"}%&filter=%FULTER{default=""}%&limit=%LIMIT{default="20"}%" class='jqInfiniteScrollNext'>More</a>
 </div>
 <literal><style>
 .recentChanges {
   overflow-y:auto;
   padding-right:1em;
-  height:%IF{"defined HEIGHT" then="%HEIGHT%" else="40em"}%;
+  height:%HEIGHT{default="40em"}%;
 }
 </style></literal>
 <!-- %JQREQUIRE{"infinitescroll"}% -->%STOPINCLUDE%
@@ -44,11 +44,11 @@ This uses solr and infintescroll to create a frontpage widget.
 <verbatim class="tml">
 %STARTSECTION{"backend"}%<noautolink>
 %DBQUERY{
-  "%URLPARAM{"filter" default="%FILTER%"}%"
+  "%URLPARAM{"filter" default="%FILTER{default=""}%"}%"
   exclude="^(WebChanges|WebPreferences|WebStatistics|WebTopicList|WebIndex|WebNotify|WebHome|WebLinks|TopCategory|Category|ClassifiedTopic|TopicType|UncategorizedTopics|WebTopicEditTemplate|WebAtom|WebRss|WebLeftBar|WebSearch.*|WebTagList)$"
-  web="%URLPARAM{"web" default="%THEWEB%"}%"
-  skip="%CALC{"$EVAL(%URLPARAM{"page" default="%PAGE%"}%*%URLPARAM{"limit" default="%LIMIT%"}%)"}%"
-  limit="%URLPARAM{"limit" default="%LIMIT%"}%" 
+  web="%URLPARAM{"web" default="%THEWEB{default="%BASEWEB%"}%"}%"
+  skip="%CALC{"$EVAL(%URLPARAM{"page" default="%PAGE{default="0"}%"}%*%URLPARAM{"limit" default="%LIMIT{default="20"}%"}%)"}%"
+  limit="%URLPARAM{"limit" default="%LIMIT{default="20"}%"}%" 
   sort="modified"
   reverse="on"
   format="$percntDBCALL{\"$web.$topic->RenderIndexItem\"}$percnt"
@@ -70,7 +70,7 @@ This uses solr and infintescroll to create a frontpage widget.
 </verbatim>
 
 %META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="DocuTopic, TopicFunction"}%
+%META:FIELD{name="TopicType" title="TopicType" value="DocuTopic, TopicFunction, WikiTopic"}%
 %META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
 %META:FIELD{name="Summary" attributes="c" title="Summary" value="renders a list of recent changes in a web"}%
 %META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="none"}%

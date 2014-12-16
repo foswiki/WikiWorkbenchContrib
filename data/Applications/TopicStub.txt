@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1409330208" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 ---++ Documentation
@@ -31,13 +31,13 @@ See also: %TOPIC%Template
 %STOPINCLUDE%
 
 ---++ TopicStub form
-| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* |
-| TopicType | label | 1 | TopicStub | Document type  | |
-| <nop>TopicTitle | text | 75 | | title of this topic | |
-| Summary | text | 75 | | Short description of the role of this topic | |
-| WikiApplication| wikiapp | 1 | | Application this topic belongs to | |
-| Target | text | 75 | | Target web-topic | |
-| Section | text | 75 | | section inside the target topic | |
+| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
+| TopicType | label | 1 | TopicStub | Document type  | | | 
+| <nop>TopicTitle | text | 75 | | title of this topic | | | 
+| Summary | text | 75 | | Short description of the role of this topic | | | 
+| WikiApplication| wikiapp | 1 | | Application this topic belongs to | | | 
+| Target | text | 75 | | Target web-topic | | | 
+| Section | text | 75 | | section inside the target topic | | | 
 
 
 %META:FORM{name="Applications.TopicType"}%

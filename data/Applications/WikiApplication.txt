@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1409330208" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 ---++ Documentation
 %STARTSECTION{"documentation"}%
@@ -23,15 +23,15 @@ See also: WikiApplicationTemplate
 %STOPINCLUDE%
 
 ---++ WikiApplication form
-| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* |
-| TopicType | label | 1 | WikiApplication | Document type  | |
-| <nop>TopicTitle | text | 75 | | title of this topic | |
-| Summary | text | 75 | | short description of the role of this topic | c |
-| Version | text | 75 | | software release number/id/phase | |
-| Author | text | 75 | | Application author(s) | |
+| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
+| TopicType | label | 1 | WikiApplication | Document type  | | |
+| <nop>TopicTitle | text | 75 | | title of this topic | | |
+| Summary | text | 75 | | short description of the role of this topic | c | |
+| Version | text | 75 | | software release number/id/phase | | |
+| Author | text | 75 | | Application author(s) | | |
 | Copyright | text | 75 | | Application version |  |
-| License | select | 1 | %DBQUERY{"TopicType=~'\bApplicationLicense\b'" separator=", " web="Applications" format="$web.$topic" }% | License of this application | |
-| Dependencies | text | 75 |  | | |
+| License | select | 1 | %DBQUERY{"TopicType=~'\bApplicationLicense\b'" separator=", " web="Applications" format="$web.$topic" }% | License of this application | | |
+| Dependencies | text | 75 |  | | | |
 
 
 %META:FORM{name="Applications.TopicType"}%
