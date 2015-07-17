@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 ---++ Parameters
    * NAME: name of WikiApplication, defaults to BASEWEB
@@ -28,15 +28,8 @@
 ---++ Test
 %DBCALL{"%TOPIC%" NAME="WikiWorkbench" THEWEB="%WEB%"}%
 
-%DBCALL{"RenderFunctionCallers"}%
-
----++ Copyright
-&copy; 2006-2014 Michael Daum http://michaeldaumconsulting.com
-
-%DBCALL{"GnuGeneralPublicLicense" section="notice"}%
-
-%META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="TopicFunction"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="Render a list of all files making up a given application"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FORM{name="TopicFunction"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="Render a list of all files making up a given application"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

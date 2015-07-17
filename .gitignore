@@ -1,5 +1,6 @@
 *.gz
 *.swp
+igp_*
 pub/System/WikiWorkbenchContrib/jquery.topictitle.js
 WikiWorkbenchContrib.md5
 WikiWorkbenchContrib.sha1

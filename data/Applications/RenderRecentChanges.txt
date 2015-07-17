@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -11,7 +11,7 @@ This uses solr and infintescroll to create a frontpage widget.
    * LIMIT: number of rows to render, defaults to 20
    * PAGE: from which page to start rendering
    * THEWEB: the web to render recent changes for
-   * FILTER: lucene filter to be added to the search query
+   * FILTER: filter to be added to the search query
 
 %ENDSECTION{"documentation"}%
 
@@ -42,8 +42,7 @@ This uses solr and infintescroll to create a frontpage widget.
 
 ---++ Backend
 <verbatim class="tml">
-%STARTSECTION{"backend"}%<noautolink>
-%DBQUERY{
+%STARTSECTION{"backend"}%<noautolink>%DBQUERY{
   "%URLPARAM{"filter" default="%FILTER{default=""}%"}%"
   exclude="^(WebChanges|WebPreferences|WebStatistics|WebTopicList|WebIndex|WebNotify|WebHome|WebLinks|TopCategory|Category|ClassifiedTopic|TopicType|UncategorizedTopics|WebTopicEditTemplate|WebAtom|WebRss|WebLeftBar|WebSearch.*|WebTagList)$"
   web="%URLPARAM{"web" default="%THEWEB{default="%BASEWEB%"}%"}%"
@@ -53,25 +52,15 @@ This uses solr and infintescroll to create a frontpage widget.
   reverse="on"
   format="$percntDBCALL{\"$web.$topic->RenderIndexItem\"}$percnt"
   separator="$n"
-}%
-</noautolink>%ENDSECTION{"backend"}%
+}%</noautolink>%ENDSECTION{"backend"}%
 </verbatim>
 
 ---++ Test
 %DBCALL{"%TOPIC%" HEIGHT="20em"}%
 
-%DBCALL{"Applications.RenderFunctionCallers"}%
 
----++ Copyright
-&copy; 2006-2014 Michael Daum http://michaeldaumconsulting.com
-
-%DBCALL{"Applications.GnuGeneralPublicLicense" section="notice"}%
-
-</verbatim>
-
-%META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="DocuTopic, TopicFunction, WikiTopic"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="renders a list of recent changes in a web"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="none"}%
-%META:PREFERENCE{name="EDIT_TEMPLATE" title="EDIT_TEMPLATE" type="Set" value="Applications.WikiTopicEdit"}%
+%META:FORM{name="TopicFunction"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="renders a list of recent changes in a web"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

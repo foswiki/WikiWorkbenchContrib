@@ -1,11 +1,11 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
 ---++ Documentation
 %STARTSECTION{"documentation"}%
 This function gets the first image attachment from a topic and creates
-a 48x48 thumbnail using <nop>ImagePlugin. The attachment taken must end
+a 48x48 thumbnail using ImagePlugin. The attachment taken must end
 with =jpeg, jpg, gif, bmp, svg or png=. If there are multiple image attachments
 then the first one ordered by comment and name is taken. The empty string
 is returned if no image attachment is found.
@@ -14,8 +14,9 @@ is returned if no image attachment is found.
    * OBJECT: topic to generate a thumbnail for
    * ALIGN: optional alignment of image, defaults to right
    * SIZE: optional size of thumbnail
-   * TYPE: image rendering type, see documentation of <nop>ImagePlugin, defaults to simple
+   * TYPE: image rendering type, see documentation of ImagePlugin, defaults to simple
    * CROP
+   * TOOLTIP: switch on/off tooltips for thumbnails, defaults to =on=
    * SORT: specifies which image to chose from the attachments, defaults to =comment:name= which will take the one that sorts first wrt the comment, falling back to the name
 
 %ENDSECTION{"documentation"}%
@@ -51,7 +52,7 @@ is returned if no image attachment is found.
      size=\"%size%\"
      crop=\"%crop%\"
      title=\"\"
-     tooltip=\"on\"
+     tooltip=\"%TOOLTIP{default="on"}%\"
      warn=\"off\"
    }$percnt"
 }%%ENDSECTION{"thumbnailed"}%
@@ -72,7 +73,7 @@ is returned if no image attachment is found.
      size=\"%size%\"
      crop=\"%crop%\"
      title=\"\"
-     tooltip=\"on\"
+     tooltip=\"%TOOLTIP{default="on"}%\"
      warn=\"off\"
    }$percnt"
 }%%ENDSECTION{"defaultthumbnail"}%
@@ -100,19 +101,12 @@ is returned if no image attachment is found.
    sort="%URLPARAM{"sort"}%"
    hidenull="on"
    header="| *#* | *Name* | *Date* | *Size*| *Comment* | *Image* |$n"
-   format="| $index | <nop>$name | $date | $size | $comment | <img src='$url' width='50' /> |"
+   format="| $index | $name | $date | $size | $comment | <img src='$url' width='50' /> |"
 }%
 </div>
 
-%DBCALL{"Applications.RenderFunctionCallers"}%
-
----++ Copyright
-&copy; 2006-2014 Michael Daum http://michaeldaumconsulting.com
-
-%DBCALL{"Applications.GnuGeneralPublicLicense" section="notice"}%
-
-%META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="DocuTopic, TopicFunction"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="Display thumbnail image for a topic"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FORM{name="TopicFunction"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="Display thumbnail image for a topic"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

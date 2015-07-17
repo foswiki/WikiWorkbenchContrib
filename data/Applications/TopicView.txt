@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 ---++ Documentation
 %STARTSECTION{"documentation"}%
@@ -32,18 +32,27 @@ Foswiki editor, or even implement a full substitute for its form data.
 %STARTINCLUDE%<!-- -->
 %DBCALL{"Applications.RenderSimpleTopicCreator" 
   VALUE="...ViewTemplate"
-  TYPE="%TOPIC%"
   TEMPLATE="Applications.%TOPIC%Template"
-  FORM="Applications.ApplicationTopic"
 }%
 
-%DBCALL{"Applications.RenderTopicsOfType"}%
+%DBCALL{"Applications.RenderTopicsOfType"
+   _FIELDS="TopicTitle, TopicType, form, WikiApplication, Changed"
+}%
 %STOPINCLUDE%
 
+---++ <nop>%TOPIC% form
+| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default: * |
+| TopicType | label | 1 | TopicView, ApplicationTopic, WikiTopic | topic type | |  |
+| <nop>TopicTitle | text | 75 | | | | |
+| Summary | text | 75 | | short description or tagline | c | |
+| WikiApplication| wikiapp | 1 | | application this topic belongs to | | |
 
 %META:FORM{name="Applications.TopicType"}%
-%META:FIELD{name="TopicType" title="TopicType" value="TopicType, DocuTopic"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Inheritance" attributes="" title="Inheritance" value="ApplicationTopic"}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="Views and editors"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Inheritance" title="Inheritance" value="ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="Summary" title="Summary" value="Views and editors"}%
+%META:FIELD{name="Icon" title="Icon" value="fa-eye"}%
+%META:FIELD{name="Editor" title="Editor" value="Applications.TopicViewEditTemplate"}%
+%META:FIELD{name="Template" title="Template" value="Applications.TopicViewTemplate"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

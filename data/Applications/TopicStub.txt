@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 ---++ Documentation
@@ -13,7 +13,7 @@ does not compute a specific function. Moreover it is useful to reduce
 redundancy of pure content, whereas TopicFunctions are part of a !WikiWorkbench
 library and thus reduce redundancy in WikiApplications.
 
-See also: %TOPIC%Template
+See also: [[%TOPIC%Template]], [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
 %ENDSECTION{"documentation"}%
 
 ---++ Topics of type '%TOPIC%'
@@ -21,8 +21,6 @@ See also: %TOPIC%Template
 %IF{"'%BASEWEB%'=~'^Applications'"
   then="$percntDBCALL{\"Applications.RenderSimpleTopicCreator\" 
     TEMPLATE=\"Applications.%TOPIC%Template\"
-    FORM=\"Applications.%TOPIC%\"
-    TYPE=\"TopicStub\"
     WHITEBOARD=\"off\"
   }$percnt"
 }%<!-- -->
@@ -32,17 +30,20 @@ See also: %TOPIC%Template
 
 ---++ TopicStub form
 | *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
-| TopicType | label | 1 | TopicStub | Document type  | | | 
-| <nop>TopicTitle | text | 75 | | title of this topic | | | 
-| Summary | text | 75 | | Short description of the role of this topic | | | 
-| WikiApplication| wikiapp | 1 | | Application this topic belongs to | | | 
-| Target | text | 75 | | Target web-topic | | | 
+| TopicType | label | 1 | TopicStub, ApplicationTopic, WikiTopic  | topic type  | |  | 
+| <nop>TopicTitle | text | 75 | |  | | | 
+| Summary | text | 75 | | short description or tagline | | | 
+| WikiApplication| wikiapp | 1 | | application this topic belongs to | | | 
+| Target | text | 75 | | target web-topic | | | 
 | Section | text | 75 | | section inside the target topic | | | 
 
 
 %META:FORM{name="Applications.TopicType"}%
-%META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Inheritance" attributes="" title="Inheritance" value="ApplicationTopic"}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="A placeholder or redirect topic"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Inheritance" title="Inheritance" value="ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="Summary" title="Summary" value="A placeholder or redirect topic"}%
+%META:FIELD{name="Icon" title="Icon" value="fa-long-arrow-left"}%
+%META:FIELD{name="Editor" title="Editor" value="Applications.TopicStubEditTemplate"}%
+%META:FIELD{name="Template" title="Template" value="Applications.TopicStubTemplate"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
 %TMPL:INCLUDE{"edit"}%
@@ -14,9 +14,13 @@
 
 %{<verbatim class="tml">}%
 %TMPL:DEF{"firsttab::impl"}%%TAB{"%MAKETEXT{"Text"}%"}%
-%TMPL:P{"topicmeta"}%<!-- -->
-%TMPL:P{"textarea"}%<!-- -->
+%TMPL:P{"topicmeta"}%
+%TMPL:P{"textarea"}%
 %ENDTAB%%TMPL:END%
+%{</verbatim>}%
+
+%{<verbatim class="tml">}%
+%TMPL:DEF{"formfields"}%<!-- disabled -->%TMPL:END%
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
@@ -36,13 +40,12 @@
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
-%TMPL:DEF{"contenttitle"}%<h1 class="natEditTitle">
+%TMPL:DEF{"contenttitle"}%<h1 class="natEditTitle"><noautolink>
 %IF{"istopic '%WEB%.%TOPIC%'"
-  then="[[%WEB%.%TOPIC%][%TMPL:P{"topictitle"}%]] (%MAKETEXT{"edit [_1]" args="%TMPL:P{"topictype"}%"}%)"
-  else="<nop>%TMPL:P{"topictitle"}% (%MAKETEXT{"new [_1]" args="%TMPL:P{"topictype"}%"}%)"
+  then="[[%WEB%.%TOPIC%][$percntTMPL:P{\"topictitle\"}$percnt]] (%MAKETEXT{"edit [_1]" args="%TMPL:P{"topictype"}%"}%)"
+  else="$percntTMPL:P{\"topictitle\"}$percnt (%MAKETEXT{"new [_1]" args="%TMPL:P{"topictype"}%"}%)"
 }%
-</h1>
-<!-- -->%ADDTOZONE{"head" text="<style>.natEditH1Button {display:none}</style>"}%%TMPL:END%
+</h1></noautolink>%ADDTOZONE{"head" id="WIKIWORKBENCH::H1" text="<style>.ui-natedit-h1 {display:none}</style>"}%
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
@@ -54,13 +57,13 @@
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
-%TMPL:DEF{"formattop"}%<literal>
+%TMPL:DEF{"formattop"}%
 <input type="hidden" name="TopicType" value="%RENDERFORMDEF{"%TMPL:P{"formdefinition"}%" field="TopicType" format="$value"}%" />
-</literal>%TMPL:END%
+%TMPL:END%
 %{</verbatim>}%
 
-%META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="TopicView"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="TopicView to edit a WikiTopic"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FORM{name="TopicView"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="TopicView to edit a WikiTopic"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

@@ -1,9 +1,8 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
-
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %TOC%
 
 ---+++ DataForms
-   * Set WEBFORMS = Applications.WikiTopic, Applications.TopicStub, Applications.WikiApplication, Applications.ApplicationTopic, Applications.TopicType
+   * Set WEBFORMS = ApplicationLicense, ApplicationTopic, DataForm, DataFormAttribute, DocuTopic, TopicFunction, TopicStub, TopicTemplate, TopicType, TopicView, WebTool, WikiApplication, WikiTopic
 
 ---+++ Naming
 Text to be displayed on the sitemap and in the headerbar describing this web
@@ -14,7 +13,7 @@ Color to be displayed in the sitemap representing this web:
    * Set WEBBGCOLOR = #E2DCC8
 
 Flag to enable/disable listing this web on the sitemap:
-   * Set SITEMAPLIST = on
+   * Set SITEMAPLIST = off
 
 ---+++ Access rights
    * Set #DENYWEBVIEW =
@@ -23,13 +22,13 @@ Flag to enable/disable listing this web on the sitemap:
    * Set ALLOWWEBCHANGE = %USERSWEB%.AdminGroup
    * Set ALLOWTOPICCHANGE = %USERSWEB%.AdminGroup
 
-__Related Topics__:
-   * [[%LOCALSITEPREFS%]]
-   * [[%SYSTEMWEB%.DefaultPreferences]]
-   * [[%USERSWEB%.SitePreferences]]
+---++ Translations
+
+   * Set CONTENT_LEXICON = Applications.WebLexicon
+   * Set WEBMETADATA = Applications.LexiconForm
 
 %META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="WebTool"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value="WebPreferences"}%
-%META:FIELD{name="Summary" attributes="" title="Summary" value="Preferences of the <nop>%25WEB%25 web"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FIELD{name="TopicType" title="TopicType" value="ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="Preferences of the %25WEB%25 web"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

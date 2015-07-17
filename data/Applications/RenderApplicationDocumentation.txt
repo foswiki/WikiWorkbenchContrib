@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 ---++ Documentation
 %STARTSECTION{"documentation"}%
@@ -17,39 +17,31 @@
 
 ---++ Implementation
 <verbatim class="tml">
-%STARTINCLUDE%<!-- render application documentation -->
+%STARTINCLUDE%
 %DBQUERY{
    "WikiApplication='\b%IF{"defined NAME" then="%NAME%" else="%EXTRACT{text="%BASEWEB%" pattern=".*/(.+?)$" format="$1"}%"}%\b'
    AND TopicType=~'\b%TYPE%\b' 
    %IF{"defined NOTTYPE" then=" AND !(TopicType=~'\b%NOTTYPE%\b')"}%"
    web="%IF{"defined THEWEB" then="%THEWEB%" else="%BASEWEB%"}%"
    hidenull="on"
-   remote="off"
    header="<div class='twbDocuHolder'>
----+++ %TYPE%$n"
+---+++ [[%TYPE%]]$n"
    format="<div class='twbDocuSectionHolder'>
----++++ <nop>$topic
+---++++ [[$topic]]
 <div class='twbDocuSectionSummary'>$formfield(Summary)</div>
-<div class='twbDocuSectionText'>$expand(_sectiondocumentation) ... [[$web.$topic][read more]]</div>
+<div class='twbDocuSectionText'>$percntDBCALL{\"$web.$topic\" section=\"documentation\" warn=\"off\"}$percnt ... [[$web.$topic][read more]]</div>
 </div>"
    separator="$n"
   footer="</div>"
 }%
-<!-- //render application documentation -->%STOPINCLUDE%
+%STOPINCLUDE%
 </verbatim>
 
 ---++ Test
 %DBCALL{"%TOPIC%" NAME="WikiWorkbench" TYPE="TopicFunction"}%
 
-%DBCALL{"RenderFunctionCallers"}%
-
----++ Copyright
-&copy; 2006-2014 Michael Daum http://michaeldaumconsulting.com
-
-%DBCALL{"GnuGeneralPublicLicense" section="notice"}%
-
-%META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="TopicFunction"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="Extracts the documentation section from all parts of a WikiApplication"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FORM{name="TopicFunction"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="Extracts the documentation section from all parts of a WikiApplication"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
 %TMPL:INCLUDE{"view"}%
@@ -14,7 +14,6 @@
 %TMPL:DEF{"form"}%%TMPL:END% 
 %TMPL:DEF{"topicinfo"}%%TMPL:END%
 %TMPL:DEF{"revinfo"}%%TMPL:END%
-%TMPL:DEF{"fixRevisionPosition"}%%TMPL:END%
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
@@ -24,12 +23,13 @@
 %{<verbatim class="tml">}%
 %TMPL:DEF{"qualitycheck::multipleh1"}%%IF{
   "'%BASEWEB%.%BASETOPIC%'/text=~'\-\-\-\+[^\+]'"  
-  then="<p class='foswikiWarningMessage'>%MAKETEXT{"There are multiple h1 titles on this page. Please use only one h1 for the title and h2-h6 within the text."}%</p>" 
+  then="<p class='foswikiWarningMessage'>%MAKETEXT{"There are multiple h1 titles on this page. Please use only one h1 for the title and h2-h6 within the text."}%</p>
+" 
 }%%TMPL:END%
 %{</verbatim>}%
 
-%META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="TopicView"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="Generic topic view"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FORM{name="TopicView"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="Generic topic view"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

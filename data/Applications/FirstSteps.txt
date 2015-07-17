@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="DocuTopic"}%
 %TOC%
 
@@ -6,15 +6,15 @@
 ---++ How to proceed
 Each application has a master topic located in the application's subweb, which captures all information and 
 documentation for this application. This is is a topic of type WikiApplication. Create it and give it the
-same name as your newly created application web. For example given you created a new web <nop>Applications.MyNewApp
-then create a new WikiApplication topic <nop>Applications.MyNewApp.MyNewApp. That's where application-level
+same name as your newly created application web. For example given you created a new web Applications.MyNewApp
+then create a new WikiApplication topic Applications.MyNewApp.MyNewApp. That's where application-level
 documentation goes. All topic-level documentation is done within the ApplicationTopics themselves. In addition of
 being an ApplicationTopic these are tagged DocuTopic and contain a named section "docu". The WikiApplication
 topic contains a control function that gathers all topic-level documentation by extracting the section "docu" from
 DocuTopics.
 
 ---+++ Model
-When starting to write a new <nop>WikiApplication, you may proceed by creating new TopicTypes, that are specific
+When starting to write a new WikiApplication, you may proceed by creating new TopicTypes, that are specific
 for it. TopicTypes will define the data model, and optionally an installer and a factory that help in deploying and 
 creating a new topic of the new type. 
 
@@ -25,7 +25,7 @@ to properly display a topic of that type.
 
 ---+++ View
 After you created the data model and a few topic instances of that type, you can start writing
-TopicFunctions to control this data. For example create a <nop>RenderMyNewTopicType that displays the data
+TopicFunctions to control this data. For example create a RenderMyNewTopicType that displays the data
 of one topic. Now create a TopicView that includes a call to this new TopicFunction. Then apply the TopicView to
 a topic by setting its VIEW_TEMPLATE property. Add this setting to the TopicTemplate so that each newly authored
 topic of that type will have the correct view applied to it.
@@ -45,7 +45,7 @@ existing web by installing the relevant TopicTypes into the target web. This is 
 TopicTypes and WebTools each.
 
 If you add an application to an already existing web for the first time, you may also need to create the basic infrastructure
-of <nop>TopicTypes by deploying the TopicType "TopicType" and "TopicStub" into the target web.
+of TopicTypes by deploying the TopicType "TopicType" and "TopicStub" into the target web.
 
 ---+++ Documentation
 Each part of your application can come with its own documentation. Mark it to be of type DocuTopic so that its documentation
@@ -54,8 +54,8 @@ Create pure DocuTopics that describe overall documentation about your applicatio
 
 Last not least delete this text and replace it with a meaningful description and introduction to your application.
 
-%META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="ApplicationTopic, DocuTopic"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value="FirstSteps"}%
-%META:FIELD{name="Summary" attributes="" title="Summary" value="What's next: first steps after creating a new workbench web"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FORM{name="DocuTopic"}%
+%META:FIELD{name="TopicType" title="TopicType" value="DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value="First Steps"}%
+%META:FIELD{name="Summary" title="Summary" value="What's next: first steps after creating a new workbench web"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

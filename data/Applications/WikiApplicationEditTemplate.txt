@@ -1,11 +1,19 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
-%TMPL:INCLUDE{"Applications.WikiTopicEdit"}%
+%TMPL:INCLUDE{"Applications.ApplicationTopicEdit"}%
 %{</verbatim>}%
 
-%META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="TopicView"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value="WikiApplicationEditTemplate"}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="Editor for WikiApplications"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="none"}%
+%{<verbatim class="tml">}%
+%TMPL:DEF{"topictype"}%wiki app%TMPL:END%
+%{</verbatim>}%
+
+%{<verbatim class="tml">}%
+%TMPL:DEF{"formdefinition"}%Applications.WikiApplication%TMPL:END%
+%{</verbatim>}%
+
+%META:FORM{name="TopicView"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="Editor for WikiApplications"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

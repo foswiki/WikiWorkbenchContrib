@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicTemplate"}%
 %DBCALL{"Applications.RenderTopicInstaller" TEXT="Install '%TOPIC%' TopicType" TYPE="TopicType"}%
 
@@ -13,23 +13,23 @@
 %DBCALL{"Applications.RenderSimpleTopicCreator"
   LABEL="%MAKETEXT{"Title"}%"
   BUTTONTEXT="%MAKETEXT{"New"}%"
-  TEXT="%MAKETEXT{"Create a new [_1]" args="<nop>%TOPIC%"}%"
-  VALUE="..."
-  FORM="%WEB%.%TOPIC%"  
+  TEXT="%MAKETEXT{"Create a new [_1]" args="%TOPIC%"}%"
+  VALUE=""
 }%
 
 %DBCALL{"Applications.RenderTopicsOfType"}%
 %STOPINCLUDE%
 
----++ <nop>%TOPIC% form
+---++ %TOPIC% form
 | *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
-| TopicType | label | 1 | WikiTopic, ... | Document type  | | |
-| <nop>TopicTitle | text | 75 | | title of this topic | | |
-| Summary | text | 75 | | Short description of the role of this topic | | |
+| TopicType | label | 1 | ..., WikiTopic | topic type  | | |
+| TopicTitle | text | 75 | | title of this topic | | |
+| Summary | text | 75 | | short description or tagline | | |
 
 
-%META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="TopicTemplate"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="Template to create TopicTypes"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FORM{name="TopicTemplate"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicTemplate, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="Template to create TopicTypes"}%
+%META:FIELD{name="ForTopicType" title="For TopicType" value="TopicType"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

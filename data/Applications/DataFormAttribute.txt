@@ -1,11 +1,11 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 ---++ Documentation
 %STARTSECTION{"documentation"}%
 A DataFormAttribute, also called form field or form attribute, is a part of a DataForm. It may be used as 
 an entity that defining all values a form field can take by using listing them in a <nop>FoswikiTable
 
-See also: %TOPIC%Template
+See also: [[%TOPIC%Template]], [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
 %ENDSECTION{"documentation"}%
 
 ---++ Topics of type '%TOPIC%'
@@ -13,18 +13,25 @@ See also: %TOPIC%Template
 %DBCALL{"Applications.RenderSimpleTopicCreator" 
   TEXT="%TOPIC%" 
   VALUE="..."
-  TYPE="%TOPIC%"
   TEMPLATE="Applications.%TOPIC%Template"
-  FORM="Applications.ApplicationTopic"
 }%
 
 %DBCALL{"Applications.RenderTopicsOfType"}%
 %STOPINCLUDE%
 
+---++ <nop>%TOPIC% form
+| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default: * |
+| TopicType | label | 1 | DataFormAttribute, ApplicationTopic, WikiTopic | topic type | |  |
+| <nop>TopicTitle | text | 75 | | | | |
+| Summary | text | 75 | | short description or tagline | c | |
+| WikiApplication| wikiapp | 1 | | application this topic belongs to | | |
 
 %META:FORM{name="Applications.TopicType"}%
-%META:FIELD{name="TopicType" title="TopicType" value="TopicType, DocuTopic"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value="DataFormAttribute"}%
-%META:FIELD{name="Inheritance" attributes="" title="Inheritance" value="ApplicationTopic"}%
-%META:FIELD{name="Summary" attributes="" title="Summary" value="Value definitions for formfields in a DataForm"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Inheritance" title="Inheritance" value="ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="Summary" title="Summary" value="Value definitions for formfields in a DataForm"}%
+%META:FIELD{name="Icon" title="Icon" value="fa-list"}%
+%META:FIELD{name="Editor" title="Editor" value="Applications.DataFormAttributeEditTemplate"}%
+%META:FIELD{name="Template" title="Template" value="Applications.DataFormAttributeTemplate"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -16,10 +16,12 @@ showing its title and the summary line.
 ---++ Implementation
 <verbatim class="tml">
 %STARTINCLUDE%<noautolink><h1>
-%DBQUERY{topic="%BASEWEB%.%BASETOPIC%"
-  format="[[$web.$topic][<span itemprop='name'>$percntENCODE{\"$expand(topictitle)\" old=\"[,]\" new=\"&#91;,&#93;\"}$percnt</span>]] %IF{
-      "defined TITLE_EXTRA and not isempty TITLE_EXTRA" 
-      then="<span class='foswikiTopicExtra'>%TITLE_EXTRA%</span>"}% $expand('<div itemprop=\"description\" class=\"foswikiTopicSummary\">' and Summary and '</div>')"
+[[%BASEWEB%.%BASETOPIC%][<span itemprop='name'>%GETTOPICTITLE{topic="%BASEWEB%.%BASETOPIC%" rev="%URLPARAM{"rev"}%"}%</span>]] %IF{
+   "defined TITLE_EXTRA and not isempty TITLE_EXTRA" 
+   then="<span class='foswikiTopicExtra'>%TITLE_EXTRA%</span>"
+}%%IF{
+   "'%BASEWEB%.%BASETOPIC%'/Summary"
+   then="<div class='foswikiTopicSummary'>$percntFORMFIELD{\"Summary\" topic=\"%BASEWEB%.%BASETOPIC%\" rev=\"%URLPARAM{"rev"}%\"}$percnt</div>"
 }%</h1>
 %IF{"'%DISPLAYREVISIONINFO{default="on"}%'='on'"
    then="$percntDBCALL{\"%WEB%.%TOPIC%\" section=\"revinfo\"}$percnt"
@@ -43,15 +45,8 @@ showing its title and the summary line.
 ---++ Test
 %DBCALL{"%TOPIC%" TITLE_EXTRA="(approved)"}%
 
-%DBCALL{"Applications.RenderFunctionCallers"}%
-
----++ Copyright
-&copy; 2006-2014 Michael Daum http://michaeldaumconsulting.com
-
-%DBCALL{"Applications.GnuGeneralPublicLicense" section="notice"}%
-
-%META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="DocuTopic, TopicFunction"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value=""}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FORM{name="TopicFunction"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value=""}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

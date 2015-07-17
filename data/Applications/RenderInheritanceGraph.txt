@@ -1,0 +1,56 @@
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICPARENT{name="TopicFunction"}%
+%TOC{depth="2"}%
+
+---++ Documentation
+%STARTSECTION{"documentation"}%
+This function requires [[%SYSTEMWEB%.DirectedGraphPlugin]]
+
+%ENDSECTION{"documentation"}%
+
+---++ Implementation
+<verbatim class="tml">
+%STARTINCLUDE%<!-- -->
+<noautolink>
+<div class="overflow">
+<dot map="on" file="%BASEWEB%">
+digraph G {
+   rankdir=TB;
+   node[shape="box" fontsize="10"];
+   edge[arrowsize="0.5"];
+   ratio="auto";
+   %DBQUERY{
+      "TopicType=~'\bTopicType\b' %IF{"'%BASEWEB%'!='Applications'" then="AND WikiApplication!='WikiWorkbench'"}%"
+      web="%BASEWEB%"
+      format="$topic[URL=\"%SCRIPTURL{"view"}%/$web/$topic\" label=\"$expand(topictitle)\"];
+         $percntFORMATLIST{\"$expand(@Target.Inheritance or Inheritance)\"
+            format=\"$1 -> $topic;\"
+            separator=\"$n\"
+            exclude=\"$percntFORMATLIST{
+                        \"$percntDBQUERY{topics=\"$expand(@Target.Inheritance or Inheritance), none\"
+                              format=\"$dollarexpand(@Target.Inheritance or Inheritance)\"
+                              separator=\", \"
+                          }$percnt\"
+                        separator=\"|\"
+                        unique=\"on\"
+                        header=\"\b(\"
+                        footer=\")\b\"
+                      }$percnt\"
+         }$percnt"
+      separator="$n"
+   }%
+}
+</dot>
+</div>
+</noautolink>
+<!-- -->%STOPINCLUDE%
+</verbatim>
+---++ Test
+%DBCALL{"%TOPIC%"}%
+
+
+%META:FORM{name="TopicFunction"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value="RenderInheritanceGraph "}%
+%META:FIELD{name="Summary" title="Summary" value="a directed graph of TopicType inheritance"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

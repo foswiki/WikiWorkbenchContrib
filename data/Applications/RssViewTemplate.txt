@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1"  version="1"}%
+%META:TOPICINFO{author="micha" comment="reprev" date="1437120556" format="1.1" reprev="4" version="4"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
 %TMPL:P{"rsshead"}%%TMPL:P{"rssbody"}%%TMPL:P{"rssfooter"}%
@@ -11,69 +11,64 @@
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
-%TMPL:DEF{"rssbody"}%<noautolink>
-<channel rdf:about="%SCRIPTURL{"view"}%/%WEB%/%TOPIC%">
-  <title>%WEB% - %WIKITOOLNAME%</title>
-  <link>%SCRIPTURL{"view"}%/%WEB%</link>
-  <description>%WEBSUMMARY%</description>
-  <image rdf:resource="%WEBLOGOIMG%" />
-  <dc:language>en-us</dc:language>
-  <dc:rights>%WEBRSSCOPYRIGHT%</dc:rights>
-  <dc:publisher>%WIKIWEBMASTERNAME% [%WIKIWEBMASTER%]</dc:publisher>
-  <dc:creator>%WIKIWEBMASTERNAME% [%WIKIWEBMASTER%]</dc:creator>
-  <dc:source><nop>%WIKITOOLNAME%</dc:source>
-  <items>
-    <rdf:Seq>
-%DBQUERY{"%FILTER%" 
-  exclude="WebTopicEditTemplate"
-  sort="created"  
-  reverse="on" 
-  limit="%LIMIT%" 
-  format="      <rdf:li rdf:resource=\"%SCRIPTURL{"view"}%/$web/$topic\" />$n"
-  separator=""
-}%    </rdf:Seq>
-  </items>
+%TMPL:DEF{"rssbody"}%<channel rdf:about="%SCRIPTURL{"view"}%/%WEB%/%TOPIC%">
+   <title>%WEB% - %WIKITOOLNAME%</title>
+   <link>%SCRIPTURL{"view"}%/%WEB%</link>
+   <description>%WEBSUMMARY%</description>
+   <image rdf:resource="%WEBLOGOIMG%" />
+   <dc:language>en-us</dc:language>
+   <dc:rights>%WEBRSSCOPYRIGHT%</dc:rights>
+   <dc:publisher>%WIKIWEBMASTERNAME% [%WIKIWEBMASTER%]</dc:publisher>
+   <dc:creator>%WIKIWEBMASTERNAME% [%WIKIWEBMASTER%]</dc:creator>
+   <dc:source>%WIKITOOLNAME%</dc:source>
+   <items>
+      <rdf:Seq>
+%DBQUERY{"%FILTER{default=""}%" 
+   exclude="%EXCLUDE{default="^(Web.*|TopicType|TopicStub|.*ViewTemplate|.*SideBar|.*LeftBar)$"}%"
+   sort="created"  
+   reverse="on" 
+   limit="%LIMIT{default="10"}%" 
+   format="   <rdf:li rdf:resource=\"%SCRIPTURL{"view"}%/$web/$topic\" />$n"
+   separator=""
+}%   </rdf:Seq>
+   </items>
 </channel>
 <image rdf:about="%WEBLOGOIMG%">
-  <title>%WEB% - %WIKITOOLNAME%</title>
-  <link>%SCRIPTURL{"view"}%/%WEB%</link>
-  <url>%IF{"defined WEBLOGOIMG" then="%WEBLOGOIMG%" else="%WIKILOGOIMG%"}%</url>
+   <title>%WEB% - %WIKITOOLNAME%</title>
+   <link>%SCRIPTURL{"view"}%/%WEB%</link>
+   <url>%IF{"defined WEBLOGOIMG" then="%WEBLOGOIMG%" else="%WIKILOGOIMG%"}%</url>
 </image>
-%DBQUERY{"%FILTER%" 
-   exclude="WebTopicEditTemplate"
+%DBQUERY{"%FILTER{default=""}%" 
+   exclude="%EXCLUDE{default="^(Web.*|TopicType|TopicStub|.*ViewTemplate|.*SideBar|.*LeftBar)$"}%"
    sort="created" 
    reverse="on" 
-   limit="%LIMIT%" 
+   limit="%LIMIT{default="10"}%" 
    separator="$n"
-   format="     <item rdf:about=\"%SCRIPTURL{"view"}%/$web/$topic\">
-       <title>$expand(topictitle)</title>
-       <link>%SCRIPTURL{"view"}%/$web/$topic</link>
-       <dc:creator>$expand(createauthor)</dc:creator>
-       <dc:date>$formatTime(createdate, '$year-$mo-$dayT$hour:$minute:$secondsZ')</dc:date>
-       <dc:subject>$expand(Summary)</dc:subject>
-       <dc:contributor>
+   format="   <item rdf:about=\"%SCRIPTURL{"view"}%/$web/$topic\">
+      <title>$expand(topictitle)</title>
+      <link>%SCRIPTURL{"view"}%/$web/$topic</link>
+      <dc:creator>$expand(@createauthor.topictitle)</dc:creator>
+      <dc:date>$formatTime(createdate, '$year-$mo-$dayT$hour:$minute:$secondsZ')</dc:date>
+      <dc:subject>$expand(Summary)</dc:subject>
+      <dc:contributor>
          <rdf:Description link=\"%SCRIPTURL{"view"}%/%USERSWEB%/$expand(createauthor)\">
-           <rdf:value>$expand(createauthor)</rdf:value>
+            <rdf:value>$expand(@createauthor.topictitle)</rdf:value>
          </rdf:Description>
-       </dc:contributor>
-       <description><![CDATA[$percntDBCALL{\"$web.$topic\"}$percnt$percntTAGINFO{
-           \"$web.$topic\"
-           header=\"<p>%MAKETEXT{"Tags"}%: \"
-           format=\"$dollarname\"
-           footer=\"</p>\"
-         }$percnt
+      </dc:contributor>
+      <description> <![CDATA[
+$percntDBCALL{\"$web.$topic->RenderRss\"}$percnt
        ]]></description>
-    </item>"
+   </item>"
 }%
-</noautolink>%TMPL:END%
+%TMPL:END%
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
 %TMPL:DEF{"rssfooter"}%</rdf:RDF>%TMPL:END%
 %{</verbatim>}%
 
-%META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="TopicView"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="View for the rss feeds"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FORM{name="TopicView"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="View for the rss feeds"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

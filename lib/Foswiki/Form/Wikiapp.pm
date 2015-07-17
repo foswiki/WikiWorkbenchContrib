@@ -35,6 +35,21 @@ sub getOptions {
   return $this->{_options};
 }
 
+sub getDefaultValue {
+  my $this = shift;
+
+  my $default = $this::SUPER::getDefaultValue;
+
+  if (!defined $default || $default eq "") {
+    $default = $Foswiki::Plugins::SESSION->{webName};
+    $default =~ s/^.*\[\.\/]//g;
+  }
+
+  $default = "WikiWorkbench" if $default eq $APPLICATIONS;
+
+  return $default;
+}
+
 sub renderForDisplay {
   my ($this, $format, $value, $attrs) = @_;
 
@@ -68,7 +83,7 @@ sub getDisplayValue {
 __END__
 Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 
-Copyright (C) 2012-2014 Michael Daum http://michaeldaumconsulting.com
+Copyright (C) 2012-2015 Michael Daum http://michaeldaumconsulting.com
 
 Additional copyrights apply to some or all of the code in this
 file as follows:

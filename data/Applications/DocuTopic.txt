@@ -1,14 +1,18 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 ---++ Documentation
 %STARTSECTION{"documentation"}%
-This is a pure "marker" type that is attached to topics that contain documentation.
+This type is attached to topics that contain documentation.
 !DocuTopics have a ="documentation"= section marked using
+
 <verbatim>
 STARTSECTION{"documentation"}
 ...
 ENDSECTION{"documentation"}
 </verbatim>
+
+See also: [[%TOPIC%Template]], [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
+
 These sections can be extracted dynamically using RenderApplicationDocumentation.
 In general documentation should be as "near" to the application component as possible,
 that is it should be embedded into the topic the component represents. 
@@ -25,22 +29,35 @@ links to.
 
 !DocuTopics, as all TopicTypes belong to a certain !WikiApplication and can thus be grouped
 and distinguished.
+
+%DBQUERY{
+   "Inheritance=~'\b%TOPIC%\b'"
+   header="TopicTypes that are derived from %TOPIC%:$n"
+   format="   * [[$web.$topic]]"
+   hidenull="on"
+}%
 %ENDSECTION{"documentation"}%
 
 ---++ Topics of type '%TOPIC%'
 %STARTINCLUDE%<!-- -->
-%DBCALL{"Applications.RenderSimpleTopicCreator"
-  TYPE="DocuTopic, ApplicationTopic"
-  FORM="Applications.ApplicationTopic"
-}%
+%DBCALL{"Applications.RenderSimpleTopicCreator"}%
 
 %DBCALL{"Applications.RenderTopicsOfType"}%
 %STOPINCLUDE%
 
+---++ <nop>%TOPIC% form
+| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default: * |
+| TopicType | label | 1 | DocuTopic, ApplicationTopic, WikiTopic | topic type | |  |
+| <nop>TopicTitle | text | 75 | | | | |
+| Summary | text | 75 | | short description or tagline | c | |
+| WikiApplication| wikiapp | 1 | | application this topic belongs to | | |
 
 %META:FORM{name="Applications.TopicType"}%
-%META:FIELD{name="TopicType" title="TopicType" value="TopicType, DocuTopic"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value="DocuTopic"}%
-%META:FIELD{name="Inheritance" attributes="" title="Inheritance" value="ApplicationTopic"}%
-%META:FIELD{name="Summary" attributes="" title="Summary" value="Topics that contain pure documentation."}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Inheritance" title="Inheritance" value="ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="Summary" title="Summary" value="Topics that contain pure documentation."}%
+%META:FIELD{name="Icon" title="Icon" value="fa-book"}%
+%META:FIELD{name="Editor" title="Editor" value="Applications.DocuTopicEditTemplate"}%
+%META:FIELD{name="Template" title="Template" value="Applications.DocuTopicTemplate"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

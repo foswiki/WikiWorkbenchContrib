@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
 %TMPL:P{"atomhead"}%%TMPL:P{"atombody"}%%TMPL:P{"atomfooter"}%
@@ -23,8 +23,7 @@
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
-%TMPL:DEF{"atombody"}%<noautolink>
-%DBQUERY{"%FILTER%" 
+%TMPL:DEF{"atombody"}%%DBQUERY{"%FILTER%" 
    exclude="WebTopicEditTemplate"
    sort="created" 
    reverse="on" 
@@ -42,25 +41,26 @@
    $percntCATINFO{\"$web.$topic\" 
       format=\"<category label=\\"$title\\" term=\\"$dollartopic\\" />\"
       separator=\"$n        \"
-   }$percnt<!-- -->
+   }$percnt
    $percntTAGINFO{\"$web.$topic\"
       format=\"<category term=\\"$dollarname\\" />\"
       separator=\"$n        \"
-   }$percnt<!-- -->
+   }$percnt
    <content type=\"html\"><![CDATA[$percntDBCALL{\"$web.$topic\"}$percnt$percntTAGINFO{
            \"$web.$topic\"
            header=\"<p>%MAKETEXT{"Tags"}%: \"
            format=\"$dollarname\"
-           footer=\"</p>\"
+           footer=\"</p>
+\"
          }$percnt
    ]]></content>
    </entry>"
 }%
-</noautolink>%TMPL:END%
+%TMPL:END%
 %{</verbatim>}%
 
-%META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="TopicView"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="View for the atom feeds"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FORM{name="TopicView"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="View for the atom feeds"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

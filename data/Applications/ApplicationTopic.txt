@@ -1,34 +1,44 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 ---++ Documentation
 %STARTSECTION{"documentation"}%
-An ApplicationTopic is a topic that belongs to a WikiApplication. TopicTypes, TopicFunctions, TopicViews etc are all ApplicationTopics as they belong to some WikiApplication. Based on this information
+An ApplicationTopic is a topic that belongs to a WikiApplication. [[TopicTypes]], [[TopicFunctions]], [[TopicViews]] etc are all <nop>ApplicationTopics as they belong to some WikiApplication. Based on this information
 all parts of an application are gathered to create documentation and use it for packaging purposes.
 
+%DBQUERY{
+   "Inheritance=~'\b%TOPIC%\b'"
+   header="TopicTypes that are derived from %TOPIC%:$n"
+   format="   * [[$web.$topic]]"
+   hidenull="on"
+}%
+
+See also [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
 %ENDSECTION{"documentation"}%
 
 ---++ Topics of type '%TOPIC%'
 %STARTINCLUDE%<!-- -->
-%DBCALL{"Applications.RenderSimpleTopicCreator" 
-  FORM="Applications.ApplicationTopic"
-  TYPE="ApplicationTopic"
-}%
+%DBCALL{"Applications.RenderSimpleTopicCreator"}%
 
-%DBCALL{"Applications.RenderTopicsOfType"}%
+%DBCALL{"Applications.RenderTopicsOfType"
+  FIELDS="TopicTitle,TopicType,WikiApplication,Changed"
+}%
 %STOPINCLUDE%
 
 ---++ <nop>%TOPIC% form
 | *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default: * |
-| TopicType | checkbox | 3 |%DBCALL{"Applications.GetTopicTypes" remote="off"}%| Document type  | | |
-| <nop>TopicTitle | text | 75 | | title | | |
-| Summary | text | 75 | | Short description of the role of this topic | c | |
-| WikiApplication| wikiapp | 1 | | Application this topic belongs to | | |
+| TopicType | label | 1 | ApplicationTopic, WikiTopic | topic type | | |
+| <nop>TopicTitle | text | 75 | | | | |
+| Summary | text | 75 | | short description or tagline | c | |
+| WikiApplication| wikiapp | 1 | | application this topic belongs to | | |
 
 
 %META:FORM{name="Applications.TopicType"}%
-%META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value="ApplicationTopic"}%
-%META:FIELD{name="Inheritance" attributes="" title="Inheritance" value="WikiTopic"}%
-%META:FIELD{name="Summary" attributes="" title="Summary" value="A topic that is part of an application"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Inheritance" title="Inheritance" value="WikiTopic"}%
+%META:FIELD{name="Summary" title="Summary" value="A topic that is part of an application"}%
+%META:FIELD{name="Icon" title="Icon" value="fa-fire"}%
+%META:FIELD{name="Editor" title="Editor" value="Applications.ApplicationTopicEditTemplate"}%
+%META:FIELD{name="Template" title="Template" value=""}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

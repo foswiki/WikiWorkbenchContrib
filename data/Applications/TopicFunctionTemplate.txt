@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicTemplate"}%
 %TOC{depth="2"}%
 
@@ -13,24 +13,17 @@
 
 ---++ Implementation
 <verbatim class="tml">
-%STARTINCLUDE%<!-- -->
-<!-- -->%STOPINCLUDE%
+%STARTINCLUDE%
+%STOPINCLUDE%
 </verbatim>
 
 ---++ Test
 %DBCALL{"%TOPIC%"}%
 
-%DBCALL{"Applications.RenderFunctionCallers"}%
 
----++ Copyright
-%URLPARAM{"Copyright"}%
-
-%DBCALL{"%URLPARAM{"License"}%" section="notice"}%
-
-
-%META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="TopicTemplate"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="Template to create TopicFunctions"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
-%META:PREFERENCE{name="EDIT_TEMPLATE" title="EDIT_TEMPLATE" type="Set" value="Applications.WikiTopicEdit"}%
+%META:FORM{name="TopicTemplate"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicTemplate, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="Template to create TopicFunctions"}%
+%META:FIELD{name="ForTopicType" title="For TopicType" value="TopicFunction"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

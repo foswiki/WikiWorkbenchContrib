@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -34,6 +34,7 @@ None
    * [[WikiApplication]]
    * [[DocuTopic]] %IF{"istopic 'ApplicationLicense'" then="
    * [[ApplicationLicense]]"}%
+   * [[WebLexicon]]
 </div>
 %CLEAR%
 
@@ -42,7 +43,7 @@ See the [[CompleteDocumentation]].
 %GRID{
   query="%IF{"'%URLPARAM{"q"}%'!=''" then="TopicType=~'%URLPARAM{"q"}%'" else="topic='.*'"}%"
   web="%BASEWEB%"
-  columns="Topic,Summary,TopicType,WikiApplication,Changed"
+  columns="TopicTitle,Summary,TopicType,WikiApplication,Changed"
   rows="10"
   filterbar="on"
   toolbar="on"
@@ -93,16 +94,9 @@ See the [[CompleteDocumentation]].
 ---++ Test
 %DBCALL{"%TOPIC%"}%
 
-%DBCALL{"Applications.RenderFunctionCallers"}%
 
----++ Copyright
-&copy; 2008-2014 Michael Daum http://michaeldaumconsulting.com
-
-%DBCALL{"Applications.GnuGeneralPublicLicense" section="notice"}%
-
-
-%META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="DocuTopic, TopicFunction"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="Renders a dashboard for an application web"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FORM{name="TopicFunction"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="Renders a dashboard for an application web"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

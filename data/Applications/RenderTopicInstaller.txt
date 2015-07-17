@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %TOC{depth="2"}%
 
 ---++ Documentation
@@ -26,7 +26,7 @@ TopicStub is to be created.
 
 ---++ Implementation
 <verbatim class="tml">
-%STARTINCLUDE%<!-- rendertopic installer --><noautolink>
+%STARTINCLUDE%
 %TWISTY{
   mode="div"
   link="%BUTTON{"%MAKETEXT{"Install"}%" icon="application_add"}%%CLEAR%"
@@ -87,13 +87,12 @@ TopicStub is to be created.
 </form> 
 %ENDTWISTY%
 %ADDTOZONE{"script" id="TOPICINSTALLER" topic="%WEB%.%TOPIC%" section="init" requires="JQUERYPLUGIN"}%
-</noautolink><!-- //render topic installer -->%STOPINCLUDE%
+%STOPINCLUDE%
 </verbatim>
 
 ---++ !JavaScript initialisation
 <verbatim class="tml">
-%STARTSECTION{"init"}%<literal>
-<script type='text/javascript'>
+%STARTSECTION{"init"}%<script>
 jQuery(function($) {
   $('#topicinstaller').bind('submit', function() {
     var $form = $("#topicinstaller");
@@ -102,23 +101,14 @@ jQuery(function($) {
     $topic.val($web.val()+'.'+$topic.val());
   });
 });
-</script>
-</literal>%ENDSECTION{"init"}%
+</script>%ENDSECTION{"init"}%
 </verbatim>
 
 ---++ Test
 %DBCALL{"%TOPIC%"}%
 
-%DBCALL{"Applications.RenderFunctionCallers"}%
-
----++ Copyright
-&copy; 2006-2014 Michael Daum http://michaeldaumconsulting.com
-
-%DBCALL{"Applications.GnuGeneralPublicLicense" section="notice"}%
-
-
-%META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="DocuTopic, TopicFunction, WikiTopic"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="Render a simple factory to deploy a topic in another web"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FORM{name="TopicFunction"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="Render a simple factory to deploy a topic in another web"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

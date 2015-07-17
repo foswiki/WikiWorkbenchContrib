@@ -1,10 +1,12 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicTemplate"}%
 %TOC{depth="4"}%
 ---++ Description
 ...
 
 ---++ Documentation
+---+++ Type Hierarchy
+%DBCALL{"Applications.RenderInheritanceGraph"}%
 %DBCALL{"Applications.RenderApplicationDocumentation" TYPE="TopicType"}%
 %DBCALL{"Applications.RenderApplicationDocumentation" TYPE="DataForm" NOTTYPE="TopicType"}%
 %DBCALL{"Applications.RenderApplicationDocumentation" TYPE="DataFormAttribute"}%
@@ -24,6 +26,6 @@
 %META:FIELD{name="Summary" attributes="c" title="Summary" value="TopicTemplate to generate a WikiApplication topic"}%
 %META:FIELD{name="Version" attributes="" title="Version" value=""}%
 %META:FIELD{name="Author" attributes="" title="Author" value=""}%
-%META:FIELD{name="Copyright" attributes="" title="Copyright" value="&copy; 2014 Your Name"}%
+%META:FIELD{name="Copyright" attributes="" title="Copyright" value="&copy; 2015 Your Name"}%
 %META:FIELD{name="License" attributes="" title="License" value="Applications.GnuGeneralPublicLicense"}%
 %META:FIELD{name="Dependencies" attributes="" title="Dependencies" value=""}%

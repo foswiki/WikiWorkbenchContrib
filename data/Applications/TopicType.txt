@@ -1,29 +1,23 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
-
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 ---++ Documentation
 %STARTSECTION{"documentation"}%
 The TopicType is the root of the type system of the <nop>WikiWorbench. Every WikiTopic has got one
-or more <nop>TopicTypes. <nop>TopicTypes often correlate with <nop>DataForms, where a type indicates the properties
-and use of the form being attached to a topic. However, there are also <nop>TopicTypes that only
-serve more as an additional marker to a generic <nop>DataForm being used in different applications.
+or more <nop>TopicTypes. <nop>TopicTypes always define a [[DataForm]], where a type indicates the properties
+and use of the form being attached to a topic. 
 
-<nop>TopicTypes are able overcome Foswiki's limitation to only allow one form to be attached to a topic.
+<nop>TopicTypes overcome Foswiki's limitation to only allow one form to be attached to a topic.
 If you'd like to attach a second form to a topic, create a new <nop>DataForm that mixes two others
 and indicate this by merging the resulting <nop>TopicType properties. This procedure is the recommended
 way to derive new <nop>TopicTypes from existing ones building on top of them, e.g. by augmenting a
-Applications.ClassificationApp.CategorizedTopic with additional formfields.
+[[Applications.ClassificationApp.CategorizedTopic]] with additional formfields.
 
 <nop>TopicTypes have a special property that you might use to indicate a special way of 
 derivation by means of inheritance. There is no real inheritance in Foswiki but the way of thinking
 when dealing with objects and types can be clarified this way.
 
 When you start writing a WikiApplication, first think of the data objects you will need and
-create <nop>TopicTypes for each. You can double-mark a <nop>TopicType being a <nop>DataForm implementation
-in many cases, but you can also create a separate <nop>DataForm topic being distinct from the
-<nop>TopicType topic.
-
-The TopicType topic is the factory to create new <nop>TopicTypes as well.
+create <nop>TopicTypes for each.
 
 %ENDSECTION{"documentation"}%
 
@@ -32,29 +26,86 @@ The TopicType topic is the factory to create new <nop>TopicTypes as well.
 %IF{"'%BASEWEB%'=~'^Applications'"
   then="$percntDBCALL{\"Applications.RenderSimpleTopicCreator\" 
     TEMPLATE=\"Applications.TopicTypeTemplate\"
-    FORM=\"Applications.TopicType\"
-    TYPE=\"TopicType, DataForm, DocuTopic, ApplicationTopic\"
   }$percnt"
 }%<!-- -->
 
 %DBCALL{"Applications.RenderTopicsOfType"
-  FIELDS="TopicTitle,Inheritance,Summary,WikiApplication,Changed"
+  FIELDS="TopicTitle,Icon,Inheritance,WikiApplication,Changed"
   ROWS="20"
 }%
 %STOPINCLUDE%
 
 ---++ !TopicType form
 | *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
-| TopicType | checkbox | 4 | TopicType, DataForm, DocuTopic, ApplicationTopic | Document type  | | |
-| <nop>TopicTitle | text | 75 | | title | | |
+| TopicType | label | 1 | TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic | topic type  | | |
+| <nop>TopicTitle | text | 75 | |  | | |
 | Inheritance | checkbox | 4 |%DBCALL{"Applications.GetTopicTypes" remote="off"}%| TopicType whose properties are implemented here too (see java's interfaces)  | | |
 | Summary | text | 75 | | Short description of the role of this topic | c | |
+| Icon | icon | 30 | include="^fa\-" | icon to be displayed in the topic creator |  | |
+| Editor | topic+values | 30 | url="%SCRIPTURLPATH{"view"}%/Applications/TopicType?section=editors&skin=text&contenttype=application/json&t=%GMTIME{"$epoch"}%" | editor for this topic type | | |
+| Template | topic+values | 30 | url="%SCRIPTURLPATH{"view"}%/Applications/TopicType?section=templates&skin=text&contenttype=application/json&t=%GMTIME{"$epoch"}%" | topic template to be used for this topic type | | |
 | WikiApplication| wikiapp | 1 | | Application this topic belongs to | | |
 
+---++ editors
+
+<verbatim class="tml">
+%STARTSECTION{"editors"}%<literal>%DBQUERY{
+   "TopicType=~'\bTopicView\b' AND topic~'EditTemplate$' AND %FORMATLIST{
+      "%IF{
+        "'%URLPARAM{"q"}%'=''" 
+        then="." 
+        else="%URLPARAM{"q"}%"
+      }%" 
+      split="\s+" 
+      format="lc(topic)=~lc('$1')" 
+      separator=" AND "
+   }%"
+   web="%URLPARAM{"baseWeb"}%" 
+   skip="%CALCULATE{"$EVAL(%URLPARAM{"limit" default="10"}%*(%URLPARAM{"page" default="1"}%-1))"}%"
+   limit="%URLPARAM{"limit" default="10"}%"
+   format="  {
+      \"id\":\"$web.$topic\",
+      \"text\":\"$topic\"
+   }"
+   separator=",$n"
+   header="{\"results\":[$n"
+   footer="$n], \"total\":$count}"
+}%</literal>%ENDSECTION{"editors"}%
+</verbatim>
+
+---++ templates
+
+<verbatim class="tml">
+%STARTSECTION{"templates"}%<literal>%DBQUERY{
+   "TopicType=~'\bTopicTemplate\b' AND %FORMATLIST{
+      "%IF{
+        "'%URLPARAM{"q"}%'=''" 
+        then="." 
+        else="%URLPARAM{"q"}%"
+      }%" 
+      split="\s+" 
+      format="lc(topic)=~lc('$1')" 
+      separator=" AND "
+   }%"
+   web="%URLPARAM{"baseWeb"}%" 
+   skip="%CALCULATE{"$EVAL(%URLPARAM{"limit" default="10"}%*(%URLPARAM{"page" default="1"}%-1))"}%"
+   limit="%URLPARAM{"limit" default="10"}%"
+   format="  {
+      \"id\":\"$web.$topic\",
+      \"text\":\"$topic\"
+   }"
+   separator=",$n"
+   header="{\"results\":[$n"
+   footer="$n], \"total\":$count}"
+}%</literal>%ENDSECTION{"templates"}%
+</verbatim>
 
 %META:FORM{name="Applications.TopicType"}%
-%META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Inheritance" attributes="" title="Inheritance" value="ApplicationTopic"}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="TopicType of all TopicTypes"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Inheritance" title="Inheritance" value="ApplicationTopic, DataForm, DocuTopic, WikiTopic"}%
+%META:FIELD{name="Summary" title="Summary" value="TopicType of all TopicTypes"}%
+%META:FIELD{name="Icon" title="Icon" value="fa-tree"}%
+%META:FIELD{name="Editor" title="Editor" value="TopicTypeEditTemplate"}%
+%META:FIELD{name="Template" title="Template" value="Applications.TopicTypeTemplate"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

@@ -1,0 +1,14 @@
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICPARENT{name="DataForm"}%
+| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* |
+| String | text | 80 | | | M |
+| English (en) | text | 80 | | | |
+| German (de) | text | 80 | | | |
+| French (fr) | text | 80 | | | |
+| Comment | textarea | 62x5 | | | |
+
+%META:FORM{name="DataForm"}%
+%META:FIELD{name="TopicType" title="TopicType" value="DataForm, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="DataForm for WebLexicon entries"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

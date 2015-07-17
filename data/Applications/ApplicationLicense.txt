@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418752972" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 
@@ -7,23 +7,32 @@
 Every WikiApplication comes with an ApplicationLicense. A topic of this type must have a =notice= section
 that will be displayed on components that make use of this license. The notice section contains a short summary
 of the ApplicationLicense. 
+
+See also [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
 %ENDSECTION{"documentation"}%
 
 ---++ Topics of type '%TOPIC%'
 %STARTINCLUDE%<!--  -->
 %DBCALL{"Applications.RenderSimpleTopicCreator" 
   VALUE="...License"
-  TYPE="%TOPIC%"
-  FORM="Applications.ApplicationTopic"
 }%
 
 %DBCALL{"Applications.RenderTopicsOfType"}%
 <!--  -->%STOPINCLUDE%
 
+---++ <nop>%TOPIC% form
+| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default: * |
+| TopicType | label | 1 | ApplicationLicense, ApplicationTopic, WikiTopic | topic type | | |
+| <nop>TopicTitle | text | 75 | | | | |
+| Summary | text | 75 | | short description or tagline | c | |
+| WikiApplication| wikiapp | 1 | | application this topic belongs to | | |
 
 %META:FORM{name="Applications.TopicType"}%
-%META:FIELD{name="TopicType" title="TopicType" value="TopicType"}%
-%META:FIELD{name="TopicTitle" attributes="" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Inheritance" attributes="" title="Inheritance" value="ApplicationTopic"}%
-%META:FIELD{name="Summary" attributes="c" title="Summary" value="License for WikiApplications"}%
-%META:FIELD{name="WikiApplication" attributes="" title="WikiApplication" value="WikiWorkbench"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Inheritance" title="Inheritance" value="ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="Summary" title="Summary" value="License for WikiApplications"}%
+%META:FIELD{name="Icon" title="Icon" value="fa-copyright"}%
+%META:FIELD{name="Editor" title="Editor" value="Applications.ApplicationLicenseEditTemplate"}%
+%META:FIELD{name="Template" title="Template" value=""}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

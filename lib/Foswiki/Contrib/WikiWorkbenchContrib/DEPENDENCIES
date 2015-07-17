@@ -1,7 +1,12 @@
 Foswiki::Plugins::AutoTemplatePlugin,>=3.0,perl,Optional
-Foswiki::Plugins::DBCachePlugin,>=4.10,perl,Required.
-Foswiki::Plugins::FilterPlugin,>=2.08,perl,Required; 
-Foswiki::Plugins::FlexFormPlugin,>=4.00,perl,Required.
-Foswiki::Plugins::FlexWebListPlugin,>=1.61,perl,Required.
-Foswiki::Plugins::JQGridPlugin,>=2.0,perl,Required.
+Foswiki::Plugins::DBCachePlugin,>=4.10,perl,Required
+Foswiki::Plugins::DirectedGraphPlugin,>=1.13,perl,Required
+Foswiki::Plugins::FilterPlugin,>=2.08,perl,Required 
+Foswiki::Plugins::FlexFormPlugin,>=5.10,perl,Required
+Foswiki::Plugins::FlexWebListPlugin,>=1.61,perl,Required
+Foswiki::Plugins::JQDataTablesPlugin,>=2.99,perl,Required
+Foswiki::Plugins::JQGridPlugin,>=2.0,perl,Required
+Foswiki::Plugins::MetaDataPlugin,>=4.10,perl,Required
+Foswiki::Plugins::MultiLingualPlugin,>=2.10,perl,Required
 Foswiki::Plugins::NatEditPlugin,>=7.11,perl,Recommended
+Foswiki::Plugins::TopicInteractionPlugin,>=3.00,perl,Recommended
