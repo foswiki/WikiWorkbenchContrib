@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1439370068" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -13,9 +13,10 @@ This function requires [[%SYSTEMWEB%.DirectedGraphPlugin]]
 %STARTINCLUDE%<!-- -->
 <noautolink>
 <div class="overflow">
-<dot map="on" file="%BASEWEB%">
+<graphviz topic="%BASEWEB%.%BASETOPIC%" inline="on">
 digraph G {
-   rankdir=TB;
+   tooltip=" "
+   node [tooltip=" "]
    node[shape="box" fontsize="10"];
    edge[arrowsize="0.5"];
    ratio="auto";
@@ -40,7 +41,7 @@ digraph G {
       separator="$n"
    }%
 }
-</dot>
+</graphviz>
 </div>
 </noautolink>
 <!-- -->%STOPINCLUDE%

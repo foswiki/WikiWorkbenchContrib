@@ -77,7 +77,6 @@ data/Applications/WebPreferences.txt 0644
 data/Applications/WebRss.txt 0644
 data/Applications/WebSearchAdvanced.txt 0644
 data/Applications/WebSearch.txt 0644
-data/Applications/WebStatistics.txt 0644
 data/Applications/WebToolEditTemplate.txt 0644
 data/Applications/WebTool.txt 0644
 data/Applications/WebToolViewTemplate.txt 0644
@@ -112,7 +111,6 @@ data/_WikiApplicationTemplate/WebNotify.txt 0644
 data/_WikiApplicationTemplate/WebPreferences.txt 0644
 data/_WikiApplicationTemplate/WebRss.txt 0644
 data/_WikiApplicationTemplate/WebSearch.txt 0644
-data/_WikiApplicationTemplate/WebStatistics.txt 0644
 data/_WikiApplicationTemplate/WebTool.txt 0644
 data/_WikiApplicationTemplate/WebTopicEditTemplate.txt 0644
 data/_WikiApplicationTemplate/WebTopicList.txt 0644

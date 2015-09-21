@@ -36,14 +36,14 @@
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
-%TMPL:DEF{"titleaction"}%%MAKETEXT{"edit [_1]" args="%TMPL:P{"topictype"}%"}%%TMPL:END%
+%TMPL:DEF{"titleaction"}%%TRANSLATE{"edit [_1]" args="%TMPL:P{"topictype"}%"}%%TMPL:END%
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
 %TMPL:DEF{"contenttitle"}%<h1 class="natEditTitle"><noautolink>
 %IF{"istopic '%WEB%.%TOPIC%'"
-  then="[[%WEB%.%TOPIC%][$percntTMPL:P{\"topictitle\"}$percnt]] (%MAKETEXT{"edit [_1]" args="%TMPL:P{"topictype"}%"}%)"
-  else="$percntTMPL:P{\"topictitle\"}$percnt (%MAKETEXT{"new [_1]" args="%TMPL:P{"topictype"}%"}%)"
+  then="[[%WEB%.%TOPIC%][%URLPARAM{"TopicTitle" default="$percntTMPL:P{\\"topictitle\\" hideautoinc=\\"off\\"}$percnt"}%]] (%MAKETEXT{"edit [_1]" args="%TMPL:P{"topictype"}%"}%)" 
+  else="<nop>%URLPARAM{"TopicTitle" default="%TMPL:P{"topictitle" hideautoinc="off"}%"}% (%MAKETEXT{"new [_1]" args="%TMPL:P{"topictype"}%"}%)"
 }%
 </h1></noautolink>%ADDTOZONE{"head" id="WIKIWORKBENCH::H1" text="<style>.ui-natedit-h1 {display:none}</style>"}%
 %{</verbatim>}%

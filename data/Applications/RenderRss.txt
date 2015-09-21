@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="micha" comment="reprev" date="1437121382" format="1.1" reprev="1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1438508309" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -15,19 +15,21 @@ These are then called automatically using the =<literal>%<nop>DBCALL{"web.topic-
 
 ---++ Implementation
 <verbatim class="tml">
-%STARTINCLUDE%%IF{
-   "'%DBQUERY{topic="%OBJECT%" format="$expand(_sections)"}%'=~'teaser'"
-   then="$percntDBCALL{\"%OBJECT%\" section=\"teaser\"}}$percnt"
-   else="$percntDBCALL{\"%OBJECT%\"}$percnt"
-}%
-%TAGINFO{
-   "%OBJECT%"
-   header="<p>%MAKETEXT{"Tags"}%: "
-   format="$name"
-   footer="</p>"
+%STARTINCLUDE%%DBQUERY{topic="%OBJECT%"
+   format="<item rdf:about=\"%SCRIPTURL{"view"}%/$web/$topic\">
+      <title>$expand(topictitle)</title>
+      <link>%SCRIPTURL{"view"}%/$web/$topic</link>
+      <dc:creator>$expand(@createauthor.topictitle)</dc:creator>
+      <dc:date>$formatTime(createdate, '$year-$mo-$dayT$hour:$minute:$secondsZ')</dc:date>
+      <dc:contributor>
+         <rdf:Description link="%SCRIPTURL{"view"}%/%USERSWEB%/$expand(info.author)">
+            <rdf:value>$expand(info.author)</rdf:value>
+         </rdf:Description>
+      </dc:contributor>
+      <description> <![CDATA[ $percntDBCALL{\"$web.$topic\"}$percnt ]]></description>
+   </item>"
 }%%STOPINCLUDE%
 </verbatim>
-
 
 %META:FORM{name="Applications.TopicFunction"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%

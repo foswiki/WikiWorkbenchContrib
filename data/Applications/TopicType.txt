@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" date="1441024559" format="1.1" version="1"}%
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 ---++ Documentation
 %STARTSECTION{"documentation"}%
@@ -36,6 +36,7 @@ create <nop>TopicTypes for each.
 %STOPINCLUDE%
 
 ---++ !TopicType form
+<div class="overflow">
 | *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
 | TopicType | label | 1 | TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic | topic type  | | |
 | <nop>TopicTitle | text | 75 | |  | | |
@@ -44,8 +45,9 @@ create <nop>TopicTypes for each.
 | Icon | icon | 30 | include="^fa\-" | icon to be displayed in the topic creator |  | |
 | Editor | topic+values | 30 | url="%SCRIPTURLPATH{"view"}%/Applications/TopicType?section=editors&skin=text&contenttype=application/json&t=%GMTIME{"$epoch"}%" | editor for this topic type | | |
 | Template | topic+values | 30 | url="%SCRIPTURLPATH{"view"}%/Applications/TopicType?section=templates&skin=text&contenttype=application/json&t=%GMTIME{"$epoch"}%" | topic template to be used for this topic type | | |
+| Topic Naming | text | 30 | | a template for the name of topics being created, e.g. <nop>ProjectAUTOINC0 | | |
 | WikiApplication| wikiapp | 1 | | Application this topic belongs to | | |
-
+</div>
 ---++ editors
 
 <verbatim class="tml">
@@ -108,4 +110,5 @@ create <nop>TopicTypes for each.
 %META:FIELD{name="Icon" title="Icon" value="fa-tree"}%
 %META:FIELD{name="Editor" title="Editor" value="TopicTypeEditTemplate"}%
 %META:FIELD{name="Template" title="Template" value="Applications.TopicTypeTemplate"}%
+%META:FIELD{name="TopicNaming" title="Topic Naming" value=""}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

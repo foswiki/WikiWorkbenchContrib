@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1438504144" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
 %TMPL:P{"atomhead"}%%TMPL:P{"atombody"}%%TMPL:P{"atomfooter"}%
@@ -37,12 +37,10 @@
    $percntFORMATLIST{\"$expand(Author or createauthor)\"
       split=\"\s*,\s*\"
       format=\"<author><name>$1</name></author>\"
-   }$percnt
-   $percntCATINFO{\"$web.$topic\" 
+   }$percnt$percntCATINFO{\"$web.$topic\" 
       format=\"<category label=\\"$title\\" term=\\"$dollartopic\\" />\"
       separator=\"$n        \"
-   }$percnt
-   $percntTAGINFO{\"$web.$topic\"
+   }$percnt$percntTAGINFO{\"$web.$topic\"
       format=\"<category term=\\"$dollarname\\" />\"
       separator=\"$n        \"
    }$percnt

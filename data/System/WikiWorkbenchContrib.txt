@@ -1,6 +1,6 @@
 %META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1" version="1"}%
 ---+!! %TOPIC%
-%SHORTDESCRIPTION%
+%$SHORTDESCRIPTION%
 
 %TOC%
 
@@ -145,18 +145,19 @@ A wiki application is made up of different components that are used when deployi
 target webs...
 
 ---++ Installation Instructions
+
 %$INSTALL_INSTRUCTIONS%
 
-<!--
-   * Set SHORTDESCRIPTION = Framework for <nop>WikiApplications
--->
+---++ Dependencies
+%$DEPENDENCIES%
 
-|  Authors: | Foswiki:Main.MichaelDaum |
-|  Copyright &copy;: | 2007-2015 Michael Daum http://michaeldaumconsulting.com |
-|  License: | GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]]) |
-|  Version: | %$VERSION% |
-|  Release: | %$RELEASE% |
-|  Change History: | |
+---++ Change History
+
+%TABLE{columnwidths="7em" tablewidth="100%"}%
+|  21 Sep 2015 | using Foswiki:Extensions/GraphvizPlugin now instead of <nop>DirectedGraphPlugin; \
+                 support for Foswiki:Extensions/LikePlugin; \
+                 RSS view tempalte now uses OO-calling semantics to allow <nop>TopicTypes to override the defaul format of an entry in a feed; \
+                 added support for AUTOINC in !TopicType factory |
 |  17 Jul 2015 | added support for multi-lingual wiki apps; \
                  display !TopicType inheritance tree using Foswiki:Extensions/DirectedGraphPlugin; \
                  added editors and !TopicTypes for all wiki app components |
@@ -177,7 +178,13 @@ target webs...
 |  07 Jan 2013 | first public release |
 |  30 Oct 2007 | first version in svn |
 |  30 Apr 2007 | initial version |
-|  Dependencies: | %$DEPENDENCIES% |
-|  Perl Version: | - |
-|  Home: | Foswiki:Extensions/%TOPIC% |
-|  Support: | Foswiki:Support/%TOPIC% |
+
+%META:FORM{name="PackageForm"}%
+%META:FIELD{name="Author" title="Author" value="Michael Daum"}%
+%META:FIELD{name="Copyright" title="Copyright" value="2007-2015 Michael Daum http://michaeldaumconsulting.com"}%
+%META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/WikiWorkbenchContrib"}%
+%META:FIELD{name="License" title="License" value="GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]])"}%
+%META:FIELD{name="Release" title="Release" value="%$RELEASE%"}%
+%META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/WikiWorkbenchContrib"}%
+%META:FIELD{name="Support" title="Support" value="Foswiki:Support/WikiWorkbenchContrib"}%
+%META:FIELD{name="Version" title="Version" value="%$VERSION%"}%

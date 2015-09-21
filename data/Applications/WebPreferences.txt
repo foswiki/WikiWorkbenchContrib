@@ -1,31 +1,29 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1438506191" format="1.1" version="1"}%
 %TOC%
 
----+++ DataForms
+---++ DataForms
    * Set WEBFORMS = ApplicationLicense, ApplicationTopic, DataForm, DataFormAttribute, DocuTopic, TopicFunction, TopicStub, TopicTemplate, TopicType, TopicView, WebTool, WikiApplication, WikiTopic
 
----+++ Naming
-Text to be displayed on the sitemap and in the headerbar describing this web
-using a kind of tagline:
+---++ Editing
+   * Set NOWYSIWYG = on
+
+---++ Naming
    * Set WEBSUMMARY = Applications Library
-
-Color to be displayed in the sitemap representing this web:
    * Set WEBBGCOLOR = #E2DCC8
-
-Flag to enable/disable listing this web on the sitemap:
    * Set SITEMAPLIST = off
 
----+++ Access rights
+---++ Translations
+
+   * Set CONTENT_LEXICON = Applications.WebLexicon
+   * Set WEBMETADATA = Applications.LexiconForm
+
+---++ Access rights
    * Set #DENYWEBVIEW =
    * Set #ALLOWWEBVIEW = 
    * Set #DENYWEBCHANGE = 
    * Set ALLOWWEBCHANGE = %USERSWEB%.AdminGroup
    * Set ALLOWTOPICCHANGE = %USERSWEB%.AdminGroup
 
----++ Translations
-
-   * Set CONTENT_LEXICON = Applications.WebLexicon
-   * Set WEBMETADATA = Applications.LexiconForm
 
 %META:FORM{name="Applications.ApplicationTopic"}%
 %META:FIELD{name="TopicType" title="TopicType" value="ApplicationTopic, WikiTopic"}%

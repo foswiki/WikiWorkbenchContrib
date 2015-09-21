@@ -44,7 +44,7 @@ This function renders a topic creator form that holds a set of initial input ele
 <input type="hidden" name="templatetopic" value="%TEMPLATE{default=""}%" />
 <input type="hidden" name="formtemplate" value="%FORM{default="%INCLUDINGWEB%.%INCLUDINGTOPIC%"}%" />
 <input type="hidden" name="template" value="%EDITOR{default=""}%" />
-<input type="hidden" name="topic" value="%TOPICVALUE{default="%VALUE{default=""}%"}%" %IF{"'%TOPICVALUE%'=~'AUTOINC'" else="class=\"jqWikiWord {source:'.createTopicForm input[name=TopicTitle]'}\""}% />
+<input type="hidden" name="topic" value="%TOPICVALUE{default="%VALUE{default=""}%"}%" %IF{"'%TOPICVALUE%'=~'AUTOINC'" else="class='jqWikiWord' data-source='.createTopicForm input[name=TopicTitle]' data-transliterate='true'"}% />
 %EXTRA{default=""}%
 <h2 >%IF{"defined TEXT"
        then="$percntTEXT$percnt" 

@@ -19,8 +19,8 @@ package Foswiki::Contrib::WikiWorkbenchContrib;
 use strict;
 use warnings;
 
-our $VERSION = '3.00';
-our $RELEASE = '3.00';
+our $VERSION = '3.10';
+our $RELEASE = '21 Sep 2015';
 our $SHORTDESCRIPTION = 'Framework for <nop>WikiApplications';
 
 1;

@@ -25,5 +25,3 @@
 %META:FIELD{name="Summary" title="Summary" value="TopicTemplate to generate a WikiApplication topic"}%
 %META:FIELD{name="ForTopicType" title="For TopicType" value="WikiApplication"}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%
-%META:FILEATTACHMENT{name="Inheritance_Applications.png" attachment="Inheritance_Applications.png" attr="h" comment="<nop>DirectedGraphPlugin: DOT graph" date="1435666503" size="68810" user="ProjectContributor" version="1"}%
-%META:FILEATTACHMENT{name="Inheritance_Applications.cmapx" attachment="Inheritance_Applications.cmapx" attr="h" comment="<nop>DirectedGraphPlugin: DOT graph" date="1435666503" size="3908" user="ProjectContributor" version="1"}%

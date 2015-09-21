@@ -1,6 +1,6 @@
 Foswiki::Plugins::AutoTemplatePlugin,>=3.0,perl,Optional
 Foswiki::Plugins::DBCachePlugin,>=4.10,perl,Required
-Foswiki::Plugins::DirectedGraphPlugin,>=1.13,perl,Required
+Foswiki::Plugins::GraphvizPlugin,>=0.01,perl,Required
 Foswiki::Plugins::FilterPlugin,>=2.08,perl,Required 
 Foswiki::Plugins::FlexFormPlugin,>=5.10,perl,Required
 Foswiki::Plugins::FlexWebListPlugin,>=1.61,perl,Required
