@@ -1,15 +1,14 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
 ---++ Documentation
 %STARTSECTION{"documentation"}%
-Select an image attached to a SOURCE topic
+Select an image attached to a OBJECT topic
 
 ---+++++ Parameters
+   * OBJECT, default BASEWEB.BASETOPIC
    * SELECTED
-   * SOURCE
-   * DEFAULT
    * FIELDNAME
 
 %ENDSECTION{"documentation"}%
@@ -18,97 +17,81 @@ Select an image attached to a SOURCE topic
 <verbatim class="tml">
 %STARTINCLUDE%<!-- -->
 <div class="fwbImageSelector">
-  <div class='fwbImage %IF{"'%SELECTED%'='%DEFAULT%' or not defined SELECTED" then=" selected orig"}%' id='fwbImage0'>
-    <label>
-      <input type='radio' name='%FIELDNAME%' value='%DEFAULT%' %IF{"'%SELECTED%'='%DEFAULT%' or not defined SELECTED" then=" checked='checked'"}%/>
-      <img src='%DEFAULT%' alt='default' height='100px' />
-    </label>
-  </div>
   %ATTACHMENTS{
-    topic="%SOURCE%"
+    topic="%OBJECT{default="%BASEWEB%.%BASETOPIC%"}%"
     name=".*\.(jpe?g|JPE?G|gif|GIF|png|PNG)$"
-    exclude="%DEFAULT%"
+    _exclude="%DEFAULT{default=""}%"
     sort="name"
-    format="<div class='fwbImage $percntIF{\"'%SELECTED%'='$urlpath'\" then=\" selected orig\"}$percnt' id='fwbImage$index'>
-      <label>
-        <input type='radio' name='%FIELDNAME%' value='$urlpath' $percntIF{\"'%SELECTED%'='$urlpath'\" then=\" checked='checked'\"}$percnt />
+    format="<label class='$percntIF{\"'%SELECTED%'='$name'\" then=\" selected orig\"}$percnt'>
+        <input type='radio' name='%FIELDNAME{default="file"}%' value='$urlpath' $percntIF{\"'%SELECTED%'='$name'\" then=\" checked='checked'\"}$percnt />
         <img src='$urlpath' alt='$name' height='100px' />
-      </label></div>"
+      </label>"
   }%
   %CLEAR%
 </div>
-<div class="fwbImageButtons">
-  %BUTTON{"%MAKETEXT{"Clear"}%" icon="application" id="fwbImageButtonClear"}%
-  %BUTTON{"%MAKETEXT{"Undo"}%" icon="arrow_undo" id="fwbImageButtonUndo"}%
-  %CLEAR%
-</div>
-%ADDTOZONE{"script" section="js" requires="JQUERYPLUGIN"}%
-%ADDTOZONE{"head" section="css"}%
-<!-- -->%STOPINCLUDE%
+%ADDTOZONE{"script" 
+   id="RENDERIMAGESELECTOR::JS"
+   requires="JQUERYPLUGIN::LIVEQUERY"
+   text="<script type='text/javascript' src='%PUBURLPATH%/Applications/RenderImageSelector/script.js?t=%GMTIME{"$epoch"}%'></script>"
+}%%ADDTOZONE{"head" 
+   id="RENDERIMAGESELECTOR::CSS" 
+   text="<link rel='stylesheet' href='%PUBURLPATH%/Applications/RenderImageSelector/style.css?t=%GMTIME{"$epoch"}%' media='all' />"
+}%<!-- -->%STOPINCLUDE%
 </verbatim>
 
 ---++ Css
 <verbatim class="css">
-%STARTSECTION{"css"}%<literal>
-<style>
+%STARTATTACH{"style.css"}%
 .fwbImageSelector input {
   display:none;
 }
-.fwbImageSelector .fwbImage {
+.fwbImageSelector label {
   float:left;
-  border:1px solid #fff;
   margin:0 5px 5px 0;
   padding:1px;
 }
-.fwbImageSelector .selected {
-  border:1px solid red;
-}
-.fwbImageSelector .fwbImage img {
+.fwbImageSelector label img {
   float:left;
+  border-radius:5px;
+  overflow:hidden;
+  margin:2px;
 }
-</style>
-</literal>%ENDSECTION{"css"}%
+.fwbImageSelector label.selected img {
+  border:2px solid #b22222;
+  box-shadow:2px 2px 10px -1px #000;
+  margin:-1px 1px 1px -1px;
+}
+%ENDATTACH%
 </verbatim>
 
 ---++ Javascript
 <verbatim class="js">
-%STARTSECTION{"js"}%<literal>
-<script>
+%STARTATTACH{"script.js"}%
+"use strict";
 jQuery(function($) {
-   $("#fwbImageButtonClear").click(function() {
-     var $this = $(this);
-     $this.blur();
-     $('.fwbImage').removeClass('selected');
-     $('.fwbImageSelector input').removeAttr('checked');
-     $('#fwbImage0 label').trigger('click');
-     return false;
-  });
-  $("#fwbImageButtonUndo").click(function() {
-    var $this = (this);
-    $this.blur();
-    $('.fwbImage').removeClass('selected');
-    $('.fwbImageSelector input').removeAttr('checked');
-    $('.orig').parent().attr('checked', 'checked');
-    $('.orig').addClass('selected');
-    return false;
-  });
-  $(".fwbImageSelector label").click(function() {
-    var $this = $(this);
-    $('.fwbImage').removeClass('selected');
-    $('.fwbImageSelector input').removeAttr('checked');
-    $this.parent().addClass('selected');
-    $this.parent().find("input").attr("checked", "checked");
-    return false;
-  });
+   $(".fwbImageSelector").livequery(function() {
+      var $selector = $(this);
+
+      $selector.find("label").on("click", function() {
+         var $this = $(this),
+             isChecked = $this.find("input").prop("checked");
+
+         $selector.find("input:checked").prop("checked", false);
+         $selector.find(".selected").removeClass("selected");
+
+         if (!isChecked) {
+            $this.addClass("selected").find("input").prop("checked", true);
+         }
+         return false;
+      });
+   });
 });
-</script>
-</literal>%ENDSECTION{"js"}%
+%ENDATTACH%
 </verbatim>
 
 ---++ Test
 %DBCALL{"%TOPIC%"
-  SOURCE="%WEB%.%TOPIC%" 
-  DEFAULT="%PUBURLPATH%/Applications/RenderImageSelector/nobody.jpeg" 
+  OBJECT="%WEB%.%TOPIC%" 
   FIELDNAME="Photo"
 }%
 
@@ -118,4 +101,6 @@ jQuery(function($) {
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
 %META:FIELD{name="Summary" title="Summary" value="Renders a widget to select an image attached to a topic"}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%
-%META:FILEATTACHMENT{name="nobody.jpeg" attachment="nobody.jpeg" attr="" comment="" date="1435666503" size="3356" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="nobody.jpeg" attachment="nobody.jpeg" attr="" comment="" date="1485161807" size="3356" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="style.css" attachment="style.css" attr="" comment="Generated by <nop>AttachContentPlugin" date="1485161807" path="style.css" size="356" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="script.js" attachment="script.js" attr="" comment="Generated by <nop>AttachContentPlugin" date="1485161807" path="script.js" size="549" user="ProjectContributor" version="1"}%

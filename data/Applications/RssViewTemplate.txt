@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1438506699" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
 %TMPL:P{"rsshead"}%%TMPL:P{"rssbody"}%%TMPL:P{"rssfooter"}%
@@ -36,7 +36,7 @@
 <image rdf:about="%WEBLOGOIMG%">
    <title>%WEB% - %WIKITOOLNAME%</title>
    <link>%SCRIPTURL{"view"}%/%WEB%</link>
-   <url>%IF{"defined WEBLOGOIMG" then="%WEBLOGOIMG%" else="%WIKILOGOIMG%"}%</url>
+   <url>%WEBLOGOIMG{default="%WIKILOGOIMG%"}%</url>
 </image>
 %DBQUERY{"%FILTER{default=""}%" 
    exclude="%EXCLUDE{default="^(Web.*|TopicType|TopicStub|.*ViewTemplate|.*SideBar|.*LeftBar)$"}%"

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 ---++ Parameters
    * NAME: name of WikiApplication, defaults to BASEWEB
@@ -14,8 +14,8 @@
 %STARTINCLUDE%<noautolink>
 <div class="twbManifestHolder">
 %DBQUERY{
-  "WikiApplication='%IF{"defined NAME" then="%NAME%" else="%EXTRACT{text="%BASEWEB%" pattern=".*/(.+?)$" format="$1"}%"}%'"
-  web="%IF{"defined THEWEB" then="%THEWEB%" else="%BASEWEB%"}%"
+  "WikiApplication='%NAME{default="%EXTRACT{text="%BASEWEB%" pattern=".*/(.+?)$" format="$1"}%"}%'"
+  web="%THEWEB{default="%BASEWEB%"}%"
   sort="name"
   header="| *#* | *Name* | *Type* |$n"
   format="| $index | [[$web.$topic][<nop>$topic]] | $formfield(TopicType) |

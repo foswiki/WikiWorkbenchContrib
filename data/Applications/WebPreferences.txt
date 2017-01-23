@@ -1,8 +1,9 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1438506191" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+---+!! %TOPIC%
 %TOC%
 
 ---++ DataForms
-   * Set WEBFORMS = ApplicationLicense, ApplicationTopic, DataForm, DataFormAttribute, DocuTopic, TopicFunction, TopicStub, TopicTemplate, TopicType, TopicView, WebTool, WikiApplication, WikiTopic
+   * Set WEBFORMS = WikiTopic
 
 ---++ Editing
    * Set NOWYSIWYG = on
@@ -23,10 +24,4 @@
    * Set #DENYWEBCHANGE = 
    * Set ALLOWWEBCHANGE = %USERSWEB%.AdminGroup
    * Set ALLOWTOPICCHANGE = %USERSWEB%.AdminGroup
-
-
-%META:FORM{name="Applications.ApplicationTopic"}%
-%META:FIELD{name="TopicType" title="TopicType" value="ApplicationTopic, WikiTopic"}%
-%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" title="Summary" value="Preferences of the %25WEB%25 web"}%
-%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%
+   * Set DENYWEBCOMMENT = %USERSWEB%.WikiGuest

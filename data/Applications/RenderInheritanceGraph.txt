@@ -1,10 +1,10 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1439370068" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
 ---++ Documentation
 %STARTSECTION{"documentation"}%
-This function requires [[%SYSTEMWEB%.DirectedGraphPlugin]]
+This function requires [[%SYSTEMWEB%.GraphvizPlugin]]
 
 %ENDSECTION{"documentation"}%
 
@@ -13,18 +13,32 @@ This function requires [[%SYSTEMWEB%.DirectedGraphPlugin]]
 %STARTINCLUDE%<!-- -->
 <noautolink>
 <div class="overflow">
-<graphviz topic="%BASEWEB%.%BASETOPIC%" inline="on">
+<literal>
+%GRAPHVIZ{
+   topic="%BASEWEB%.%BASETOPIC%" 
+   format="png" 
+   section="dot" 
+   expand="on"
+}%
+</literal>
+</div>
+</noautolink>
+<!-- -->%STOPINCLUDE%
+</verbatim>
+
+<verbatim class="tml">
+%STARTSECTION{"dot"}%
 digraph G {
    tooltip=" "
+   graph [fontname = helvetica]; 
    node [tooltip=" "]
-   node[shape="box" fontsize="10"];
-   edge[arrowsize="0.5"];
+   node[shape="box", fontsize="10", fontname = helvetica];
+   edge[arrowsize="0.5", fontsize="10", fontname = helvetica];
    ratio="auto";
    %DBQUERY{
-      "TopicType=~'\bTopicType\b' %IF{"'%BASEWEB%'!='Applications'" then="AND WikiApplication!='WikiWorkbench'"}%"
+      "(TopicType=~'\bTopicType\b' OR @Target.TopicType=~'\bTopicType\b') %IF{"'%BASEWEB%'!='Applications'" then="AND WikiApplication!='WikiWorkbench'"}%"
       web="%BASEWEB%"
-      format="$topic[URL=\"%SCRIPTURL{"view"}%/$web/$topic\" label=\"$expand(topictitle)\"];
-         $percntFORMATLIST{\"$expand(@Target.Inheritance or Inheritance)\"
+      format="$topic[URL=\"%SCRIPTURL{"view"}%/$web/$topic\" label=\"$expand(topictitle)\"]; $percntFORMATLIST{\"$expand(@Target.Inheritance or Inheritance)\"
             format=\"$1 -> $topic;\"
             separator=\"$n\"
             exclude=\"$percntFORMATLIST{
@@ -41,10 +55,7 @@ digraph G {
       separator="$n"
    }%
 }
-</graphviz>
-</div>
-</noautolink>
-<!-- -->%STOPINCLUDE%
+%ENDSECTION{"dot"}%
 </verbatim>
 ---++ Test
 %DBCALL{"%TOPIC%"}%
@@ -52,6 +63,6 @@ digraph G {
 
 %META:FORM{name="TopicFunction"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%
-%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value="RenderInheritanceGraph "}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
 %META:FIELD{name="Summary" title="Summary" value="a directed graph of TopicType inheritance"}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 ---++ Documentation
@@ -6,14 +6,9 @@
 An ApplicationTopic is a topic that belongs to a WikiApplication. [[TopicTypes]], [[TopicFunctions]], [[TopicViews]] etc are all <nop>ApplicationTopics as they belong to some WikiApplication. Based on this information
 all parts of an application are gathered to create documentation and use it for packaging purposes.
 
-%DBQUERY{
-   "Inheritance=~'\b%TOPIC%\b'"
-   header="TopicTypes that are derived from %TOPIC%:$n"
-   format="   * [[$web.$topic]]"
-   hidenull="on"
-}%
-
-See also [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
+See also :
+   * [[%TOPIC%ViewTemplate]]
+   * [[%TOPIC%EditTemplate]]
 %ENDSECTION{"documentation"}%
 
 ---++ Topics of type '%TOPIC%'
@@ -30,15 +25,15 @@ See also [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
 | TopicType | label | 1 | ApplicationTopic, WikiTopic | topic type | | |
 | <nop>TopicTitle | text | 75 | | | | |
 | Summary | text | 75 | | short description or tagline | c | |
-| WikiApplication| wikiapp | 1 | | application this topic belongs to | | |
+| WikiApplication| wikiapp | 1 | | application this topic belongs to | c | |
 
 
 %META:FORM{name="Applications.TopicType"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Inheritance" title="Inheritance" value="WikiTopic"}%
-%META:FIELD{name="Summary" title="Summary" value="A topic that is part of an application"}%
+%META:FIELD{name="Summary" title="Summary" value="a  part of an application"}%
 %META:FIELD{name="Icon" title="Icon" value="fa-fire"}%
 %META:FIELD{name="Editor" title="Editor" value="Applications.ApplicationTopicEditTemplate"}%
 %META:FIELD{name="Template" title="Template" value=""}%
+%META:FIELD{name="TopicNaming" title="Topic Naming" value=""}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

@@ -1,0 +1,7 @@
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICPARENT{name="WebHome"}%
+
+
+%META:TOPICMOVED{by="micha" date="1471535233" from="Morgue.ApplicatonsWebLexiconTemplate" to="Applications.WebLexiconTemplate"}%
+%META:PREFERENCE{name="WEBMETADATA" title="WEBMETADATA" type="Set" value="Applications.LexiconForm"}%
+%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Set" value="Applications.WebLexiconView"}%

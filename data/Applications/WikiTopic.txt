@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 %DBCALL{"RenderTopicInstaller" TYPE="%TOPIC%" PARENT="TopicType"}%
 
@@ -22,16 +22,12 @@ you indicate that the attached form contains all form attributes that are in for
 and from F<sub>b</sub>, given that type T<sub>a</sub> comes with form F<sub>a</sub> and T<sub>b</sub> with
 F<sub>b</sub>.
 
-See also: [[WebTopicEditTemplate]]
 </noautolink>
 %ENDSECTION{"documentation"}%
 
 ---++ Topics of type '%TOPIC%'
 %STARTINCLUDE%<!-- -->
-%DBCALL{"Applications.RenderSimpleTopicCreator" 
-  PARENT="WebHome"
-  TEMPLATE="WebTopicEditTemplate"
-}%
+%DBCALL{"Applications.RenderSimpleTopicCreator"}%
 
 %DBCALL{"Applications.RenderTopicsOfType"}%
 %STOPINCLUDE%
@@ -46,9 +42,9 @@ See also: [[WebTopicEditTemplate]]
 %META:FORM{name="Applications.TopicType"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Inheritance" title="Inheritance" value=""}%
-%META:FIELD{name="Summary" title="Summary" value="create a normal wiki topic"}%
+%META:FIELD{name="Summary" title="Summary" value="a base topic for wiki content"}%
 %META:FIELD{name="Icon" title="Icon" value="fa-file"}%
 %META:FIELD{name="Editor" title="Editor" value="Applications.WikiTopicEditTemplate"}%
 %META:FIELD{name="Template" title="Template" value=""}%
+%META:FIELD{name="TopicNaming" title="Topic Naming" value=""}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

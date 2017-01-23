@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
 %TMPL:INCLUDE{"Applications.WikiTopicEdit"}%
@@ -13,21 +13,31 @@
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
-%TMPL:DEF{"firsttab::impl"}%<textarea class='natedit foswikiHidden' data-show-toolbar='false'></textarea>%TMPL:END%
+%TMPL:DEF{"firsttab"}%%TMPL:P{"detailstab"}%%TMPL:END%
 %{</verbatim>}%
 
+%{<verbatim class="tml">}%
+%TMPL:DEF{"formfields"}%%TMPL:PREV%%TMPL:P{"texttab"}%%TMPL:END%
+%{</verbatim>}%
 
 %{<verbatim class="tml">}%
-%TMPL:DEF{"formfields"}%%TMPL:PREV%<!-- -->
-%TAB{"%MAKETEXT{"Details"}%"}%
+%TMPL:DEF{"detailstab"}%%TAB{"%MAKETEXT{"Details"}%"}%
 %RENDERFOREDIT{
    exclude="\b(TopicType)\b"
+   TopicTitle_default="%BASETOPIC%"
 }%
 %ENDTAB%%TMPL:END%
 %{</verbatim>}%
 
+%{<verbatim class="tml">}%
+%TMPL:DEF{"texttab"}%%TAB{"%MAKETEXT{"Text"}%"}%
+%TMPL:P{"textarea"}%
+%ENDTAB%%TMPL:END%
+%{</verbatim>}%
+
+
 %META:FORM{name="TopicView"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" title="Summary" value="Editor for TopicStubs"}%
+%META:FIELD{name="Summary" title="Summary" value=""}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

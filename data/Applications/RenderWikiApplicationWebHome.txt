@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -40,19 +40,19 @@ None
 
 See the [[CompleteDocumentation]].
 
-%GRID{
+%DATATABLE{
+  class="foswikiFlatTable foswikiStripes"
   query="%IF{"'%URLPARAM{"q"}%'!=''" then="TopicType=~'%URLPARAM{"q"}%'" else="topic='.*'"}%"
   web="%BASEWEB%"
-  columns="TopicTitle,Summary,TopicType,WikiApplication,Changed"
+  columns="index,TopicTitle,Summary,TopicType,WikiApplication,Changed"
   rows="10"
-  filterbar="on"
-  toolbar="on"
-  rownumbers="on"
-  pager="on"
-  width="auto"
-  height="auto"
+  searching="on"
+  lengthmenu="5,10,20,30,50,100"
+  info="off"
+  paging="on"
   sort="Changed"
   reverse="on"
+  width="100%"
 }%
 %ADDTOZONE{"head" id="%TOPIC%::CSS" section="css"}%<!-- -->
 <!-- -->%STOPINCLUDE%

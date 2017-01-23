@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" date="1441024559" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" date="1485161807" format="1.1" version="1"}%
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 ---++ Documentation
 %STARTSECTION{"documentation"}%
@@ -30,7 +30,7 @@ create <nop>TopicTypes for each.
 }%<!-- -->
 
 %DBCALL{"Applications.RenderTopicsOfType"
-  FIELDS="TopicTitle,Icon,Inheritance,WikiApplication,Changed"
+  FIELDS="TopicTitle,Icon,WikiApplication,Changed"
   ROWS="20"
 }%
 %STOPINCLUDE%
@@ -40,11 +40,10 @@ create <nop>TopicTypes for each.
 | *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
 | TopicType | label | 1 | TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic | topic type  | | |
 | <nop>TopicTitle | text | 75 | |  | | |
-| Inheritance | checkbox | 4 |%DBCALL{"Applications.GetTopicTypes" remote="off"}%| TopicType whose properties are implemented here too (see java's interfaces)  | | |
 | Summary | text | 75 | | Short description of the role of this topic | c | |
 | Icon | icon | 30 | include="^fa\-" | icon to be displayed in the topic creator |  | |
-| Editor | topic+values | 30 | url="%SCRIPTURLPATH{"view"}%/Applications/TopicType?section=editors&skin=text&contenttype=application/json&t=%GMTIME{"$epoch"}%" | editor for this topic type | | |
-| Template | topic+values | 30 | url="%SCRIPTURLPATH{"view"}%/Applications/TopicType?section=templates&skin=text&contenttype=application/json&t=%GMTIME{"$epoch"}%" | topic template to be used for this topic type | | |
+| Editor | topic+values | 30 | url="%SCRIPTURLPATH{"view"}%/Applications/TopicType?baseWeb=%BASEWEB%&section=editors&skin=text&contenttype=application/json&t=%GMTIME{"$epoch"}%" | editor for this topic type | | |
+| Template | topic+values | 30 | url="%SCRIPTURLPATH{"view"}%/Applications/TopicType?baseWeb=%BASEWEB%&section=templates&skin=text&contenttype=application/json&t=%GMTIME{"$epoch"}%" | topic template to be used for this topic type | | |
 | Topic Naming | text | 30 | | a template for the name of topics being created, e.g. <nop>ProjectAUTOINC0 | | |
 | WikiApplication| wikiapp | 1 | | Application this topic belongs to | | |
 </div>
@@ -105,7 +104,6 @@ create <nop>TopicTypes for each.
 %META:FORM{name="Applications.TopicType"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Inheritance" title="Inheritance" value="ApplicationTopic, DataForm, DocuTopic, WikiTopic"}%
 %META:FIELD{name="Summary" title="Summary" value="TopicType of all TopicTypes"}%
 %META:FIELD{name="Icon" title="Icon" value="fa-tree"}%
 %META:FIELD{name="Editor" title="Editor" value="TopicTypeEditTemplate"}%

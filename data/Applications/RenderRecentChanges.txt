@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1438173475" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -28,7 +28,7 @@ This uses solr and infintescroll to create a frontpage widget.
 }%
 </div>
 <div class="jqInfiniteScrollNavi foswikiHidden">
-  <a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%?page=1&section=backend&skin=text&web=%THEWEB{default="%BASEWEB%"}%&filter=%FILTER{default="TopicType!~'\bTopicStub\b'"}%&limit=%LIMIT{default="20"}%" class='jqInfiniteScrollNext'>More</a>
+  <a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%?page=1&section=backend&skin=text&template=view&web=%THEWEB{default="%BASEWEB%"}%&filter=%FILTER{default="TopicType!~'\bTopicStub\b'"}%&limit=%LIMIT{default="20"}%" class='jqInfiniteScrollNext'>More</a>
 </div>
 <literal><style>
 .recentChanges {
@@ -37,16 +37,16 @@ This uses solr and infintescroll to create a frontpage widget.
   height:%HEIGHT{default="40em"}%;
 }
 </style></literal>
-<!-- %JQREQUIRE{"infinitescroll"}% -->%STOPINCLUDE%
+<!-- %JQREQUIRE{"infinitescroll" warn="off"}% -->%STOPINCLUDE%
 </verbatim>
 
 ---++ Backend
 <verbatim class="tml">
 %STARTSECTION{"backend"}%<noautolink>%DBQUERY{
   "%URLPARAM{"filter" default="%FILTER{default="TopicType!~'\bTopicStub\b'"}%"}%"
-  exclude="^(WebChanges|WebPreferences|WebStatistics|WebTopicList|WebIndex|WebNotify|WebHome|WebLinks|TopCategory|Category|ClassifiedTopic|TopicType|UncategorizedTopics|WebTopicEditTemplate|WebAtom|WebRss|WebLeftBar|WebSearch.*|WebTagList|CategoryBrowser)$"
+   exclude="^(WebLexicon|WebChanges|WebPreferences|WebStatistics|WebTopicList|WebIndex|WebNotify|WebHome|WebLinks|TopCategory|Category|ClassifiedTopic|TopicType|WebTopicEditTemplate|WebAtom|WebRss|WebLeftBar|WebSearch.*|WebTagList|CategoryBrowser|UntaggedTopics|UncategorizedTopics)$"
   web="%URLPARAM{"web" default="%THEWEB{default="%BASEWEB%"}%"}%"
-  skip="%CALC{"$EVAL(%URLPARAM{"page" default="%PAGE{default="0"}%"}%*%URLPARAM{"limit" default="%LIMIT{default="20"}%"}%)"}%"
+  skip="%CALCULATE{"$EVAL(%URLPARAM{"page" default="%PAGE{default="0"}%"}%*%URLPARAM{"limit" default="%LIMIT{default="20"}%"}%)"}%"
   limit="%URLPARAM{"limit" default="%LIMIT{default="20"}%"}%" 
   sort="modified"
   reverse="on"

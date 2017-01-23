@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
 %TMPL:INCLUDE{"edit"}%
@@ -8,7 +8,7 @@
 %TMPL:DEF{"firsttab"}%%IF{
   "$'URLPARAM{action}'!='form'" 
   then="$percntTMPL:P{\"firsttab::impl\"}$percnt"
-  else="<textarea class='natedit foswikiHidden' data-show-toolbar='false'></textarea>"
+  else="<textarea class='natedit foswikiHidden' data-hidden='true' data-show-toolbar='false'></textarea>"
 }%%TMPL:END%
 %{</verbatim>}%
 
@@ -49,11 +49,16 @@
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
-%TMPL:DEF{"topicmeta"}%%DBCALL{
-  "Applications.RenderWikiTopicEditor"
-  FORM="%TMPL:P{"formdefinition"}%"
-  FIELDS="%TMPL:P{"editfields"}%"
-}%%TMPL:END%
+%TMPL:DEF{"topicmeta"}%%RENDERFOREDIT{ 
+  form="%TMPL:P{"formdefinition"}%" 
+  field="%TMPL:P{"editfields"}%" 
+  header="<div class='natEditTopicInfo'><table class='foswikiLayoutTable jqTooltip'>" 
+  format="<tr title='$description'><th valign='top'>$title$mandatory:</th><td valign='top'>$edit</td></tr>" 
+  footer="</table></div>" 
+  TopicTitle_title="%MAKETEXT{"Title"}%" 
+  TopicTitle_default="%BASETOPIC%"
+  Summary_title="%MAKETEXT{"Summary"}%" 
+}%<!-- --> %TMPL:END%
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%

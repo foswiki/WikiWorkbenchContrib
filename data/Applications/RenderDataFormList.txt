@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -14,11 +14,11 @@
 %STARTINCLUDE%<noautolink>
 %DBQUERY{
    "TopicType=~'\bDataForm\b' 
-    AND text=~'\n\| *.*\b%IF{"defined ATTR" then="%ATTR%" else="%BASETOPIC%"}%\b.* *\|'
+    AND text=~'\n\| *.*\b%ATTR{default="%BASETOPIC%"}%\b.* *\|'
    "
-   web="%IF{"defined THEWEB" then="%THEWEB%" else="%BASEWEB%"}%"
+   web="%THEWEB{default="%BASEWEB%"}%"
    hidenull="on"
-   header="<h2>%MAKETEXT{"<nop>DataForms that use the '[_1]' attribute" args="%IF{"defined ATTR" then="%ATTR%" else="%BASETOPIC%"}%"}%</h2>
+   header="<h2>%MAKETEXT{"<nop>DataForms that use the '[_1]' attribute" args="%ATTR{default="%BASETOPIC%"}%"}%</h2>
 | *#* | *Name* | *Summary* | *Application* |$n"
    format="| $index | [[$web.$topic][$topic]] | $formfield(Summary) | $percntIF{
       \"'$formfield(WikiApplication)'='WikiWorkbench'\"

@@ -1,6 +1,6 @@
 # Module of Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# Copyright (C) 2007-2015 Michael Daum http://michaeldaumconsulting.com
+# Copyright (C) 2007-2017 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,8 +19,8 @@ package Foswiki::Contrib::WikiWorkbenchContrib;
 use strict;
 use warnings;
 
-our $VERSION = '3.10';
-our $RELEASE = '21 Sep 2015';
+our $VERSION = '4.00';
+our $RELEASE = '23 Jan 2017';
 our $SHORTDESCRIPTION = 'Framework for <nop>WikiApplications';
 
 1;

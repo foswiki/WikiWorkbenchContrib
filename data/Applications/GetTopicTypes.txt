@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -22,8 +22,8 @@ scratch on as you will be able to create an initial !TopicType !TopicType this w
 <verbatim class="tml">
 %STARTINCLUDE%none, %FORMATLIST{
   "TopicType, %IF{"defined ADDITION" then="%ADDITION%, "}% %FORMATLIST{
-    "%IF{"defined WEBS" then="%WEBS%" else="%BASEWEB%"}%"
-    format="$percntDBQUERY{\"TopicType=~'\bTopicType\b'\" 
+    "%WEBS{default="%BASEWEB%"}%"
+    format="$percntDBQUERY{\"TopicType=~'\bTopicType\b' OR@Target.TopicType=~'\bTopicType\b'\" 
         web=\"$1\"
         hidenull=\"on\"
         separator=\", \" 

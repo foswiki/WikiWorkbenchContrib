@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
 %TMPL:INCLUDE{"Applications.WikiTopicView"}%
@@ -11,10 +11,11 @@
 %{<verbatim class="tml">}%
 %TMPL:DEF{"weblexicon"}%%NEWMETADATA{"lexicon" title="Add translation"}%
 
-<div class='jqDataTablesContainer foswikiFlatTable foswikiStripes' data-searching='true' >
+<div class='jqDataTablesContainer foswikiFlatTable foswikiStripes' data-searching='true' data-order='[ [1, "asc"] ]'>
 %RENDERMETADATA{
    "lexicon"
-   showindex="off"
+   showindex="on"
+   sort="String"
 }%
 </div>
 

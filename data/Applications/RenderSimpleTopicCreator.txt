@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1435666503" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -13,14 +13,15 @@ This function renders a topic creator form that holds a set of initial input ele
    * VALUE: initial value of the title input field (optional)
    * VALUES: map of initial values to formfields; format is =&lt;fieldName1>=&lt;value1>;&lt;fieldName2>=&lt;value2>;...=
    * TOPICVALUE: initial value of the topic input field, e.g. =SomeTopicAUTOINC0=
-   * FORM: DataForm to be used when creating a topic, defaults to WikiTopic
+   * FORM: DataForm to be used when creating a topic, defaults to =INCLUDINGWEB.INCLUDINGTOPIC=
    * TEMPLATE: TopicTemplate to be used (optional)
    * TYPE: initial TopicType value, defaults to values predefined in the form definition
-   * PARENT: parent topic for the new topic, defaults to the BASETOPIC
+   * PARENT: parent topic for the new topic, defaults to the =BASETOPIC=
    * WHITEBOARD: switch on/off the whiteboard textarea
    * EXTRA: additional formfields
    * ACTION: script to be used to create the topic, eg =save= or =edit=, defaults to =edit=
    * EDITOR: TopicView to be used as an edit_template 
+   * TOPICNAMEFIELD: the name of the field to derive the topic name from, defaults to <nop>TopicTitle
 
 %ENDSECTION{"documentation"}%
 
@@ -41,11 +42,35 @@ This function renders a topic creator form that holds a set of initial input ele
 <input type="hidden" name="action" value="%IF{"$WHITEBOARD='off'" then="form"}%" />
 <input type="hidden" name="onlywikiname" value="off" />
 <input type="hidden" name="topicparent" value="%PARENT{default="%BASETOPIC%"}%" />
-<input type="hidden" name="templatetopic" value="%TEMPLATE{default=""}%" />
+<input type="hidden" name="templatetopic" value="%TEMPLATE{default="%FORMFIELD{"Template" topic="%FORM{default="%INCLUDINGWEB%.%INCLUDINGTOPIC%"}%"}%"}%" />
 <input type="hidden" name="formtemplate" value="%FORM{default="%INCLUDINGWEB%.%INCLUDINGTOPIC%"}%" />
-<input type="hidden" name="template" value="%EDITOR{default=""}%" />
-<input type="hidden" name="topic" value="%TOPICVALUE{default="%VALUE{default=""}%"}%" %IF{"'%TOPICVALUE%'=~'AUTOINC'" else="class='jqWikiWord' data-source='.createTopicForm input[name=TopicTitle]' data-transliterate='true'"}% />
-%EXTRA{default=""}%
+<input type="hidden" name="template" value="%EDITOR{default="%FORMFIELD{"Editor" topic="%FORM{default="%INCLUDINGWEB%.%INCLUDINGTOPIC%"}%"}%"}%" />
+<input type="hidden" name="topic" value="%TOPICVALUE{default="%VALUE{default=""}%"}%" %IF{"'%TOPICVALUE%'=~'AUTOINC'" else="class='jqWikiWord' data-source='.createTopicForm input[name=%TOPICNAMEFIELD{default="TopicTitle"}%]' data-transliterate='true'"}% />
+%EXTRA{default=""}%<!-- -->
+%RENDERFOREDIT{
+  form="%FORM{default="%INCLUDINGWEB%.%INCLUDINGTOPIC%"}%"
+  topic="%TEMPLATE{default=""}%"
+  fields="%FORMATLIST{"%VALUES{default=""}%"
+      split=";"
+      pattern="(.*)=(.*)"
+      format="$1"
+      separator=","
+  }%, no such thing"
+  exclude="(TopicType|%RENDERFORDISPLAY{
+                 form="%FORM{default="%INCLUDINGWEB%.%INCLUDINGTOPIC%"}%"
+                 topic="%TEMPLATE{default=""}%"
+                 includeattr="\bc\b"
+                 format="$name"
+                 separator="|"
+              }%)"
+  format="<input type='hidden' value='$value' name='$name' />$n"
+  %FORMATLIST{"%VALUES{default=""}%"
+      separator=" "
+      split=";"
+      pattern="(.*)=(.*)"
+      format="$1_value=\"$2\""
+  }%
+}%<!-- -->
 <h2 >%IF{"defined TEXT"
        then="$percntTEXT$percnt" 
        else="%MAKETEXT{"Create a new [_1]" args="%INCLUDINGTOPIC%"}%"
@@ -81,10 +106,10 @@ This function renders a topic creator form that holds a set of initial input ele
   excludeattr="\bc\b"
   WikiApplication_value="%FLEXWEBLIST{include="%BASEWEB%" format="$name"}%" 
   TopicType_value="%TYPE{
-    default="%RENDERFORDISPLAY{
+    default="%RENDERFORMDEF{
       form="%FORM{default="%INCLUDINGWEB%.%INCLUDINGTOPIC%"}%"
       fields="TopicType"
-      format="$values"
+      format="$value"
     }%"
   }%"
   Summary_value=""
