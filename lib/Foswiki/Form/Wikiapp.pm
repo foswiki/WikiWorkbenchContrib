@@ -1,5 +1,6 @@
 # See bottom of file for license and copyright information
 package Foswiki::Form::Wikiapp;
+
 use strict;
 use warnings;
 
@@ -83,7 +84,7 @@ sub getDisplayValue {
 __END__
 Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 
-Copyright (C) 2012-2017 Michael Daum http://michaeldaumconsulting.com
+Copyright (C) 2012-2019 Michael Daum http://michaeldaumconsulting.com
 
 Additional copyrights apply to some or all of the code in this
 file as follows:

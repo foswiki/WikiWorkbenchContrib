@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 ---++ Documentation
@@ -17,12 +17,8 @@ See also: [[%TOPIC%Template]], [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
 %ENDSECTION{"documentation"}%
 
 ---++ Topics of type '%TOPIC%'
-%STARTINCLUDE%<!-- -->
-%IF{"'%BASEWEB%'=~'^Applications'"
-  then="$percntDBCALL{\"Applications.RenderSimpleTopicCreator\" 
-    TEMPLATE=\"Applications.%TOPIC%Template\"
-    WHITEBOARD=\"off\"
-  }$percnt"
+%STARTINCLUDE%%IF{"'%BASEWEB%'=~'^Applications'"
+  then="$percntDBCALL{\"Applications.RenderSimpleTopicCreator\"  WHITEBOARD=\"off\"}$percnt"
 }%<!-- -->
 
 %DBCALL{"Applications.RenderTopicsOfType"}%
@@ -30,7 +26,7 @@ See also: [[%TOPIC%Template]], [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
 
 ---++ TopicStub form
 | *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
-| TopicType | label | 1 | TopicStub, ApplicationTopic, WikiTopic  | topic type  | |  | 
+| TopicType | label | 1 | TopicStub, ApplicationTopic, WikiTopic  | topic type  | | TopicStub, ApplicationTopic, WikiTopic | 
 | <nop>TopicTitle | text | 75 | |  | | | 
 | Summary | text | 75 | | short description or tagline | | | 
 | WikiApplication| wikiapp | 1 | | application this topic belongs to | | | 
@@ -41,9 +37,14 @@ See also: [[%TOPIC%Template]], [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
 %META:FORM{name="Applications.TopicType"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" title="Summary" value="a placeholder topic pointing to another one located somewhere else, mostly used to deploy a TopicType into another web"}%
-%META:FIELD{name="Icon" title="Icon" value="fa-long-arrow-left"}%
+%META:FIELD{name="Summary" title="Summary" value="a placeholder topic pointing to another one"}%
+%META:FIELD{name="Icon" title="Icon" value="fa-long-arrow-right"}%
 %META:FIELD{name="Editor" title="Editor" value="Applications.TopicStubEditTemplate"}%
 %META:FIELD{name="Template" title="Template" value="Applications.TopicStubTemplate"}%
-%META:FIELD{name="TopicNaming" title="Topic Naming" value=""}%
+%META:FIELD{name="TopicNamingMode" title="Topic Naming Mode" value="default"}%
+%META:FIELD{name="TopicNameTemplate" title="Topic Name Template" value=""}%
+%META:FIELD{name="TopicNameSource" title="Topic Name Source" value="[name=TopicTitle]"}%
+%META:FIELD{name="TopicNamePrefix" title="Topic Name Prefix" value=""}%
+%META:FIELD{name="TopicNameSuffix" title="Topic Name Suffix" value=""}%
+%META:FIELD{name="TopicNameTransliterate" title="Topic Name Transliterate" value="true"}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

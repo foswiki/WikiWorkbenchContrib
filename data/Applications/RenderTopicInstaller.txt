@@ -1,4 +1,5 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
+%META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
 ---++ Documentation
@@ -19,7 +20,7 @@ TopicStub is to be created.
    * TEMPLATE: TopicTemplate used to create this topic, defaults to Applications.TopicStubTemplate
    * FORM: DataForm used for this topic, defaults to Applications.TopicStub
    * TYPE: type of the new topic, defaults to TopicStub
-   * WIKIAPP: the name of the WikiApllication this topic belongs to, defaults to BASEWEB
+   * WIKIAPP: the name of the !WikiApllication this topic belongs to, defaults to BASEWEB
    * EXTRA: extra stuff to be send during =save=
 
 %ENDSECTION{"documentation"}%
@@ -29,15 +30,15 @@ TopicStub is to be created.
 %STARTINCLUDE%
 %TWISTY{
   mode="div"
-  link="%BUTTON{"%MAKETEXT{"Install"}%" icon="application_add"}%%CLEAR%"
+  link="%BUTTON{"%TRANSLATE{"Install"}%" icon="application_add"}%%CLEAR%"
 }%
 
 <form id="topicinstaller" action="%SCRIPTURLPATH{"save"}%/" method="post">
 <div class="foswikiFormSteps">
-<h2 >%TEXT{default="%MAKETEXT{"Install %BASETOPIC%"}%"}%</h2>
+<h2 >%TEXT{default="%TRANSLATE{"Install %BASETOPIC%"}%"}%</h2>
 <input type="hidden" name="onlynewtopic" value="on" />
-<input type="hidden" name="TopicTitle" value="" />
-<input type="hidden" name="Summary" value="%FORMFIELD{"Summary" topic="%SOURCE{default="%BASETOPIC%"}%"}%" />
+<input type="hidden" name="TopicTitle" value="%FORMFIELD{"TopicTitle" topic="%SOURCE{default="%BASEWEB%.%BASETOPIC%"}%"}%" />
+<input type="hidden" name="Summary" value="%FORMFIELD{"Summary" topic="%SOURCE{default="%BASEWEB%.%BASETOPIC%"}%"}%" />
 <input type="hidden" name="topicparent" value="%PARENT{default="%HOMETOPIC%"}%" />
 <input type="hidden" name="templatetopic" value="%TEMPLATE{default="Applications.TopicStubTemplate"}%" />
 <input type="hidden" name="formtemplate" value="%FORM{default="Applications.TopicStub"}%" />
@@ -48,27 +49,27 @@ TopicStub is to be created.
 <input type="hidden" name="topic" id="topic" value="%NAME{default="%BASETOPIC%"}%" />
 <div class="foswikiFormStep">
   <h3>Target web:</h3>
-  <select id="newweb" name="web" class="foswikiSelect"> 
-    <option>Select ... </option>
+  <select id="newweb" name="web" class="jqSelect2" data-width="30em"> 
+    <option></option>
     %FLEXWEBLIST{
       format="<option value='$web'>$web</option>"
       webs="public,webtemplate" 
       separator=" " 
-      exclude="Trash"
+      exclude="Trash|Applications"
     }%
   </select>
   <div class="foswikiFormDescription">
-    %MAKETEXT{"Select a web where to deploy this component."}%
+    %TRANSLATE{"Select a web where to deploy this component."}%
   </div>
 </div>
 <div class="foswikiFormStep">
-%BUTTON{"%MAKETEXT{"Submit"}%" icon="tick" type="save"}%
+%BUTTON{"%TRANSLATE{"Submit"}%" icon="tick" type="save"}%
 %CLEAR%
 </div>
 </div>
 </form> 
 %ENDTWISTY%
-%ADDTOZONE{"script" id="TOPICINSTALLER" topic="%WEB%.%TOPIC%" section="init" requires="JQUERYPLUGIN"}%
+%JQREQUIRE{"select2"}%%ADDTOZONE{"script" id="TOPICINSTALLER" topic="%WEB%.%TOPIC%" section="init" requires="JQUERYPLUGIN"}%
 %STOPINCLUDE%
 </verbatim>
 
@@ -76,10 +77,10 @@ TopicStub is to be created.
 <verbatim class="tml">
 %STARTSECTION{"init"}%<script>
 jQuery(function($) {
-  $('#topicinstaller').bind('submit', function() {
-    var $form = $("#topicinstaller");
-    var $topic = $form.find('[name=topic]');
-    var $web = $form.find('[name=web]');
+  $('#topicinstaller').on('submit', function() {
+    var $form = $("#topicinstaller"),
+        $topic = $form.find('[name=topic]'),
+        $web = $form.find('[name=web]');
     $topic.val($web.val()+'.'+$topic.val());
   });
 });

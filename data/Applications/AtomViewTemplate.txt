@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
 %TMPL:P{"atomhead"}%%TMPL:P{"atombody"}%%TMPL:P{"atomfooter"}%
@@ -44,13 +44,14 @@
       format=\"<category term=\\"$dollarname\\" />\"
       separator=\"$n        \"
    }$percnt
-   <content type=\"html\"><![CDATA[$percntDBCALL{\"$web.$topic\"}$percnt$percntTAGINFO{
-           \"$web.$topic\"
-           header=\"<p>%MAKETEXT{"Tags"}%: \"
-           format=\"$dollarname\"
-           footer=\"</p>
-\"
-         }$percnt
+   <content type=\"html\"><![CDATA[
+$percntDBCALL{\"$web.$topic\"}$percnt
+$percntTAGINFO{
+   \"$web.$topic\"
+   header=\"<p>%TRANSLATE{"Tags"}%: \"
+   format=\"$dollarname\"
+   footer=\"</p>\"
+}$percnt
    ]]></content>
    </entry>"
 }%

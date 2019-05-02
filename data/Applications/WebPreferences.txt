@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
 ---+!! %TOPIC%
 %TOC%
 
@@ -10,12 +10,12 @@
 
 ---++ Naming
    * Set WEBSUMMARY = Applications Library
-   * Set WEBBGCOLOR = #E2DCC8
+   * Set WEBBGCOLOR = #EDBC18
    * Set SITEMAPLIST = off
 
 ---++ Translations
 
-   * Set CONTENT_LEXICON = Applications.WebLexicon
+   * #Set WEBLEXICON = 
    * Set WEBMETADATA = Applications.LexiconForm
 
 ---++ Access rights

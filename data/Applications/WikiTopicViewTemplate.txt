@@ -1,14 +1,30 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
 %TMPL:INCLUDE{"view"}%
 %{</verbatim>}%
 
+%{<verbatim class="tml">}%
+%TMPL:DEF{"formdefinition"}%%QUERY{"form.name"}%%TMPL:END%
+%{</verbatim>}%
 
 %{<verbatim class="tml">}%
-%TMPL:DEF{"beforetext"}%<div class="foswikiTopicInfo">
-%DBCALL{"Applications.RenderWikiTopicView" TITLE_EXTRA="%TMPL:P{"titleextra"}%"}%
-</div>%IF{"$'ENABLEQUALITYCHECK'='on' and '%WEB%.%TOPIC%' allows 'change'" then="$percntTMPL:P{\"qualitycheck\"}$percnt"}%%TMPL:END%
+%TMPL:DEF{"beforetext"}%%IF{
+   "$'DISPLAYTOPICTITLE'!='off'"
+   then="$percntTMPL:P{\"beforetext::title\"}$percnt"
+}%%IF{
+   "$'ENABLEQUALITYCHECK'='on' and '%WEB%.%TOPIC%' allows 'change'" 
+   then="$percntTMPL:P{\"qualitycheck\"}$percnt"
+}%%TMPL:END%
+%{</verbatim>}%
+
+%{<verbatim class="tml">}%
+%TMPL:DEF{"beforetext::title"}%<div class="foswikiTopicInfo">
+%DBCALL{"Applications.RenderWikiTopicView" 
+   TITLE_EXTRA="%TMPL:P{"titleextra"}%"
+   TITLE_PREFIX="%TMPL:P{"titleicon"}%"
+}%
+</div>%TMPL:END%
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
@@ -24,7 +40,7 @@
 %{<verbatim class="tml">}%
 %TMPL:DEF{"qualitycheck::multipleh1"}%%IF{
   "'%BASEWEB%.%BASETOPIC%'/text=~'\-\-\-\+[^\+]'"  
-  then="<p class='foswikiWarningMessage'>%MAKETEXT{"There are multiple h1 titles on this page. Please use only one h1 for the title and h2-h6 within the text."}%</p>
+  then="<p class='foswikiWarningMessage'>%TRANSLATE{"There are multiple h1 titles on this page. Please use only one h1 for the title and h2-h6 within the text."}%</p>
 " 
 }%%TMPL:END%
 %{</verbatim>}%

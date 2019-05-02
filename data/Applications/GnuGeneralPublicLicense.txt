@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
 %META:TOPICPARENT{name="ApplicationLicense"}%
 <verbatim>
 
@@ -311,7 +311,6 @@ the "copyright" line and a pointer to where the full notice is found.
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-
 Also add information on how to contact you by electronic and paper mail.
 
 If the program is interactive, make it output a short notice like this
@@ -361,6 +360,6 @@ implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 %META:FORM{name="ApplicationLicense"}%
 %META:FIELD{name="TopicType" title="TopicType" value="ApplicationLicense, ApplicationTopic, WikiTopic"}%
-%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value="GNU General Public License, version 2"}%
 %META:FIELD{name="Summary" title="Summary" value="Standard Open Source License"}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

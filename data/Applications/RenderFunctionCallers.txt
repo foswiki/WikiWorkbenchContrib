@@ -1,19 +1,21 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 ---++ Parameters
-NONE
+   * FUNC: topic to search callers for, defaults to =%INCLUDINGTOPIC=
 
 ---++ Implementation
 <verbatim class="tml">
-%STARTINCLUDE%
-%DBQUERY{"text=~'\b%INCLUDINGTOPIC%\b'"
-  exclude="%INCLUDINGTOPIC%"
+%STARTINCLUDE%%DBQUERY{"text=~'\b%FUNC{default="%INCLUDINGTOPIC%"}%\b'"
+  exclude="^(%FUNC{default="%INCLUDINGTOPIC%"}%|%STATISTICSTOPIC%.*)$"
   web="%BASEWEB%"
-  header="<h2 >%MAKETEXT{"Calls to '[_1]'" args="%INCLUDINGTOPIC%"}%</h2>$n"
+  header="<h2 >%TRANSLATE{"Calls to '[_1]'" args="%FUNC{default="%INCLUDINGTOPIC%"}%"}%</h2>$n"
   format="   * [[$web.$topic]]"
   hidenull="on"
 }%%STOPINCLUDE%
 </verbatim>
+
+---++ Test
+%DBCALL{"%TOPIC%" FUNC="RenderSimpleTopicCreator"}%
 
 %META:FORM{name="TopicFunction"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%

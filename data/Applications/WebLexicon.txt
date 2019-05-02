@@ -1,10 +1,17 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="WebHome"}%
 
 %META:FORM{name="Applications.WebTool"}%
 %META:FIELD{name="TopicType" title="TopicType" value="WebTool, ApplicationTopic, WikiTopic"}%
-%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Set" value="Applications.WebLexiconView"}%
 %META:LEXICON{name="id1" Comment="" Englishen="" Frenchfr="" Germande="Titel" String="Title"}%
 %META:LEXICON{name="id2" Comment="" Englishen="" Frenchfr="" Germande="Zusammenfassung" String="Summary"}%
 %META:LEXICON{name="id3" Comment="ApplicationLicense" Englishen="" Frenchfr="" Germande="Lizenz für Wiki-Applikationen" String="License for WikiApplications"}%
 %META:LEXICON{name="id4" Comment="ApplicationTopic" Englishen="" Frenchfr="" Germande="Ein allgemeines Topic, das Teil einer Applikation ist" String="A general topic that is part of an application"}%
+%META:LEXICON{name="id5" Comment="" Englishen="" Frenchfr="" Germande="Übersetzung hinzufügen" String="Add translation"}%
+%META:LEXICON{name="id6" Comment="" Englishen="" Frenchfr="" Germande="Title dieses Topics" String="title of this topic"}%
+%META:LEXICON{name="id7" Comment="" Englishen="" Frenchfr="" Germande="Kurzebeschreibung für dieses Topic" String="short description of this topic"}%
+%META:LEXICON{name="id8" Comment="" Englishen="" Frenchfr="" Germande="Neue Wiki-Applikation" String="New WikiApplication"}%
+%META:LEXICON{name="id9" Comment="" Englishen="" Frenchfr="" Germande="Für Dokumenttyp" String="For <nop>TopicType" author="micha" createauthor="micha" createdate="1551447505" date="1551447505"}%
+%META:LEXICON{name="id10" Comment="" Englishen="" Frenchfr="" Germande="kurze Beschreibung oder Zusatzinformation" String="short description or tagline" author="micha" createauthor="micha" createdate="1551447529" date="1551447529"}%
+%META:LEXICON{name="id11" Comment="" Englishen="" Frenchfr="" Germande="Dokumenttyp, für den diese Vorlage benutzt werden soll" String="TopicType that this template can be used for" author="micha" createauthor="micha" createdate="1551447552" date="1551447552"}%
+%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Set" value="Applications.WebLexiconView"}%

@@ -1,3 +1,6 @@
+.fwbImageSelector {
+   margin:0.5em 0;
+}
 .fwbImageSelector input {
   display:none;
 }

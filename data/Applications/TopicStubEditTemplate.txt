@@ -1,15 +1,7 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
 %TMPL:INCLUDE{"Applications.WikiTopicEdit"}%
-%{</verbatim>}%
-
-%{<verbatim class="tml">}%
-%TMPL:DEF{"topictype"}%topic stub%TMPL:END%
-%{</verbatim>}%
-
-%{<verbatim class="tml">}%
-%TMPL:DEF{"formdefinition"}%Applications.TopicStub%TMPL:END%
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
@@ -21,7 +13,7 @@
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
-%TMPL:DEF{"detailstab"}%%TAB{"%MAKETEXT{"Details"}%"}%
+%TMPL:DEF{"detailstab"}%%TAB{"%TRANSLATE{"Details"}%"}%
 %RENDERFOREDIT{
    exclude="\b(TopicType)\b"
    TopicTitle_default="%BASETOPIC%"
@@ -30,7 +22,7 @@
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
-%TMPL:DEF{"texttab"}%%TAB{"%MAKETEXT{"Text"}%"}%
+%TMPL:DEF{"texttab"}%%TAB{"%TRANSLATE{"Text"}%"}%
 %TMPL:P{"textarea"}%
 %ENDTAB%%TMPL:END%
 %{</verbatim>}%

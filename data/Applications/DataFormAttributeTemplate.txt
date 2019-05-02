@@ -1,11 +1,10 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicTemplate"}%
 ---++ Value definition
-| *Name* | *Description* |
+| *Name* | 
 
 %META:FORM{name="TopicTemplate"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicTemplate, ApplicationTopic, WikiTopic"}%
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
 %META:FIELD{name="Summary" title="Summary" value="Template to create DataFormAttributes"}%
 %META:FIELD{name="ForTopicType" title="For TopicType" value="DataFormAttribute"}%
-%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

@@ -1,19 +1,39 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
 %TMPL:INCLUDE{"edit"}%
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
-%TMPL:DEF{"firsttab"}%%IF{
-  "$'URLPARAM{action}'!='form'" 
-  then="$percntTMPL:P{\"firsttab::impl\"}$percnt"
-  else="<textarea class='natedit foswikiHidden' data-hidden='true' data-show-toolbar='false'></textarea>"
+%TMPL:DEF{"formdefinition"}%%URLPARAM{"formtemplate" 
+   default="%IF{"'%URLPARAM{"templatetopic"}%'!='' and '%URLPARAM{"templatetopic"}%'/form.name!=''"
+               then="$percntQUERY{\"'%URLPARAM{"templatetopic"}%'/form.name\"}$percnt"
+               else="%IF{"istopic '%WEB%.%TOPIC%'" 
+                  then="$percntQUERY{\"form.name\"}$percnt"
+                  else="$percntQUERY{\"'WebTopicEditTemplate'/form.name\"}$percnt"
+               }%"
+            }%"
 }%%TMPL:END%
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
-%TMPL:DEF{"firsttab::impl"}%%TAB{"%MAKETEXT{"Text"}%"}%
+%TMPL:DEF{"edittoolbar::paragraphmenu::h1"}%%TMPL:END%
+%{</verbatim>}%
+
+%{<verbatim class="tml">}%
+%TMPL:DEF{"firsttab"}%%IF{
+  "$'URLPARAM{action}'!='form'" 
+  then="$percntTMPL:P{\"firsttab::impl\"}$percnt"
+  else="$percntTMPL:P{\"hiddentextarea\"}$percnt"
+}%%TMPL:END%
+%{</verbatim>}%
+
+%{<verbatim class="tml">}%
+%TMPL:DEF{"hiddentextarea"}%<textarea class='natedit foswikiHidden' data-hidden='true' data-show-toolbar='false'></textarea>%TMPL:END%
+%{</verbatim>}%
+
+%{<verbatim class="tml">}%
+%TMPL:DEF{"firsttab::impl"}%%TAB{"%TRANSLATE{"Text"}%"}%
 %TMPL:P{"topicmeta"}%
 %TMPL:P{"textarea"}%
 %ENDTAB%%TMPL:END%
@@ -24,47 +44,27 @@
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
-%TMPL:DEF{"topictype"}%topic%TMPL:END%
-%{</verbatim>}%
-
-%{<verbatim class="tml">}%
-%TMPL:DEF{"formdefinition"}%Applications.WikiTopic%TMPL:END%
-%{</verbatim>}%
-
-%{<verbatim class="tml">}%
 %TMPL:DEF{"editfields"}%TopicTitle, Summary%TMPL:END%
-%{</verbatim>}%
-
-%{<verbatim class="tml">}%
-%TMPL:DEF{"titleaction"}%%TRANSLATE{"edit [_1]" args="%TMPL:P{"topictype"}%"}%%TMPL:END%
-%{</verbatim>}%
-
-%{<verbatim class="tml">}%
-%TMPL:DEF{"contenttitle"}%<h1 class="natEditTitle"><noautolink>
-%IF{"istopic '%WEB%.%TOPIC%'"
-  then="[[%WEB%.%TOPIC%][%URLPARAM{"TopicTitle" default="$percntTMPL:P{\\"topictitle\\" hideautoinc=\\"off\\"}$percnt"}%]] (%MAKETEXT{"edit [_1]" args="%TMPL:P{"topictype"}%"}%)" 
-  else="<nop>%URLPARAM{"TopicTitle" default="%TMPL:P{"topictitle" hideautoinc="off"}%"}% (%MAKETEXT{"new [_1]" args="%TMPL:P{"topictype"}%"}%)"
-}%
-</h1></noautolink>%ADDTOZONE{"head" id="WIKIWORKBENCH::H1" text="<style>.ui-natedit-h1 {display:none}</style>"}%
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
 %TMPL:DEF{"topicmeta"}%%RENDERFOREDIT{ 
   form="%TMPL:P{"formdefinition"}%" 
-  field="%TMPL:P{"editfields"}%" 
+  fields="%TMPL:P{"editfields"}%" 
   header="<div class='natEditTopicInfo'><table class='foswikiLayoutTable jqTooltip'>" 
   format="<tr title='$description'><th valign='top'>$title$mandatory:</th><td valign='top'>$edit</td></tr>" 
   footer="</table></div>" 
-  TopicTitle_title="%MAKETEXT{"Title"}%" 
+  TopicTitle_title="%TRANSLATE{"Title"}%" 
   TopicTitle_default="%BASETOPIC%"
-  Summary_title="%MAKETEXT{"Summary"}%" 
+  Summary_title="%TRANSLATE{"Summary"}%" 
 }%<!-- --> %TMPL:END%
 %{</verbatim>}%
 
 %{<verbatim class="tml">}%
-%TMPL:DEF{"formattop"}%
-<input type="hidden" name="TopicType" value="%RENDERFORMDEF{"%TMPL:P{"formdefinition"}%" field="TopicType" format="$value"}%" />
-%TMPL:END%
+%TMPL:DEF{"formattop"}%<noautolink>%IF{"not '%TMPL:P{"formdefinition"}%'=~'^(none)?$'"
+   then="<input type='hidden' name='TopicType' value='$percntRENDERFORMDEF{\"%TMPL:P{"formdefinition"}%\" field=\"TopicType\" format=\"$value\"}$percnt' />"
+}%
+</noautolink>%TMPL:END%
 %{</verbatim>}%
 
 %META:FORM{name="TopicView"}%

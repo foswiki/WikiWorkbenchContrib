@@ -1,11 +1,11 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
 ---++ Documentation
 %STARTSECTION{"documentation"}%
 This function gets the first image attachment from a topic and creates
-a 48x48 thumbnail using ImagePlugin. The attachment taken must end
+a 48x48 thumbnail using !ImagePlugin. The attachment taken must end
 with =jpeg, jpg, gif, bmp, svg or png=. If there are multiple image attachments
 then the first one ordered by comment and name is taken. The empty string
 is returned if no image attachment is found.
@@ -14,7 +14,7 @@ is returned if no image attachment is found.
    * OBJECT: topic to generate a thumbnail for
    * ALIGN: optional alignment of image, defaults to right
    * SIZE: optional size of thumbnail
-   * TYPE: image rendering type, see documentation of ImagePlugin, defaults to simple
+   * TYPE: image rendering type, see documentation of !ImagePlugin, defaults to simple
    * CROP
    * TOOLTIP: switch on/off tooltips for thumbnails, defaults to =on=
    * SORT: specifies which image to chose from the attachments, defaults to =comment:name= which will take the one that sorts first wrt the comment, falling back to the name
@@ -31,9 +31,9 @@ is returned if no image attachment is found.
   }%"
   object="%OBJECT%"
   align="%ALIGN{default="right"}%"
-  size="%SIZE{default="48x48>"}%"
+  size="%SIZE{default="48x48>^"}%"
   type="%TYPE{default="simple"}%"
-  crop="%CROP{default="center"}%"
+  crop="%CROP{default="on"}%"
   sort="%SORT{default="comment:name"}%"
 }%%STOPINCLUDE%
 </verbatim>
@@ -54,6 +54,7 @@ is returned if no image attachment is found.
      title=\"\"
      tooltip=\"%TOOLTIP{default="on"}%\"
      warn=\"off\"
+     output=\"png\"
    }$percnt"
 }%%ENDSECTION{"thumbnailed"}%
 
@@ -75,6 +76,7 @@ is returned if no image attachment is found.
      title=\"\"
      tooltip=\"%TOOLTIP{default="on"}%\"
      warn=\"off\"
+     output=\"png\"
    }$percnt"
 }%%ENDSECTION{"defaultthumbnail"}%
 </verbatim>
@@ -89,21 +91,19 @@ is returned if no image attachment is found.
   OBJECT="%WIKIUSERNAME%"
   SORT="date"
   ALIGN="left"
-  SIZE="100x100"
+  SIZE="100x100^"
 }%
 %CLEAR%
 
----++ List of all attachments at %WIKIUSERNAME%
-<a name="sort"></a>
+---++ List of all attachments at [[%WIKIUSERNAME%]]
 %ATTACHMENTS{
    "%WIKIUSERNAME%"
    name=".*\.(jpe?g|gif|png|JE?PG|GIF|PNG)"
    sort="%URLPARAM{"sort"}%"
    hidenull="on"
    header="| *#* | *Name* | *Date* | *Size*| *Comment* | *Image* |$n"
-   format="| $index | $name | $date | $size | $comment | <img src='$url' width='50' /> |"
+   format="| $index | $name | $date | $sizeH | $comment | <img src='$urlpath' width='50' /> |"
 }%
-</div>
 
 %META:FORM{name="TopicFunction"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%

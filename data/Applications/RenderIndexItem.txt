@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -15,27 +15,25 @@ method was found.
 
 ---++ Implementation
 <verbatim class="tml">
-%STARTINCLUDE%
-%DBQUERY{topic="%OBJECT%"
+%STARTINCLUDE%%DBQUERY{topic="%OBJECT%"
    format="<div class='clsIndexItem clsTopicItem'>
-      [[$web.$topic][$expand(topictitle)]]&nbsp;$percntREDDOT{\"$web.$topic\"}$percnt
+      $percntDBCALL{\"$web.$topic->Applications.RenderTopicThumbnail\"  
+         TYPE=\"plain\" 
+         ALIGN=\"right\" 
+         CROP=\"west\" 
+      }$percnt<!-- --> 
+      <!-- -->[[$web.$topic][$expand(topictitle)]]&nbsp;$percntREDDOT{\"$web.$topic\"}$percnt
       $expand('<div class=\"foswikiTopicSummary\">' and Summary and '</div>')<!-- -->
       <div class='foswikiTopicInfo'>
-         <span class='clsAuthorDateInfo'>
          <!-- -->$formatTime(info.date) 
-         <span class='foswikiRevisionSep'>&#124;</span> 
-            <nop>$percntGETTOPICTITLE{\"
-               $percntUSERINFO{\"$expand(info.author)\"
-                  format=\"$wikiusername\"
-                }$percnt\"
-            }$percnt
-         </span>
-         $percntIF{\"'$expand(total_likes)'>0\"
+         <!-- -->$percntUSERINFO{\"$expand(info.author)\"
+           format=\"<span class='foswikiRevisionSep'>&#124;</span> <nop>$dollarpercntGETTOPICTITLE{\\"$wikiusername\\"}$dollarpercnt\"
+         }$percnt
+         <!-- -->$percntIF{\"'$expand(total_likes)'>0\"
             then=\"<span class='foswikiRevisionSep'>&#124;</span> <span class='clsLikeInfo'>$percntTRANSLATE{\"[quant,_1,like,likes]\" args=\"$expand(total_likes)\"}$percnt</span>\"
-         }$percnt<!-- -->
+         }$percnt
      </div></div>"
-}%
-%STOPINCLUDE%
+}%%STOPINCLUDE%
 </verbatim>
 
 ---++ Test

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -6,7 +6,7 @@
 %STARTSECTION{"documentation"}%
 ---+++++ Parameters
    * TYPE: the TopicType to be searched for, defaults to BASETOPIC
-   * FIELDS: columns of formfields to display, defaults to Topic, Summary, !WikiApplication, Changed
+   * FIELDS: columns of formfields to display, defaults to <nop>TopicTitle, Summary, !WikiApplication, Changed
    * SORT: sorting of rows, defaults to "Changed"
    * REVERSE: sorting direction, defaults to "off", defaults to "on" if SORT="Changed"
    * ROWS: number of rows to display initially, defauts to 10
@@ -17,7 +17,6 @@
    * SEARCHMODE: either have one single search box using =global= or one per column using =multi=, default =global=
    * &lt;field_name>_title: column title for the given field
    * &lt;field_name>_width: column width for the given field
-   * &lt;field_name>_formatter: column formatter for the given field; possible values: topic, date, integer, number, currency
 %ENDSECTION{"documentation"}%
 
 ---++ Implementation
@@ -29,6 +28,7 @@ Using [[System.JQDataTablesPlugin]]
   class="foswikiFlatTable foswikiStripes"
   query="TopicType=~'\b%TYPE{default="%BASETOPIC%"}%\b' %IF{"defined FILTER" then="AND %FILTER%"}%" 
   web="%THEWEB{default="%BASEWEB%"}%"
+  topic="%BASEWEB%.%BASETOPIC%"
   columns="%IF{"'%ROWNUMBERS{default="on"}%'='on'" then="index,"}%%FIELDS{default="TopicTitle,Summary,WikiApplication,Changed"}%" 
   rows="%ROWS{default="10"}%"
   filterbar="on" 
@@ -36,16 +36,17 @@ Using [[System.JQDataTablesPlugin]]
   sort="%SORT{default="Changed"}%"
   reverse="%REVERSE{default="%IF{"'%SORT{default="Changed"}%'='Changed'" then="on" else="off"}%"}%" 
   paging="on" 
+  savestate="on"
   searching="on"
   searchmode="%SEARCHMODE{default="global"}%"
   width="100%"
-  info="off"
+  info="on"
   ordering="on"
   lengthmenu="5,10,20,30,50,100"
-  WikiApplication_title="%MAKETEXT{"Application"}%"
-  TopicTitle_title="%MAKETEXT{"Title"}%"
-  Summary_title="%MAKETEXT{"Summary"}%"
-  Changed_title="%MAKETEXT{"Changed"}%"
+  WikiApplication_title="%TRANSLATE{"Application"}%"
+  TopicTitle_title="%TRANSLATE{"Title"}%"
+  Summary_title="%TRANSLATE{"Summary"}%"
+  Changed_title="%TRANSLATE{"Changed"}%"
   %FORMATLIST{"%FIELDS{default="TopicTitle,Summary,WikiApplication,Changed"}%"
     split="\s*,\s*"
     format="$percntIF{\"defined $1_title\" 

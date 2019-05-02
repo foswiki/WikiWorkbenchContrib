@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 %DBCALL{"RenderTopicInstaller" TYPE="%TOPIC%" PARENT="TopicType"}%
 
@@ -22,6 +22,8 @@ you indicate that the attached form contains all form attributes that are in for
 and from F<sub>b</sub>, given that type T<sub>a</sub> comes with form F<sub>a</sub> and T<sub>b</sub> with
 F<sub>b</sub>.
 
+See also: [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
+
 </noautolink>
 %ENDSECTION{"documentation"}%
 
@@ -29,14 +31,16 @@ F<sub>b</sub>.
 %STARTINCLUDE%<!-- -->
 %DBCALL{"Applications.RenderSimpleTopicCreator"}%
 
-%DBCALL{"Applications.RenderTopicsOfType"}%
+%DBCALL{"Applications.RenderTopicsOfType"
+   FIELDS="TopicTitle, Summary, Changed"
+}%
 %STOPINCLUDE%
 
 ---++ WikiTopic form
 | *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
-| TopicType | label | 1 | WikiTopic | Document type  | | | 
+| TopicType | label | 1 | WikiTopic | Document type  | | WikiTopic | 
 | <nop>TopicTitle | text | 75 | | | c | | 
-| Summary | text | 75 | | short description of the role of this topic | | | 
+| Summary | text | 75 | | short description of this topic | c | | 
 
 
 %META:FORM{name="Applications.TopicType"}%
@@ -46,5 +50,9 @@ F<sub>b</sub>.
 %META:FIELD{name="Icon" title="Icon" value="fa-file"}%
 %META:FIELD{name="Editor" title="Editor" value="Applications.WikiTopicEditTemplate"}%
 %META:FIELD{name="Template" title="Template" value=""}%
-%META:FIELD{name="TopicNaming" title="Topic Naming" value=""}%
+%META:FIELD{name="TopicNamingMode" title="Topic Naming Mode" value="default"}%
+%META:FIELD{name="TopicNameTemplate" title="Topic Name Template" value=""}%
+%META:FIELD{name="TopicNameSource" title="Topic Name Source" value="[name=TopicTitle]"}%
+%META:FIELD{name="TopicNamePrefix" title="Topic Name Prefix" value=""}%
+%META:FIELD{name="TopicNameSuffix" title="Topic Name Suffix" value=""}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

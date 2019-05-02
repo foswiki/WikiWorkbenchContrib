@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType"}%
 ---++ Documentation
@@ -8,35 +8,34 @@ For example, the [[RenderSimpleTopicCreator][simple topic creator]] takes a Topi
 a DataForm definition to initialize the new topic with the given properties by using the <nop>TopicTemplate
 for the content, and attaching the given <nop>DataForm.
 
-See also [[%TOPIC%Template]], [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
 %ENDSECTION{"documentation"}%
 
 ---++ Topics of type '%TOPIC%'
-%STARTINCLUDE%<!-- -->
-%DBCALL{"Applications.RenderSimpleTopicCreator" 
-  VALUE=""
-  TEMPLATE="Applications.%TOPIC%Template"
-}%
+%STARTINCLUDE%%DBCALL{"Applications.RenderSimpleTopicCreator"}%
 
 %DBCALL{"Applications.RenderTopicsOfType"
-   FIELDS="TopicTitle, ForTopicType, WikiApplication, Changed"
+   FIELDS="TopicTitle, Summary, ForTopicType, Changed"
 }%
 %STOPINCLUDE%
 
 ---++ <nop>%TOPIC% form
-| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default: * |
-| TopicType | label | 1 | TopicTemplate, ApplicationTopic, WikiTopic | topic type | | |
+| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
+| TopicType | label | 1 | TopicTemplate, ApplicationTopic, WikiTopic | topic type | | TopicTemplate, ApplicationTopic, WikiTopic |
 | <nop>TopicTitle | text | 75 | | | | |
 | Summary | text | 75 | | short description or tagline | c | |
-| For TopicType | topic | 35 | TopicType="TopicType" | TopicType that this template can be used for | c |  |
-| WikiApplication| wikiapp | 1 | | application this topic belongs to | | |
+| For <nop>TopicType | topic | 35 | TopicType="TopicType" web="%BASEWEB%" exclude="^(TopicTemplate)$" | TopicType that this template can be used for | c |  |
 
 %META:FORM{name="Applications.TopicType"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" title="Summary" value="a blueprints for wiki topics"}%
+%META:FIELD{name="Summary" title="Summary" value="templates for wiki topics"}%
 %META:FIELD{name="Icon" title="Icon" value="fa-copy"}%
-%META:FIELD{name="Editor" title="Editor" value="Applications.TopicTemplateEditTemplate"}%
-%META:FIELD{name="Template" title="Template" value="Applications.TopicTemplateTemplate"}%
-%META:FIELD{name="TopicNaming" title="Topic Naming" value=""}%
+%META:FIELD{name="Editor" title="Editor" value="Applications.ApplicationTopicEditTemplate"}%
+%META:FIELD{name="Template" title="Template" value=""}%
+%META:FIELD{name="TopicNamingMode" title="Topic Naming Mode" value="default"}%
+%META:FIELD{name="TopicNameTemplate" title="Topic Name Template" value=""}%
+%META:FIELD{name="TopicNameSource" title="Topic Name Source" value="[name=TopicTitle]"}%
+%META:FIELD{name="TopicNamePrefix" title="Topic Name Prefix" value=""}%
+%META:FIELD{name="TopicNameSuffix" title="Topic Name Suffix" value=""}%
+%META:FIELD{name="TopicNameTransliterate" title="Topic Name Transliterate" value="yes"}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

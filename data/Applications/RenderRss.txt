@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -22,11 +22,14 @@ These are then called automatically using the =<literal>%<nop>DBCALL{"web.topic-
       <dc:creator>$expand(@createauthor.topictitle)</dc:creator>
       <dc:date>$formatTime(createdate, '$year-$mo-$dayT$hour:$minute:$secondsZ')</dc:date>
       <dc:contributor>
-         <rdf:Description link="%SCRIPTURL{"view"}%/%USERSWEB%/$expand(info.author)">
+         <rdf:Description link='%SCRIPTURL{"view"}%/%USERSWEB%/$expand(info.author)'>
             <rdf:value>$expand(info.author)</rdf:value>
          </rdf:Description>
       </dc:contributor>
-      <description> <![CDATA[ $percntDBCALL{\"$web.$topic\"}$percnt ]]></description>
+      <description> <![CDATA[
+$percntDBCALL{\"$web.$topic\"}$percnt
+<!-- -->
+      ]]></description>
    </item>"
 }%%STOPINCLUDE%
 </verbatim>

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 ---++ Documentation
@@ -21,8 +21,8 @@ See also :
 %STOPINCLUDE%
 
 ---++ <nop>%TOPIC% form
-| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default: * |
-| TopicType | label | 1 | ApplicationTopic, WikiTopic | topic type | | |
+| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
+| TopicType | label | 1 | ApplicationTopic, WikiTopic | topic type | | ApplicationTopic, WikiTopic |
 | <nop>TopicTitle | text | 75 | | | | |
 | Summary | text | 75 | | short description or tagline | c | |
 | WikiApplication| wikiapp | 1 | | application this topic belongs to | c | |
@@ -32,8 +32,12 @@ See also :
 %META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
 %META:FIELD{name="Summary" title="Summary" value="a  part of an application"}%
-%META:FIELD{name="Icon" title="Icon" value="fa-fire"}%
+%META:FIELD{name="Icon" title="Icon" value="fa-gears"}%
 %META:FIELD{name="Editor" title="Editor" value="Applications.ApplicationTopicEditTemplate"}%
 %META:FIELD{name="Template" title="Template" value=""}%
-%META:FIELD{name="TopicNaming" title="Topic Naming" value=""}%
+%META:FIELD{name="TopicNamingMode" title="Topic Naming Mode" value="default"}%
+%META:FIELD{name="TopicNameTemplate" title="Topic Name Template" value=""}%
+%META:FIELD{name="TopicNameSource" title="Topic Name Source" value="[name=TopicTitle]"}%
+%META:FIELD{name="TopicNamePrefix" title="Topic Name Prefix" value=""}%
+%META:FIELD{name="TopicNameSuffix" title="Topic Name Suffix" value=""}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

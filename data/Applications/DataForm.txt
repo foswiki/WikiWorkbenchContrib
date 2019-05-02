@@ -1,24 +1,22 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 ---++ Documentation
 %STARTSECTION{"documentation"}%
 DataForms add structured information to wiki topics. 
 
-See also: [[%TOPIC%Template]], [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]], [[%SYSTEMWEB%.DataForms]]
+See also: [[%TOPIC%Template]], [[%SYSTEMWEB%.DataForms]]
 %ENDSECTION{"documentation"}%
 
 ---++ Topics of type '%TOPIC%'
 %STARTINCLUDE%<!-- -->
-%DBCALL{"Applications.RenderSimpleTopicCreator"
-  TEMPLATE="Applications.DataFormTemplate"
-}%
+%DBCALL{"Applications.RenderSimpleTopicCreator"}%
 
 %DBCALL{"Applications.RenderTopicsOfType"}%
 %STOPINCLUDE%
 
 ---++ <nop>%TOPIC% form
-| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default: * |
-| TopicType | label | 1 | DataForm, ApplicationTopic, WikiTopic | topic type | |  |
+| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
+| TopicType | label | 1 | DataForm, ApplicationTopic, WikiTopic | topic type | | DataForm, ApplicationTopic, WikiTopic |
 | <nop>TopicTitle | text | 75 | | | | |
 | Summary | text | 75 | | short description or tagline | c | |
 | WikiApplication| wikiapp | 1 | | application this topic belongs to | | |
@@ -28,7 +26,12 @@ See also: [[%TOPIC%Template]], [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]],
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
 %META:FIELD{name="Summary" title="Summary" value="form definition for structured wiki content"}%
 %META:FIELD{name="Icon" title="Icon" value="fa-database"}%
-%META:FIELD{name="Editor" title="Editor" value="Applications.DataEditTemplate"}%
+%META:FIELD{name="Editor" title="Editor" value="Applications.ApplicationTopicEditTemplate"}%
 %META:FIELD{name="Template" title="Template" value="Applications.DataFormTemplate"}%
-%META:FIELD{name="TopicNaming" title="Topic Naming" value=""}%
+%META:FIELD{name="TopicNamingMode" title="Topic Naming Mode" value="default"}%
+%META:FIELD{name="TopicNameTemplate" title="Topic Name Template" value=""}%
+%META:FIELD{name="TopicNameSource" title="Topic Name Source" value="[name=TopicTitle]"}%
+%META:FIELD{name="TopicNamePrefix" title="Topic Name Prefix" value=""}%
+%META:FIELD{name="TopicNameSuffix" title="Topic Name Suffix" value=""}%
+%META:FIELD{name="TopicNameTransliterate" title="Topic Name Transliterate" value="yes"}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

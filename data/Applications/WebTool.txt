@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 ---++ Documentation
@@ -7,7 +7,6 @@ Note, that there is no creator to build a topic of this kind as it is a pure "ma
 are created with another creator tool and then in addition marked to be an WebTool. Topics of this type
 are ApplicationTopics too and take associated DataForm.
 
-See also [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
 %ENDSECTION{"documentation"}%
 
 ---++ Topics of type '%TOPIC%'
@@ -17,7 +16,7 @@ See also [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
 
 ---++ <nop>%TOPIC% form
 | *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default: * |
-| TopicType | label | 1 | WebTool, ApplicationTopic, WikiTopic | topic type | |  |
+| TopicType | label | 1 | WebTool, ApplicationTopic, WikiTopic | topic type | | WebTool, ApplicationTopic, WikiTopic |
 | <nop>TopicTitle | text | 75 | | | | |
 | Summary | text | 75 | | short description or tagline | c | |
 | WikiApplication| wikiapp | 1 | | application this topic belongs to | | |
@@ -27,7 +26,11 @@ See also [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
 %META:FIELD{name="Summary" title="Summary" value="a special page used to manage a web"}%
 %META:FIELD{name="Icon" title="Icon" value="fa-wrench"}%
-%META:FIELD{name="Editor" title="Editor" value="Applications.WebToolEditTemplate"}%
+%META:FIELD{name="Editor" title="Editor" value="Applications.ApplicationTopicEditTemplate"}%
 %META:FIELD{name="Template" title="Template" value=""}%
-%META:FIELD{name="TopicNaming" title="Topic Naming" value=""}%
+%META:FIELD{name="TopicNamingMode" title="Topic Naming Mode" value="default"}%
+%META:FIELD{name="TopicNameTemplate" title="Topic Name Template" value=""}%
+%META:FIELD{name="TopicNameSource" title="Topic Name Source" value="[name=TopicTitle]"}%
+%META:FIELD{name="TopicNamePrefix" title="Topic Name Prefix" value=""}%
+%META:FIELD{name="TopicNameSuffix" title="Topic Name Suffix" value=""}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

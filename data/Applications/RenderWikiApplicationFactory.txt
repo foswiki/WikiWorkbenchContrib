@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -11,7 +11,7 @@ This is used to create a new WikiApplication
 ---++ Implementation
 <verbatim class="tml">
 %STARTINCLUDE%<!-- wikiapplicationfactory -->
-%TWISTY{link="%BUTTON{"New <nop>WikiApplication" icon="add"}%%CLEAR%" mode="div"}%
+%TWISTY{link="%BUTTON{"%TRANSLATE{"New WikiApplication"}%" icon="fa-plus"}%%CLEAR%" mode="div"}%
 
 <form id="newWikiAppForm" name="admin" action="%SCRIPTURLPATH{manage}%/%BASEWEB%/%HOMETOPIC%" method="post"">
 <input name="action" type="hidden" value="createweb" />
@@ -25,7 +25,7 @@ This is used to create a new WikiApplication
   <input class="foswikiInputField" id="newweb" name="newweb" type="text" value="" size="50" />
   <div class="foswikiFormDescription">
     <noautolink>
-    %MAKETEXT{"This is the name of the web that will hold the wiki application. It will become a subweb of the Applications web. Example values: MyCompanyApp, TestApp"}%
+    %TRANSLATE{"This is the name of the web that will hold the wiki application. It will become a subweb of the Applications web. Example values: MyCompanyApp, TestApp"}%
     </noautolink>
   </div>
 </div>
@@ -34,12 +34,12 @@ This is used to create a new WikiApplication
   <input class="foswikiInputField" type="text" name="WEBSUMMARY" value="" size="50" />
   <div class="foswikiFormDescription">
     <noautolink>
-    %MAKETEXT{"Enter a short description what this wiki app is about. It will be stored in the WebPreferences of your newly created application web."}%
+    %TRANSLATE{"Enter a short description what this wiki app is about. It will be stored in the WebPreferences of your newly created application web."}%
     </noautolink>
   </div>
 </div>
 <div class="foswikiFormStep foswikiFormButtons foswikiFormLast">
-  %BUTTON{"%MAKETEXT{"Submit"}%" type="submit" icon="tick"}%
+  %BUTTON{"%TRANSLATE{"Submit"}%" type="submit" icon="fa-check"}%
   %CLEAR%
 </div>
 </div>

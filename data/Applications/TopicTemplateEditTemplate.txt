@@ -1,19 +1,11 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" date="1556788680" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %{<verbatim class="tml">}%
 %TMPL:INCLUDE{"Applications.ApplicationTopicEdit"}%
 %{</verbatim>}%
 
-%{<verbatim class="tml">}%
-%TMPL:DEF{"topictype"}%topic template%TMPL:END%
-%{</verbatim>}%
-
-%{<verbatim class="tml">}%
-%TMPL:DEF{"formdefinition"}%Applications.TopicTemplate%TMPL:END%
-%{</verbatim>}%
-
-%META:FORM{name="TopicView"}%
+%META:FORM{name="Applications.TopicView"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%
-%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value="TopicTemplateEditTemplate "}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
 %META:FIELD{name="Summary" title="Summary" value="Editor for TopicTemplates"}%
-%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="none"}%
