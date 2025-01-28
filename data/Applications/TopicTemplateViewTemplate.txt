@@ -1,8 +1,6 @@
-%META:TOPICINFO{author="ProjectContributor" date="1556788680" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" date="1738067047" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
-%{<verbatim class="tml">}%
 %TMPL:INCLUDE{"Applications.ApplicationTopicView"}%
-%{</verbatim>}%
 
 %META:FORM{name="Applications.TopicView"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%

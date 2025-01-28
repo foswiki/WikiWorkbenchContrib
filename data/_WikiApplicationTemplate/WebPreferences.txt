@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1" version="1"}%
 %TOC%
 
 ---++ Appearance
@@ -15,6 +15,8 @@
    * Set ALLOWWEBCHANGE = %USERSWEB%.AdminGroup
    * Set ALLOWWEBRENAME = %USERSWEB%.AdminGroup
    * Set DENYWEBCOMMENT = %USERSWEB%.WikiGuest
+   * Set DENYWEBHISTORY = %USERSWEB%.WikiGuest
+   * Set DENYWEBRAW = %USERSWEB%.WikiGuest
 
    * Set ALLOWTOPICCHANGE = %USERSWEB%.AdminGroup
    * Set ALLOWTOPICRENAME = %USERSWEB%.AdminGroup

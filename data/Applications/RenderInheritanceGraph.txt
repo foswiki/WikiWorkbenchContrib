@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -19,6 +19,7 @@ This function requires [[%SYSTEMWEB%.GraphvizPlugin]]
    format="png" 
    section="dot" 
    expand="on"
+   inline="on"
 }%
 </literal>
 </div>
@@ -30,10 +31,10 @@ This function requires [[%SYSTEMWEB%.GraphvizPlugin]]
 %STARTSECTION{"dot"}%
 digraph G {
    tooltip=" "
-   graph [fontname = helvetica]; 
+   graph [fontname = helvetica, bgcolor=transparent]; 
    node [tooltip=" "]
-   node[shape="box", fontsize="10", fontname = helvetica];
-   edge[arrowsize="0.5", fontsize="10", fontname = helvetica];
+   node[shape="box", fontsize="10", fontname = helvetica, style=filled fillcolor="#eeeeee", color="#aaaaaa"];
+   edge[arrowsize="0.5", fontsize="10", fontname = helvetica, color="#aaaaaa"];
    ratio="auto";
    %DBQUERY{
       "(TopicType=~'\bTopicType\b' OR @Target.TopicType=~'\bTopicType\b') %IF{"'%BASEWEB%'!='Applications'" then="AND WikiApplication!='WikiWorkbench'"}%"

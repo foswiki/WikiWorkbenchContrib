@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -12,13 +12,13 @@ This uses solr and infintescroll to create a frontpage widget.
    * PAGE: from which page to start rendering
    * THEWEB: the web to render recent changes for
    * FILTER: filter to be added to the search query
+   * CLASS
 
 %ENDSECTION{"documentation"}%
 
 ---++ Implementation
 <verbatim class="tml">
-%STARTINCLUDE%<!-- -->
-<div class="jqInfiniteScroll recentChanges {itemSelector:'.clsIndexItem', localMode:true, bufferPx:200}">
+%STARTINCLUDE%<div class="jqInfiniteScroll recentChanges %CLASS{default=""}%" data-item-selector=".clsIndexItem" data-local-mode="true" data-buffer-px="200">
 %DBCALL{"%WEB%.%TOPIC%" 
   section="backend" 
   LIMIT="%LIMIT{default="20"}%"
@@ -28,7 +28,7 @@ This uses solr and infintescroll to create a frontpage widget.
 }%
 </div>
 <div class="jqInfiniteScrollNavi foswikiHidden">
-  <a href="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%?page=1&section=backend&skin=text&template=view&web=%THEWEB{default="%BASEWEB%"}%&filter=%ENCODE{"%FILTER{default="TopicType!~'\bTopicStub\b'"}%"}%&limit=%LIMIT{default="20"}%" class='jqInfiniteScrollNext'>More</a>
+  <a href="%SCRIPTURLPATH{"view" topic="%WEB%.%TOPIC%" page="1" section="backend" skin="text" template="view" web="%THEWEB{default="%BASEWEB%"}%" filter="%FILTER{default="TopicType!~'\bTopicStub\b'"}%" limit="%LIMIT{default="20"}%"}%" class='jqInfiniteScrollNext'>More</a>
 </div>
 <literal><style>
 .recentChanges {
@@ -44,8 +44,8 @@ This uses solr and infintescroll to create a frontpage widget.
 ---++ Backend
 <verbatim class="tml">
 %STARTSECTION{"backend"}%<noautolink>%DBQUERY{
-  "%URLPARAM{"filter" default="%FILTER{default="TopicType!~'\bTopicStub\b'"}%"}%"
-   exclude="^(WebLexicon|WebChanges|WebPreferences|WebStatistics|WebTopicList|WebIndex|WebNotify|WebHome|WebLinks|TopCategory|Category|ClassifiedTopic|TopicType|WebTopicEditTemplate|WebAtom|WebRss|WebLeftBar|WebSearch.*|WebTagList|CategoryBrowser|UntaggedTopics|UncategorizedTopics)$"
+  "%URLPARAM{"filter" encode="off" default="%FILTER{default="TopicType!~'\bTopicStub\b'"}%"}%"
+   exclude="^(WebLexicon|WebChanges|WebPreferences|WebStatistics|WebTopicList|WebIndex|WebNotify|WebHome|WebLinks|TopCategory|Category|ClassifiedTopic|TopicType|WebTopicEditTemplate|WebAtom|WebRss|WebLeftBar|WebSearch.*)$"
   webs="%URLPARAM{"web" default="%THEWEB{default="%BASEWEB%"}%"}%"
   skip="%CALCULATE{"$EVAL(%URLPARAM{"page" default="%PAGE{default="0"}%"}%*%URLPARAM{"limit" default="%LIMIT{default="20"}%"}%)"}%"
   limit="%URLPARAM{"limit" default="%LIMIT{default="20"}%"}%" 

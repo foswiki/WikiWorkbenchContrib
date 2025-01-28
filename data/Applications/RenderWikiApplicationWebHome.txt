@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -14,41 +14,47 @@ None
 ---++ Implementation
 <verbatim class="tml">
 %STARTINCLUDE%<!-- -->
-<div class="wwbBox wwbModel">
+%BEGINGRID{border="on"}%
+%BEGINCOL{"4" class="wwbModel"}%
 <h2 >Data Model</h2>
 <img src='%PUBURLPATH%/%SYSTEMWEB%/WikiWorkbenchContrib/model.png' align='left' />
    * [[TopicType]]
    * [[DataForm]]
    * [[DataFormAttribute]]
    * [[TopicTemplate]]
-</div>
-<div class="wwbBox wwbControl">
+%BEGINCOL{"4" class="wwbControl"}%
 <h2 >Control</h2>
 <img src='%PUBURLPATH%/%SYSTEMWEB%/WikiWorkbenchContrib/exec.png'  align='left' />
    * [[TopicView]]
-   * [[TopicFunction]]
-</div>
-<div class="wwbBox wwbBoxLast wwbDocu">
+   * [[TopicFunction]]%IF{"istopic WorkflowDefinition" then="
+   * [[WorkflowDefinition]]"}%
+%BEGINCOL{"4" class="wwbDocu"}%
 <h2 >Documentation</h2>
 <img src='%PUBURLPATH%/%SYSTEMWEB%/WikiWorkbenchContrib/book.png'  align='left' />
    * [[WikiApplication]]
    * [[DocuTopic]] %IF{"istopic 'ApplicationLicense'" then="
    * [[ApplicationLicense]]"}%
    * [[WebLexicon]]
-</div>
-%CLEAR%
+%ENDGRID%
 
 See the [[CompleteDocumentation]].
 
 %DATATABLE{
+  connector="dbcache"
   class="foswikiFlatTable foswikiStripes"
-  query="%IF{"'%URLPARAM{"q"}%'!=''" then="TopicType=~'%URLPARAM{"q"}%'" else="topic='.*'"}%"
+  query="%IF{"'%URLPARAM{"q"}%'!=''" then="TopicType=~'%URLPARAM{"q"}%'"}%"
+  topic="%BASEWEB%.%BASETOPIC%"
   web="%BASEWEB%"
-  columns="index,TopicTitle,Summary,TopicType,WikiApplication,Changed"
+  columns="index,TopicTitle,Summary,TopicType,WikiApplication,Changed,By"
+  WikiApplication_title="%TRANSLATE{"Application"}%"
+  TopicTitle_title="%TRANSLATE{"Title"}%"
+  Summary_title="%TRANSLATE{"Summary"}%"
+  Changed_title="%TRANSLATE{"Changed"}%"
+  By_title="%TRANSLATE{"By"}%"
   rows="10"
   searching="on"
   lengthmenu="5,10,20,30,50,100"
-  info="off"
+  info="on"
   paging="on"
   sort="Changed"
   reverse="on"
@@ -62,28 +68,15 @@ See the [[CompleteDocumentation]].
 ---++ CSS
 <verbatim class="css">
 %STARTSECTION{"css"}%<literal>
-<style type="text/css">
+<style>
 .foswikiRevision {
   display:none;
 }
-.wwbBox img {
+.foswikiGrid img {
   width:80px;
   margin-right:1em;
 }
-.wwbBox {
-  margin:0em 1em 0em 0em;
-  float:left;
-  width:30%;
-  height:11em;
-  border-right:1px solid #dedede;
-}
-.wwbBoxLast {
-  border-right:0px;
-}
-.wwbBox h2 {
-  margin-top:0px;
-}
-.wwbBox ul {
+.foswikiGrid ul {
   list-style:none;
   margin:0px;
   padding:0px;

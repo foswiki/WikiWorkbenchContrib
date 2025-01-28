@@ -1,60 +1,40 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
-%{<verbatim class="tml">}%
 %TMPL:P{"rsshead"}%%TMPL:P{"rssbody"}%%TMPL:P{"rssfooter"}%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
 %TMPL:DEF{"rsshead"}%<?xml version="1.0" encoding="%CHARSET%" ?>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://purl.org/rss/1.0/" xmlns:dc="http://purl.org/dc/elements/1.1/" >
+<?xml-stylesheet href="%PUBURLPATH%/Applications/RssViewTemplate/pretty-feed.xsl" type="text/xsl" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
 %TMPL:END%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
-%TMPL:DEF{"rssbody"}%<channel rdf:about="%SCRIPTURL{"view"}%/%WEB%/%TOPIC%">
+%TMPL:DEF{"rssbody"}%<channel>
    <title>%WEB% - %WIKITOOLNAME%</title>
    <link>%SCRIPTURL{"view"}%/%WEB%</link>
+   <atom:link href="%SCRIPTURL{"view" topic="%WEB%.%TOPIC%"}%" rel="self" type="application/rss+xml" />
    <description>%WEBSUMMARY%</description>
-   <image rdf:resource="%WEBLOGOIMG%" />
-   <dc:language>en-us</dc:language>
-   <dc:rights>%WEBRSSCOPYRIGHT%</dc:rights>
-   <dc:publisher>%WIKIWEBMASTERNAME% [%WIKIWEBMASTER%]</dc:publisher>
-   <dc:creator>%WIKIWEBMASTERNAME% [%WIKIWEBMASTER%]</dc:creator>
-   <dc:source>%WIKITOOLNAME%</dc:source>
-   <items>
-      <rdf:Seq>
+   <image>
+      <url>%WEBLOGOIMG{default="%WIKILOGOIMG%"}%</url>
+      <title>%WEB% - %WIKITOOLNAME%</title>
+      <link>%SCRIPTURL{"view"}%/%WEB%</link>
+   </image>
+   <language>en-us</language>
+   <copyright>%WEBRSSCOPYRIGHT%</copyright>
 %DBQUERY{"%FILTER{default=""}%" 
    exclude="%EXCLUDE{default="^(Web.*|TopicType|TopicStub|.*ViewTemplate|.*SideBar|.*LeftBar)$"}%"
-   sort="created"  
-   reverse="on" 
-   limit="%LIMIT{default="10"}%" 
-   format="   <rdf:li rdf:resource=\"%SCRIPTURL{"view"}%/$web/$topic\" />$n"
-   separator=""
-}%   </rdf:Seq>
-   </items>
-</channel>
-<image rdf:about="%WEBLOGOIMG%">
-   <title>%WEB% - %WIKITOOLNAME%</title>
-   <link>%SCRIPTURL{"view"}%/%WEB%</link>
-   <url>%WEBLOGOIMG{default="%WIKILOGOIMG%"}%</url>
-</image>
-%DBQUERY{"%FILTER{default=""}%" 
-   exclude="%EXCLUDE{default="^(Web.*|TopicType|TopicStub|.*ViewTemplate|.*SideBar|.*LeftBar)$"}%"
-   sort="created" 
+   sort="%SORT{default="created"}%"  
    reverse="on" 
    limit="%LIMIT{default="10"}%" 
    separator="$n"
+   absoluteurls="on"
    format="$percntDBCALL{\"$web.$topic->RenderRss\"}$percnt"
 }%
-%TMPL:END%
-%{</verbatim>}%
+</channel>%TMPL:END%
 
-%{<verbatim class="tml">}%
-%TMPL:DEF{"rssfooter"}%</rdf:RDF>%TMPL:END%
-%{</verbatim>}%
+%TMPL:DEF{"rssfooter"}%</rss>%TMPL:END%
 
 %META:FORM{name="TopicView"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
 %META:FIELD{name="Summary" title="Summary" value="View for the rss feeds"}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%
+%META:FILEATTACHMENT{name="pretty-feed.xsl" attachment="raw.githubusercontent.com_genmon_aboutfeeds_main_tools_pretty-feed-v3.xsl" attr="" comment="" date="1738067047" moveby="micha" movedto="Applications.RssViewTemplate.pretty-feed.xsl" movedwhen="1688377000" movefrom="Applications.RssViewTemplate.raw.githubusercontent.com_genmon_aboutfeeds_main_tools_pretty-feed-v3.xsl" size="80494" user="ProjectContributor" version="1"}%

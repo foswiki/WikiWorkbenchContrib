@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 ---++ Documentation
 %STARTSECTION{"documentation"}%
@@ -28,25 +28,27 @@ create <nop>TopicTypes for each.
 
 %DBCALL{"Applications.RenderTopicsOfType"
   FIELDS="TopicTitle,Icon,WikiApplication,Editor,Changed"
+  FORM="Applications.TopicType"
   ROWS="20"
 }%
 %STOPINCLUDE%
 
 ---++ !TopicType form
-| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
-| TopicType | label | 1 | TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic | topic type  | | TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic |
-| <nop>TopicTitle | text | 75 | |  | | |
+| *Name:* | *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
+| TopicType | type | 1 | TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic | topic type | h | |
+| <nop>TopicTitle | text | 75 | | | | |
 | Summary | text | 75 | | Short description of the role of this topic | c | |
-| Icon | icon | 30 | cat="fonticon" | icon to be displayed in the topic creator |  | |
-| Editor | topic+values | 30 | url="%SCRIPTURLPATH{"view"}%/Applications/TopicType?baseWeb=%BASEWEB%&section=editors&skin=text&contenttype=application/json&t=%GMTIME{"$epoch"}%" | editor for this topic type | | |
-| Template | topic+values | 30 | url="%SCRIPTURLPATH{"view"}%/Applications/TopicType?baseWeb=%BASEWEB%&section=templates&skin=text&contenttype=application/json&t=%GMTIME{"$epoch"}%" | topic template to be used for this topic type | | |
-| Topic Naming Mode | radio | 3 | default, template, derived | | | default |
+| Icon | icon | 30 | cat="fonticon" | icon to be displayed in the topic creator | | |
+| Editor | topic+values | 30 | url="%SCRIPTURLPATH{"view" topic="Applications.TopicType"}%?baseWeb=%BASEWEB%&section=editors&skin=text&contenttype=application/json&t=%GMTIME{"$epoch"}%" | editor for this topic type | | |
+| Template | topic+values | 30 | url="%SCRIPTURLPATH{"view" topic="Applications.TopicType"}%?baseWeb=%BASEWEB%&section=templates&skin=text&contenttype=application/json&t=%GMTIME{"$epoch"}%" | default template to be used for this topic type | | |
+| Create Action | radio | 2 | edit, save | action performed to create a topic of this type | | edit |
+| Topic Naming Mode | radio | 4 | default, template, derived, uuid | | | default |
 | Topic Name Template | text | 80 | | a template for the name of topics being created, e.g. <nop>ProjectAUTOINC0 | | |
-| Topic Name Source | text | 80 | | jQuery selector of input elements to construct the topic name from  | | [name=TopicTitle] |
+| Topic Name Source | text | 80 | | jQuery selector of input elements to construct the topic name from | | [name=TopicTitle] |
 | Topic Name Prefix | text | 30 | | string to be prefixed to the topic name | | |
 | Topic Name Suffix | text | 30 | | string to be appended to the topic name | | |
 | Topic Name Transliterate | radio+values | 2 | yes=true, no=false | flag indicating character transliteration to a unicode safe subset | | true |
-| WikiApplication| wikiapp | 1 | | Application this topic belongs to | | |
+| WikiApplication | wikiapp | 1 | | Application this topic belongs to | | |
 
 ---++ editors
 
@@ -106,9 +108,10 @@ create <nop>TopicTypes for each.
 %META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
 %META:FIELD{name="Summary" title="Summary" value="TopicType of all TopicTypes"}%
-%META:FIELD{name="Icon" title="Icon" value="fa-sitemap"}%
+%META:FIELD{name="Icon" title="Icon" value="ma-label-outline"}%
 %META:FIELD{name="Editor" title="Editor" value="Applications.TopicTypeEditTemplate"}%
 %META:FIELD{name="Template" title="Template" value="Applications.TopicTypeTemplate"}%
+%META:FIELD{name="CreateAction" title="Create Action" value="edit"}%
 %META:FIELD{name="TopicNamingMode" title="Topic Naming Mode" value="default"}%
 %META:FIELD{name="TopicNameTemplate" title="Topic Name Template" value=""}%
 %META:FIELD{name="TopicNameSource" title="Topic Name Source" value="[name=TopicTitle]"}%

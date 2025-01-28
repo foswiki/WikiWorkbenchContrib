@@ -1,31 +1,80 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
-%{<verbatim class="tml">}%
 %TMPL:INCLUDE{"Applications.WikiTopicEdit"}%
-%{</verbatim>}%
+%TMPL:DEF{"formattop"}%%TMPL:END%
 
-%{<verbatim class="tml">}%
 %TMPL:DEF{"firsttab"}%%TMPL:P{"detailstab"}%%TMPL:END%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
 %TMPL:DEF{"formfields"}%%TMPL:PREV%%TMPL:P{"texttab"}%%TMPL:END%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
 %TMPL:DEF{"detailstab"}%%TAB{"%TRANSLATE{"Details"}%"}%
 %RENDERFOREDIT{
    exclude="\b(TopicType)\b"
    TopicTitle_default="%BASETOPIC%"
+   TopicTitle_title="%TRANSLATE{"Title"}%"
 }%
 %ENDTAB%%TMPL:END%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
 %TMPL:DEF{"texttab"}%%TAB{"%TRANSLATE{"Text"}%"}%
 %TMPL:P{"textarea"}%
 %ENDTAB%%TMPL:END%
-%{</verbatim>}%
+
+%TMPL:DEF{"permissionstab::impl::start"}%%TMPL:PREV%
+  <input type="hidden" name="Set+ALLOWTOPICCREATE" value="undefined" class="permset_create allow_create" />
+  <input type="hidden" name="Set+DENYTOPICCREATE" value="undefined" class="permset_create deny_create" />
+  <input type="hidden" name="Default+ALLOWTOPICCREATE" value="undefined" />
+  <input type="hidden" name="Default+DENYTOPICCREATE" value="undefined" />
+  <input type="hidden" name="Default+PERMSET_CREATE" value="default" />
+  <input type="hidden" name="Default+PERMSET_CREATE_DETAILS" value="" />
+%{}%%TMPL:END%
+
+%TMPL:DEF{"permissionstab::impl::end"}%%IF{"'%FORMFIELD{"TopicType" topic="%FORMFIELD{"Target"}%"}%'=~'\bTopicType\b'" 
+   then="$percntTMPL:P{\"permissionstab::impl::createstep\"
+            permset_create=\"%TMPL:P{"getpreference" name="PERMSET_CREATE"}%\"
+            permset_create_details=\"%TMPL:P{"getpreference" name="PERMSET_CREATE_DETAILS"}%\"
+            allowtopic_create=\"%TMPL:P{"getpreference" name="ALLOWTOPICCREATE"}%\"
+            denytopic_create=\"%TMPL:P{"getpreference" name="DENYTOPICCREATE"}%\"
+         }$percnt"
+}%%TMPL:PREV%%TMPL:END%
+
+%TMPL:DEF{"permissionstab::impl::createstep"}%%{}%
+<div class="foswikiFormStep ui-natedit-create-perms">
+   <h3>%TRANSLATE{"Users who may create a topic of this type"}%:</h3>
+   <p>
+      <label title='%TRANSLATE{"default as defined in the [_1]" args="<nop>%WEBPREFSTOPIC%"}%'>
+         <input type="radio" class="foswikiRadioButton" data-perm-type="create" name="Local+PERMSET_CREATE" value="default" %IF{"'%permset_create%'=~'^(default|)$'" then="checked"}% /> 
+         %TRANSLATE{"Default"}%
+      </label>
+   </p>
+   <p>
+      <label title="%TRANSLATE{"everybody who has got an account on this site"}%">
+         <input type="radio" class="foswikiRadioButton" data-perm-type="create" data-perms='%IF{"'%QUERY{"{AccessControlACL}{EnableDeprecatedEmptyDeny}"}%'='0'" then="{\"allow\":\"*\"}" else="{\"deny\":\" \"}"}%' name="Local+PERMSET_CREATE" value="registeredusers" %IF{"'%permset_create%'='registeredusers'" then="checked"}% /> 
+         %TRANSLATE{"Registered users"}%
+       </label>
+   </p>
+   <p>
+      <label title='%TRANSLATE{"restrict permission to [_1]" args="%SPACEOUT{"%WIKINAME%"}%"}%'>
+        <input type="radio" class="foswikiRadioButton" data-perm-type="create" data-perms='{"allow":"%WIKINAME%"}' name="Local+PERMSET_CREATE" value="justauthor" %IF{"'%permset_create%'='justauthor' and '%allowtopic_create%'='%WIKINAME%'" then="checked"}% />
+        %TRANSLATE{"Just me"}%
+      </label>
+   </p>
+   <p>
+      <label title='%TRANSLATE{"strictly deny creating topics of this type"}%'>
+         <input type="radio" class="foswikiRadioButton" data-perm-type="create" data-perms='{"allow":"AdminUser"}' name="Local+PERMSET_CREATE" value="nobody" %IF{"'%permset_create%'='nobody'" then="checked"}% /> 
+         %TRANSLATE{"Nobody"}%
+      </label>
+   </p>
+   <p>
+      <label title='%TRANSLATE{"specify a list of users and/or groups"}%'>
+         <input type="radio" class="foswikiRadioButton" data-perm-type="create" data-perms='details' name="Local+PERMSET_CREATE" value="details" %IF{"'%permset_create%'='details' or ('%permset_create%'='justauthor' and '%allowtopic_create%'!='%WIKINAME%') or ('%permset_create%'='' and '%allowtopic_create%'!='')" then="checked"}% />
+         %TRANSLATE{"Specific users/groups"}%
+      </label>
+   </p>
+   <div class="ui-natedit-details-container" %IF{"$'PERMSET_CREATE'!='details'" then="style='display:none'"}%>
+      <input type="text" class="foswikiInputField" size="40" data-perm-type="create" data-perms='details' autocomplete="off" name="Local+PERMSET_CREATE_DETAILS" value="%IF{"'%permset_create%'='details' or ('%permset_create%'='justauthor' and '%allowtopic_create%'!='%WIKINAME%') or ('%permset_create%'='' and '%allowtopic_create%'!='')" then="%allowtopic_create%" else="%permset_create_details%"}%" />
+    </div>
+</div>
+%{}%%TMPL:END%
 
 
 %META:FORM{name="TopicView"}%

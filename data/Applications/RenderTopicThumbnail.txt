@@ -1,14 +1,9 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
 ---++ Documentation
 %STARTSECTION{"documentation"}%
-This function gets the first image attachment from a topic and creates
-a 48x48 thumbnail using !ImagePlugin. The attachment taken must end
-with =jpeg, jpg, gif, bmp, svg or png=. If there are multiple image attachments
-then the first one ordered by comment and name is taken. The empty string
-is returned if no image attachment is found.
 
 ---+++++ Parameters
    * OBJECT: topic to generate a thumbnail for
@@ -17,93 +12,31 @@ is returned if no image attachment is found.
    * TYPE: image rendering type, see documentation of !ImagePlugin, defaults to simple
    * CROP
    * TOOLTIP: switch on/off tooltips for thumbnails, defaults to =on=
-   * SORT: specifies which image to chose from the attachments, defaults to =comment:name= which will take the one that sorts first wrt the comment, falling back to the name
 
 %ENDSECTION{"documentation"}%
 
 ---++ Implementation
 <verbatim class="tml">
-%STARTINCLUDE%%DBCALL{"Applications.RenderTopicThumbnail" 
-  section="%IF{
-     "'%ATTACHMENTS{"%OBJECT%" attr=".*t.*" format="yes"}%'='yes'" 
-     then="thumbnailed" 
-     else="defaultthumbnail"
-  }%"
-  object="%OBJECT%"
-  align="%ALIGN{default="right"}%"
-  size="%SIZE{default="48x48>^"}%"
-  type="%TYPE{default="simple"}%"
-  crop="%CROP{default="on"}%"
-  sort="%SORT{default="comment:name"}%"
+%STARTINCLUDE%%DBQUERY{
+   "thumbnail"
+   topic="%OBJECT%" 
+   format="$percntIMAGE{
+      \"$expand(thumbnail)\"
+      topic=\"$web.$topic\"
+      align=\"%ALIGN{default="right"}%\"
+      size=\"%SIZE{default="48x48^"}%\"
+      type=\"%TYPE{default="simple"}%\"
+      crop=\"%CROP{default="on"}%\"
+      output=\"png\"
+      tooltip=\"%TOOLTIP{default="on"}%\"
+   }$percnt"
 }%%STOPINCLUDE%
 </verbatim>
 
-<verbatim class="tml">
-%STARTSECTION{"thumbnailed"}%%ATTACHMENTS{
-   "%object%"
-   attr=".*t.*"
-   warn="off"
-   hidenull="on"
-   format="$percntIMAGE{
-     \"$name\"
-     topic=\"$web.$topic\"
-     align=\"%align%\"
-     type=\"%type%\"
-     size=\"%size%\"
-     crop=\"%crop%\"
-     title=\"\"
-     tooltip=\"%TOOLTIP{default="on"}%\"
-     warn=\"off\"
-     output=\"png\"
-   }$percnt"
-}%%ENDSECTION{"thumbnailed"}%
-
-%STARTSECTION{"defaultthumbnail"}%%ATTACHMENTS{
-   "%object%"
-   name=".*\.(jpe?g|gif|png|bmp|svg|JE?PG|GIF|PNG|BMP|SVG)"
-   warn="off"
-   limit="1"
-   sort="%sort%"
-   reverse="%IF{"'%sort%' = 'date'" then="on" else="off"}%"
-   hidenull="on"
-   format="$percntIMAGE{
-     \"$name\"
-     topic=\"$web.$topic\"
-     align=\"%align%\"
-     type=\"%type%\"
-     size=\"%size%\"
-     crop=\"%crop%\"
-     title=\"\"
-     tooltip=\"%TOOLTIP{default="on"}%\"
-     warn=\"off\"
-     output=\"png\"
-   }$percnt"
-}%%ENDSECTION{"defaultthumbnail"}%
-</verbatim>
-
 ---++ Test
-%DBCALL{"%WEB%.%TOPIC%" 
-  OBJECT="%WIKIUSERNAME%"
-  ALIGN="left"
-}%
+%DBCALL{"%WIKIUSERNAME%->RenderTopicThumbnail" ALIGN="left"}%
 
-%DBCALL{"%TOPIC%" 
-  OBJECT="%WIKIUSERNAME%"
-  SORT="date"
-  ALIGN="left"
-  SIZE="100x100^"
-}%
 %CLEAR%
-
----++ List of all attachments at [[%WIKIUSERNAME%]]
-%ATTACHMENTS{
-   "%WIKIUSERNAME%"
-   name=".*\.(jpe?g|gif|png|JE?PG|GIF|PNG)"
-   sort="%URLPARAM{"sort"}%"
-   hidenull="on"
-   header="| *#* | *Name* | *Date* | *Size*| *Comment* | *Image* |$n"
-   format="| $index | $name | $date | $sizeH | $comment | <img src='$urlpath' width='50' /> |"
-}%
 
 %META:FORM{name="TopicFunction"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%

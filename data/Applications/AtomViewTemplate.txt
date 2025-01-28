@@ -1,49 +1,40 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
-%{<verbatim class="tml">}%
 %TMPL:P{"atomhead"}%%TMPL:P{"atombody"}%%TMPL:P{"atomfooter"}%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
 %TMPL:DEF{"atomhead"}%<?xml version="1.0" encoding="%CHARSET%" ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>%WEB% - %WIKITOOLNAME%</title>
   <subtitle>%WEBSUMMARY%</subtitle>
   <link href="%SCRIPTURL{"view"}%/%WEB%" />
   <link href="%SCRIPTURL{"view"}%/%WEB%/%TOPIC%?%QUERYSTRING%" rel="self" />
-  <updated>%DBQUERY{"%FILTER%" sort="modified" reverse="on" limit="1" format="$formatTime(info.date, '$year-$mo-$dayT$hour:$minute:$secondsZ')"}%</updated>
   <logo>%WIKILOGOIMG%</logo>
-  <id>%SCRIPTURL{"view"}%/%WEB%</id>
   <rights>%WEBRSSCOPYRIGHT%</rights>
 %TMPL:END%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
 %TMPL:DEF{"atomfooter"}%</feed>%TMPL:END%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
-%TMPL:DEF{"atombody"}%%DBQUERY{"%FILTER%" 
+%TMPL:DEF{"atombody"}%%DBQUERY{"%FILTER{default=""}%" 
    exclude="WebTopicEditTemplate"
-   sort="created" 
+   sort="%SORT{default="created"}%" 
    reverse="on" 
    limit="%LIMIT%" 
    separator="$n"
-   format="  <entry>
-   <title>$expand(topictitle)</title>
-   <id>%SCRIPTURL{"view"}%/$web/$topic</id>
-   <link rel=\"alternate\" type=\"text/html\" href=\"%SCRIPTURL{"view"}%/$web/$topic\"/>
-   <updated>$formatTime(createdate, '$year-$mo-$dayT$hour:$minute:$secondsZ')</updated>
-   $percntFORMATLIST{\"$expand(Author or createauthor)\"
+   format="<entry>
+<title>$expand(topictitle)</title>
+<id>%SCRIPTURL{"view"}%/$web/$topic</id>
+<link rel=\"alternate\" type=\"text/html\" href=\"%SCRIPTURL{"view"}%/$web/$topic\"/>
+<updated>$formatTime(%SORT{default="createdate"}%, '$year-$mo-$dayT$hour:$minute:$secondsZ')</updated>
+$percntFORMATLIST{\"$expand(publishauthor)\"
       split=\"\s*,\s*\"
-      format=\"<author><name>$1</name></author>\"
-   }$percnt$percntCATINFO{\"$web.$topic\" 
+      format=\"<author><name>$dollarpercntGETTOPICTITLE{\\"%USERSWEB%.$1\\"}$dollarpercnt</name></author>\"
+}$percnt$percntCATINFO{\"$web.$topic\" 
       format=\"<category label=\\"$title\\" term=\\"$dollartopic\\" />\"
       separator=\"$n        \"
-   }$percnt$percntTAGINFO{\"$web.$topic\"
+}$percnt$percntTAGINFO{\"$web.$topic\"
       format=\"<category term=\\"$dollarname\\" />\"
       separator=\"$n        \"
-   }$percnt
+}$percnt
    <content type=\"html\"><![CDATA[
 $percntDBCALL{\"$web.$topic\"}$percnt
 $percntTAGINFO{
@@ -53,10 +44,8 @@ $percntTAGINFO{
    footer=\"</p>\"
 }$percnt
    ]]></content>
-   </entry>"
-}%
-%TMPL:END%
-%{</verbatim>}%
+</entry>"
+}%%TMPL:END%
 
 %META:FORM{name="TopicView"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%

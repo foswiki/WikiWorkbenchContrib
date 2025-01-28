@@ -1,43 +1,28 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
-%{<verbatim class="tml">}%
 %TMPL:INCLUDE{"Applications.WikiTopicView"}%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
-%TMPL:DEF{"beforetext"}%%IF{
-   "$'DISPLAYTOPICTITLE'!='off'"
-   then="$percntTMPL:P{\"beforetext::title\"}$percnt"
-}%<!-- -->
+%TMPL:DEF{"beforetext"}%%TMPL:PREV%
 %DBCALL{"%FORMFIELD{"Target" topic="%BASEWEB%.%BASETOPIC%"}%" section="%FORMFIELD{"Section"}%"}%
 %TMPL:END%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
-%TMPL:DEF{"beforetext::title"}%<div class="foswikiTopicInfo">
-%DBCALL{"Applications.RenderWikiTopicView" 
-   TITLE_EXTRA="%TMPL:P{"titleextra"}%"
-   TITLE_PREFIX="%IF{"'%FORMFIELD{"Target"}%'/TopicType=~'\bTopicType\b'"
-                  then="$percntTMPL:P{\"titleicon\"}$percnt"
-               }%"
-}%
-</div>%TMPL:END%
-%{</verbatim>}%
+%TMPL:DEF{"topicinfo::editable"}%on%TMPL:END%
 
-%{<verbatim class="tml">}%
-%TMPL:DEF{"titleextra"}%%IF{"context isadmin" 
-   then="<span class='foswikiNormal foswikiGrayText'>([[%FORMFIELD{"Target"}%][%MAKETEXT{"reference"}%]])</span>"
+%TMPL:DEF{"topicinfo::extra"}%%IF{"context isadmin" 
+   then="<span class='foswikiTopicExtra foswikiNormal foswikiRight foswikiGrayText foswikiHideOnPrint'>([[%FORMFIELD{"Target"}%][%MAKETEXT{"reference"}%]])</span>"
 }%%TMPL:END%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
+%TMPL:DEF{"topicinfo::prefix"}%%IF{"'%FORMFIELD{"Target"}%'/TopicType=~'\bTopicType\b'"
+   then="<span class='foswikiTopicPrefix'>$percntTMPL:P{\"titleicon\"}$percnt</span>"
+}%%TMPL:END%
+
 %TMPL:DEF{"titleicon"}%%JQICON{
    "%FORMFIELD{
       "Icon" 
       topic="%FORMFIELD{"Target"}%"
+      default="fa-file"
    }%"
 }%%TMPL:END%
-%{</verbatim>}%
 
 %META:FORM{name="TopicView"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%

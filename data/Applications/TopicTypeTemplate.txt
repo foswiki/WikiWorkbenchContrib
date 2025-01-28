@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicTemplate"}%
 %DBCALL{"Applications.RenderTopicInstaller" TEXT="Install '%TOPIC%' TopicType" TYPE="TopicType"}%
 
@@ -17,12 +17,14 @@
   VALUE=""
 }%
 
-%DBCALL{"Applications.RenderTopicsOfType"}%
+%DBCALL{"Applications.RenderTopicsOfType"
+   FORM="%WEB%.%TOPIC%"
+}%
 %STOPINCLUDE%
 
 ---++ %TOPIC% form
 | *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
-| TopicType | label | 1 | ..., WikiTopic | topic type  | | |
+| TopicType | type | 1 | ..., WikiTopic | topic type  | h | |
 | TopicTitle | text | 75 | | title of this topic | | |
 | Summary | text | 75 | | short description or tagline | | |
 
@@ -31,4 +33,4 @@
 %META:FIELD{name="TopicType" title="TopicType" value="TopicTemplate, ApplicationTopic, WikiTopic"}%
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
 %META:FIELD{name="Summary" title="Summary" value="Template to create TopicTypes"}%
-%META:FIELD{name="ForTopicType" title="For TopicType" value="TopicType"}%
+%META:FIELD{name="ForTopicType" title="For <nop>TopicType" value="TopicType"}%

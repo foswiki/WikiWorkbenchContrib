@@ -1,10 +1,7 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
-%{<verbatim class="tml">}%
 %TMPL:INCLUDE{"edit"}%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
 %TMPL:DEF{"formdefinition"}%%URLPARAM{"formtemplate" 
    default="%IF{"'%URLPARAM{"templatetopic"}%'!='' and '%URLPARAM{"templatetopic"}%'/form.name!=''"
                then="$percntQUERY{\"'%URLPARAM{"templatetopic"}%'/form.name\"}$percnt"
@@ -14,40 +11,26 @@
                }%"
             }%"
 }%%TMPL:END%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
 %TMPL:DEF{"edittoolbar::paragraphmenu::h1"}%%TMPL:END%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
 %TMPL:DEF{"firsttab"}%%IF{
   "$'URLPARAM{action}'!='form'" 
   then="$percntTMPL:P{\"firsttab::impl\"}$percnt"
   else="$percntTMPL:P{\"hiddentextarea\"}$percnt"
 }%%TMPL:END%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
-%TMPL:DEF{"hiddentextarea"}%<textarea class='natedit foswikiHidden' data-hidden='true' data-show-toolbar='false'></textarea>%TMPL:END%
-%{</verbatim>}%
+%TMPL:DEF{"hiddentextarea"}%<textarea class='natedit foswikiHidden' data-hidden='true' data-show-toolbar='false' name="text" id="topic">%TEXT%</textarea>%TMPL:END%
 
-%{<verbatim class="tml">}%
 %TMPL:DEF{"firsttab::impl"}%%TAB{"%TRANSLATE{"Text"}%"}%
-%TMPL:P{"topicmeta"}%
-%TMPL:P{"textarea"}%
+%TMPL:P{"topicmeta"}%%{}%
+%TMPL:P{"textarea"}%%{}%
 %ENDTAB%%TMPL:END%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
 %TMPL:DEF{"formfields"}%<!-- disabled -->%TMPL:END%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
 %TMPL:DEF{"editfields"}%TopicTitle, Summary%TMPL:END%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
 %TMPL:DEF{"topicmeta"}%%RENDERFOREDIT{ 
   form="%TMPL:P{"formdefinition"}%" 
   fields="%TMPL:P{"editfields"}%" 
@@ -55,17 +38,13 @@
   format="<tr title='$description'><th valign='top'>$title$mandatory:</th><td valign='top'>$edit</td></tr>" 
   footer="</table></div>" 
   TopicTitle_title="%TRANSLATE{"Title"}%" 
-  TopicTitle_default="%BASETOPIC%"
   Summary_title="%TRANSLATE{"Summary"}%" 
-}%<!-- --> %TMPL:END%
-%{</verbatim>}%
+}%%TMPL:END%
 
-%{<verbatim class="tml">}%
-%TMPL:DEF{"formattop"}%<noautolink>%IF{"not '%TMPL:P{"formdefinition"}%'=~'^(none)?$'"
-   then="<input type='hidden' name='TopicType' value='$percntRENDERFORMDEF{\"%TMPL:P{"formdefinition"}%\" field=\"TopicType\" format=\"$value\"}$percnt' />"
+%TMPL:DEF{"formattop"}%<noautolink>%IF{"not '%TMPL:P{"formdefinition"}%'=~'^(none)?$' and istopic '%TMPL:P{"formdefinition"}%'"
+   then="<input type='hidden' name='TopicType' value='$percntRENDERFORMDEF{\"%TMPL:P{"formdefinition"}%\" field=\"TopicType\" format=\"$value\" ignoreerror=\"on\"}$percnt' />"
 }%
 </noautolink>%TMPL:END%
-%{</verbatim>}%
 
 %META:FORM{name="TopicView"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%

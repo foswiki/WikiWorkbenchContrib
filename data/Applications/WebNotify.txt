@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1" version="1"}%
 ---+ <nop>%TOPIC%
 
 This is a subscription service to be automatically notified by e-mail when
@@ -14,6 +14,3 @@ Format:
    * SMTP mail address : topics 
    * [ webname . ] wikiName : topics
 
-<!--
-   * Set VIEW_TEMPLATE = Applications.HiddenFormView
--->

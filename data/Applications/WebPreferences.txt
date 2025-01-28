@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 ---+!! %TOPIC%
 %TOC%
 
@@ -7,10 +7,10 @@
 
 ---++ Editing
    * Set NOWYSIWYG = on
+   * Set NATEDIT_PURIFY = false
 
 ---++ Naming
    * Set WEBSUMMARY = Applications Library
-   * Set WEBBGCOLOR = #EDBC18
    * Set SITEMAPLIST = off
 
 ---++ Translations
@@ -25,3 +25,5 @@
    * Set ALLOWWEBCHANGE = %USERSWEB%.AdminGroup
    * Set ALLOWTOPICCHANGE = %USERSWEB%.AdminGroup
    * Set DENYWEBCOMMENT = %USERSWEB%.WikiGuest
+   * Set DENYWEBHISTORY = %USERSWEB%.WikiGuest
+   * Set DENYWEBRAW = %USERSWEB%.WikiGuest

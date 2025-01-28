@@ -1,52 +1,123 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
-%{<verbatim class="tml">}%
 %TMPL:INCLUDE{"view"}%
-%{</verbatim>}%
-
-%{<verbatim class="tml">}%
-%TMPL:DEF{"formdefinition"}%%QUERY{"form.name"}%%TMPL:END%
-%{</verbatim>}%
-
-%{<verbatim class="tml">}%
-%TMPL:DEF{"beforetext"}%%IF{
-   "$'DISPLAYTOPICTITLE'!='off'"
-   then="$percntTMPL:P{\"beforetext::title\"}$percnt"
-}%%IF{
-   "$'ENABLEQUALITYCHECK'='on' and '%WEB%.%TOPIC%' allows 'change'" 
-   then="$percntTMPL:P{\"qualitycheck\"}$percnt"
-}%%TMPL:END%
-%{</verbatim>}%
-
-%{<verbatim class="tml">}%
-%TMPL:DEF{"beforetext::title"}%<div class="foswikiTopicInfo">
-%DBCALL{"Applications.RenderWikiTopicView" 
-   TITLE_EXTRA="%TMPL:P{"titleextra"}%"
-   TITLE_PREFIX="%TMPL:P{"titleicon"}%"
-}%
-</div>%TMPL:END%
-%{</verbatim>}%
-
-%{<verbatim class="tml">}%
 %TMPL:DEF{"form"}%%TMPL:END% 
-%TMPL:DEF{"topicinfo"}%%TMPL:END%
-%TMPL:DEF{"revinfo"}%%TMPL:END%
-%{</verbatim>}%
+%TMPL:DEF{"revinfo"}%%TMPL:END% 
+%TMPL:DEF{"footernote"}%%TMPL:END% 
 
-%{<verbatim class="tml">}%
-%TMPL:DEF{"qualitycheck"}%%TMPL:P{"qualitycheck::multipleh1"}%%TMPL:END%
-%{</verbatim>}%
+%TMPL:DEF{"formdefinition"}%%QUERY{"form.name"}%%TMPL:END%
 
-%{<verbatim class="tml">}%
-%TMPL:DEF{"qualitycheck::multipleh1"}%%IF{
-  "'%BASEWEB%.%BASETOPIC%'/text=~'\-\-\-\+[^\+]'"  
-  then="<p class='foswikiWarningMessage'>%TRANSLATE{"There are multiple h1 titles on this page. Please use only one h1 for the title and h2-h6 within the text."}%</p>
-" 
+%TMPL:DEF{"beforetext"}%%IF{
+   "'%DISPLAYTOPICTITLE{default="on"}%'='on'"
+   then="$percntTMPL:P{\"topicinfo\"}$percnt"
+}%%IF{
+   "'%WEB%.%TOPIC%' allows 'change'" 
+   then="$percntTMPL:P{\"qualitychecks\"}$percnt"
 }%%TMPL:END%
-%{</verbatim>}%
+
+%TMPL:DEF{"topicinfo::prefix"}%%TMPL:P{"titleicon"}%%TMPL:END%
+%TMPL:DEF{"topicinfo::extra"}%%TMPL:P{"titleextra"}%%TMPL:END%
+%TMPL:DEF{"topicinfo::fields"}%TopicTitle,Summary%TMPL:END%
+
+%TMPL:DEF{"topicinfo::editable"}%%IF{
+   "'%RENDERFORMDEF{
+      topic="%WEB%.%TOPIC%"
+      fields="%TMPL:P{"topicinfo::fields"}%"
+      format="$type"
+      separator=","
+   }%'=~'\b(text|textarea|natedit)\b'"
+   then="on"
+   else="off"
+}%%TMPL:END%
+
+%TMPL:DEF{"topicinfo::title"}%%IF{"'%TMPL:P{"topicinfo::editable"}%'='on'"
+   then="$percntTMPL:P{\"topicinfo::title::editable\"}$percnt"
+   else="$percntTMPL:P{\"topicinfo::title::default\"}$percnt"
+}%%TMPL:END%
+
+%TMPL:DEF{"topicinfo::title::editable"}%%RENDERFORDISPLAY{
+   fields="%TMPL:P{"topicinfo::fields"}%"
+   editable="%TMPL:P{"topicinfo::editable"}%"
+   excludeattr=""
+   hideempty="on"
+   header=""
+   footer=""
+   format="<span class='$name'><span class='inlineEditValue' data-formfield='$name' data-default='$default' data-format='$edit'>$value $editicon</span></span>"
+   separator=""
+   TopicTitle_default="$percntGETTOPICTITLE{encode=\"entity\"}$percnt"
+   TopicTitle_format="<span class='$name'><span itemprop='name' class='inlineEditValue' data-formfield='$name' data-default='$default' data-format='$edit'><a href='%SCRIPTURLPATH{"view" topic="%WEB%.%TOPIC%"}%'>$value</a>  $editicon</span> $percntTMPL:P{\"topicinfo::extra\"}$percnt</span>"
+   Summary_format="<div class='$name'><div class='foswikiTopicSummary inlineEditValue' data-formfield='$name' data-format='$edit'>$value $editicon</div></div>"
+}%%TMPL:END%
+
+%TMPL:DEF{"topicinfo::title::default"}%%RENDERFORDISPLAY{
+   fields="%TMPL:P{"topicinfo::fields"}%"
+   excludeattr=""
+   hideempty="on"
+   header=""
+   footer=""
+   format="<span class='$name'><span class='inlineEditValue' data-formfield='$name' data-default='$default' data-format='$edit'>$value $editicon</span></span>"
+   separator=""
+   TopicTitle_default="$percntGETTOPICTITLE{encode=\"entity\"}$percnt"
+   TopicTitle_format="<span class='$name'><span itemprop='name'><a href='%SCRIPTURLPATH{"view" topic="%WEB%.%TOPIC%"}%'>$value</a></span> $percntTMPL:P{\"topicinfo::extra\"}$percnt</span>"
+   Summary_format="<div class='$name'><div class='foswikiTopicSummary'>$value</div></div>"
+}%%TMPL:END%
+
+%TMPL:DEF{"topicinfo"}%<noautolink><div class='foswikiTopicInfo'><h1 itemprop='headline' class='inlineEditor inlineTitleEditor'>%TMPL:P{"topicinfo::prefix"}%%TMPL:P{"topicinfo::title"}%</h1>
+%IF{
+   "'%DISPLAYREVISIONINFO{default="on"}%'='on'"
+   then="$percntTMPL:P{\"revinfo::impl\"}$percnt"
+}%</div></noautolink>%TMPL:END%
+
+%TMPL:DEF{"qualitychecks"}%%IF{
+  "$'ENABLEQUALITYCHECK'=~'\b(on|h1)\b'" 
+  then="$percntTMPL:P{\"qualitycheck::h1\"}$percnt"
+}%%IF{
+  "$'ENABLEQUALITYCHECK'=~'\b(on|href)\b'" 
+  then="$percntTMPL:P{\"qualitycheck::href\"}$percnt"
+}%%IF{
+  "$'ENABLEQUALITYCHECK'=~'\b(on|br)\b'" 
+  then="$percntTMPL:P{\"qualitycheck::br\"}$percnt"
+}%%IF{
+  "$'ENABLEQUALITYCHECK'=~'\b(on|topictitle)\b'" 
+  then="$percntTMPL:P{\"qualitycheck::topictitle\"}$percnt"
+}%%TMPL:END%
+
+%TMPL:DEF{"qualitycheck::warning::class"}%foswikiWarningMessage%TMPL:END%
+%TMPL:DEF{"qualitycheck::error::class"}%foswikiErrorMessage%TMPL:END%
+
+%TMPL:DEF{"qualitycheck::h1"}%%IF{
+  "'%DISPLAYTOPICTITLE{default="on"}%'!='off' AND ('%BASEWEB%.%BASETOPIC%'/text=~'<h1' or '%BASEWEB%.%BASETOPIC%'/text=~'(^|\n)---\+[^\+#]')" 
+  then="<p class='%TMPL:P{"qualitycheck::warning::class"}% foswikiHideOnPrint'>$percntTMPL:P{\"qualitycheck::h1::message\"}$percnt</p>" 
+}%%TMPL:END%
+
+%TMPL:DEF{"qualitycheck::h1::message"}%%TRANSLATE{"Multiple heading 1 detected. Please only use heading 2, 3, ... inside the content area."}%%TMPL:END%
+
+%TMPL:DEF{"qualitycheck::href"}%%IF{
+  "'%BASEWEB%.%BASETOPIC%'/text=~'(%SCRIPTURL{"view"}%|[%]SCRIPTURL\{\"view)'" 
+  then="<p class='%TMPL:P{"qualitycheck::warning::class"}% foswikiHideOnPrint'>$percntTMPL:P{\"qualitycheck::href::message\"}$percnt</p>" 
+}%%TMPL:END%
+
+%TMPL:DEF{"qualitycheck::href::message"}%%TRANSLATE{"HTTP references to this domain have been found. Please use proper wiki links."}%%TMPL:END%
+
+%TMPL:DEF{"qualitycheck::br"}%%IF{
+  "'%BASEWEB%.%BASETOPIC%'/text=~'%(BR)%|<br( /)?|<BR( /)?>'" 
+  then="<p class='%TMPL:P{"qualitycheck::warning::class"}% foswikiHideOnPrint'>$percntTMPL:P{\"qualitycheck::br::message\"}$percnt</p>" 
+}%%TMPL:END%
+
+%TMPL:DEF{"qualitycheck::br::message"}%%TRANSLATE{"Excessive use of BR detected. Please use other means to format your text."}%%TMPL:END%
+
+%TMPL:DEF{"qualitycheck::topictitle"}%%DBQUERY{
+   "%TMPL:P{"qualitycheck::topictitle::filter"}% AND TopicTitle='%ENCODE{"%FORMFIELD{"TopicTitle" default="%TOPIC%"}%" old=" " new=".?"}%' AND topic!='%TOPIC%'"
+   limit="1"
+   format="<p class='%TMPL:P{"qualitycheck::warning::class"}% foswikiHideOnPrint'>$percntTMPL:P{\"qualitycheck::topictitle::message\" topic=\"$web.$topic\"}$percnt</p>"
+}%%TMPL:END%
+
+%TMPL:DEF{"qualitycheck::topictitle::filter"}%TopicType=~'\bWikiTopic\b'%TMPL:END%
+
+%TMPL:DEF{"qualitycheck::topictitle::message"}%%TRANSLATE{"There is a [[[_1]][similar topic]] with the same title. Please make sure that topics are clearly distinguishable." arg1="%topic%"}%%TMPL:END%
 
 %META:FORM{name="TopicView"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" title="Summary" value="Generic topic view"}%
+%META:FIELD{name="Summary" title="Summary" value="foundation for all view templates"}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

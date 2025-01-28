@@ -13,6 +13,7 @@ data/Applications/DocuTopicTemplate.txt 0644
 data/Applications/DocuTopic.txt 0644
 data/Applications/FirstSteps.txt 0644
 data/Applications/FormEditTemplate.txt 0644
+data/Applications/GetFormOfType.txt 0644
 data/Applications/GetTopicTypes.txt 0644
 data/Applications/GnuGeneralPublicLicense.txt 0644
 data/Applications/HiddenFormViewTemplate.txt 0644
@@ -21,7 +22,6 @@ data/Applications/RenderApplicationDocumentation.txt 0644
 data/Applications/RenderApplicationManifest.txt 0644
 data/Applications/RenderDataFormList.txt 0644
 data/Applications/RenderFunctionCallers.txt 0644
-data/Applications/RenderImageSelector.txt 0644
 data/Applications/RenderIndexItem.txt 0644
 data/Applications/RenderInheritanceGraph.txt 0644
 data/Applications/RenderRecentChanges.txt 0644
@@ -29,6 +29,7 @@ data/Applications/RenderRss.txt 0644
 data/Applications/RenderSideBar.txt 0644
 data/Applications/RenderSimpleTopicCreator.txt 0644
 data/Applications/RenderTopicInstaller.txt 0644
+data/Applications/RenderTopicsOfTypeSolr.txt 0644
 data/Applications/RenderTopicsOfType.txt 0644
 data/Applications/RenderTopicThumbnail.txt 0644
 data/Applications/RenderWikiApplicationFactory.txt 0644
@@ -52,7 +53,6 @@ data/Applications/TopicTypeTemplate.txt 0644
 data/Applications/TopicType.txt 0644
 data/Applications/TopicViewTemplate.txt 0644
 data/Applications/TopicView.txt 0644
-data/Applications/WebAtom.txt 0644
 data/Applications/WebChanges.txt 0644
 data/Applications/WebHome.txt 0644
 data/Applications/WebLeftBar.txt 0644
@@ -85,7 +85,6 @@ data/_WikiApplicationTemplate/TopicStub.txt 0644
 data/_WikiApplicationTemplate/TopicTemplate.txt 0644
 data/_WikiApplicationTemplate/TopicType.txt 0644
 data/_WikiApplicationTemplate/TopicView.txt 0644
-data/_WikiApplicationTemplate/WebAtom.txt 0644
 data/_WikiApplicationTemplate/WebChanges.txt 0644
 data/_WikiApplicationTemplate/WebHome.txt 0644
 data/_WikiApplicationTemplate/WebLeftBar.txt 0644
@@ -103,11 +102,11 @@ data/_WikiApplicationTemplate/WikiTopic.txt 0644
 lib/Foswiki/Contrib/WikiWorkbenchContrib/BaseConverter.pm 0644
 lib/Foswiki/Contrib/WikiWorkbenchContrib/Config.spec 0644
 lib/Foswiki/Contrib/WikiWorkbenchContrib/DEPENDENCIES 0644
+lib/Foswiki/Contrib/WikiWorkbenchContrib/MANIFEST 0644
 lib/Foswiki/Contrib/WikiWorkbenchContrib.pm 0644
+lib/Foswiki/Form/Type.pm 0644
 lib/Foswiki/Form/Wikiapp.pm 0644
-pub/Applications/RenderImageSelector/nobody.png 0644
-pub/Applications/RenderImageSelector/script.js 0644
-pub/Applications/RenderImageSelector/style.css 0644
+pub/Applications/RssViewTemplate/pretty-feed.xsl 0644
 pub/Applications/TopicTypeEditTemplate/script.js 0644
 pub/System/WikiWorkbenchContrib/book.png 0644
 pub/System/WikiWorkbenchContrib/exec.png 0644

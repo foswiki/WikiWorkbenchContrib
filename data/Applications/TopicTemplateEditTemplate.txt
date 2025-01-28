@@ -1,11 +1,62 @@
-%META:TOPICINFO{author="ProjectContributor" date="1556788680" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
-%{<verbatim class="tml">}%
 %TMPL:INCLUDE{"Applications.ApplicationTopicEdit"}%
-%{</verbatim>}%
+
+%TMPL:DEF{"detailstab"}%%TAB{"%TRANSLATE{"Details"}%"}%
+%RENDERFOREDIT{
+   form="%TMPL:P{"formdefinition"}%"
+   exclude="^(TopicType|Summary|TopicTitle)$"
+}%
+<div class="topicTypeContainer">
+%IF{"ForTopicType" 
+   then="$percntTMPL:P{\"topictype::edit\"}$percnt"
+}%
+</div>
+<script>
+jQuery(function($) {
+   $("input[name='ForTopicType']").on("change", function() {
+      var topicType = $(this).val();
+      foswiki.loadTemplate({
+        "name": "Applications.TopicTemplateEditTemplate",
+        "expand": "topictype::edit",
+        "topicType": topicType,
+        "topic": "%WEB%.%TOPIC%"
+      }).then(function(data) {
+         $(".topicTypeContainer").html(data.expand);
+      });
+   });
+});
+</script>
+%ENDTAB%%TMPL:END%
+
+%TMPL:DEF{"topictype::edit"}%<h2 >%TRANSLATE{"Default Values"}%</h2>
+%RENDERFOREDIT{
+   form="%TMPL:P{"topictype::form"}%"
+   exclude="^(%TMPL:P{"topictype::exclude"}%)$"
+   %RENDERFORMDEF{
+      form="%TMPL:P{"topictype::form"}%"
+      exclude="^(%TMPL:P{"topictype::exclude"}%)$"
+      format="   $name_attributes=\"\" $name_name=\"Set+FORMFIELD_$name\"$n   $name_value=\"$percntENCODE{\"$percntFORMFIELD_$name{default=\"\"}$percnt\" type=\"quote\"}$percnt\"$n   $name_default=\"\""
+   }%
+}%
+%RENDERFORMDEF{
+   form="%TMPL:P{"topictype::form"}%"
+   exclude="^(%TMPL:P{"topictype::exclude"}%)$"
+   format="<input type='hidden' name='Default+FORMFIELD_$name' value='' />"
+}%
+%TMPL:END%
+
+%TMPL:DEF{"topictype::exclude"}%TopicTitle|TopicType%TMPL:END%
+
+%TMPL:DEF{"topictype::value"}%%URLPARAM{"topicType" default="%FORMFIELD{"ForTopicType"}%"}%%TMPL:END%
+
+%TMPL:DEF{"topictype::form"}%%IF{"'%TMPL:P{"topictype::value"}%'/TopicType=~'TopicStub'"
+   then="%FORMFIELD{"Target" topic="%TMPL:P{"topictype::value"}%"}%"
+   else="%TMPL:P{"topictype::value"}%"
+}%%TMPL:END%
 
 %META:FORM{name="Applications.TopicView"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%
-%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value="TopicTemplateEditTemplate"}%
 %META:FIELD{name="Summary" title="Summary" value="Editor for TopicTemplates"}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="none"}%

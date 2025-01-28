@@ -1,19 +1,14 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
-%{<verbatim class="tml">}%
 %TMPL:INCLUDE{"Applications.WikiTopicView"}%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
-%TMPL:DEF{"titleicon"}%%JQICON{
+%TMPL:DEF{"topicinfo::prefix"}%<span class='foswikiTopicPrefix'>%JQICON{
    "%FORMFIELD{
       "Icon" 
       topic="%TMPL:P{"formdefinition"}%"
    }%"
-}%%TMPL:END%
-%{</verbatim>}%
+}%</span>%TMPL:END%
 
-%{<verbatim class="tml">}%
 %TMPL:DEF{"beforetext"}%%TMPL:PREV%
 %RENDERFORDISPLAY{
    form="%TMPL:P{"formdefinition"}%"
@@ -22,20 +17,18 @@
       mode="%FORMFIELD{"TopicNamingMode"}%"
    }%)$"
    hideempty="on"
-}%
+   editable="on"
+}%<!-- -->
 
 %TMPL:END%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
-%TMPL:DEF{"hiddenfields"}%%IF{"'%mode%'='default'"
+%TMPL:DEF{"hiddenfields"}%%IF{"'%mode%'=~'default|uuid'"
    then="|TopicNameTemplate|TopicNameSource|TopicNamePrefix|TopicNameSuffix|TopicNameTransliterate"
 }%%IF{"'%mode%'='template'"
    then="|TopicNameSource|TopicNamePrefix|TopicNameSuffix|TopicNameTransliterate"
 }%%IF{"'%mode%'='derived'"
    then="|TopicNameTemplate"
 }%%TMPL:END%
-%{</verbatim>}%
 
 %META:FORM{name="TopicView"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%

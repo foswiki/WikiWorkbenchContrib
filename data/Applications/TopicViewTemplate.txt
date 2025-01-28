@@ -1,8 +1,6 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicTemplate"}%
-%{<verbatim class="tml">}%
 %TMPL:INCLUDE{"Applications.WikiTopicView"}%
-%{</verbatim>}%
 
 %META:FORM{name="Applications.TopicTemplate"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicTemplate, ApplicationTopic, WikiTopic"}%

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 ---++ Documentation
 %STARTSECTION{"documentation"}%
@@ -15,11 +15,11 @@ See also: [[%TOPIC%Template]], [[%SYSTEMWEB%.DataForms]]
 %STOPINCLUDE%
 
 ---++ <nop>%TOPIC% form
-| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
-| TopicType | label | 1 | DataForm, ApplicationTopic, WikiTopic | topic type | | DataForm, ApplicationTopic, WikiTopic |
+| *Name:* | *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
+| TopicType | type | 1 | DataForm, ApplicationTopic, WikiTopic | topic type | h | |
 | <nop>TopicTitle | text | 75 | | | | |
 | Summary | text | 75 | | short description or tagline | c | |
-| WikiApplication| wikiapp | 1 | | application this topic belongs to | | |
+| WikiApplication | wikiapp | 1 | | application this topic belongs to | | |
 
 %META:FORM{name="Applications.TopicType"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
@@ -28,6 +28,7 @@ See also: [[%TOPIC%Template]], [[%SYSTEMWEB%.DataForms]]
 %META:FIELD{name="Icon" title="Icon" value="fa-database"}%
 %META:FIELD{name="Editor" title="Editor" value="Applications.ApplicationTopicEditTemplate"}%
 %META:FIELD{name="Template" title="Template" value="Applications.DataFormTemplate"}%
+%META:FIELD{name="CreateAction" title="Create Action" value="edit"}%
 %META:FIELD{name="TopicNamingMode" title="Topic Naming Mode" value="default"}%
 %META:FIELD{name="TopicNameTemplate" title="Topic Name Template" value=""}%
 %META:FIELD{name="TopicNameSource" title="Topic Name Source" value="[name=TopicTitle]"}%

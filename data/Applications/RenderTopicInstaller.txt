@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -30,7 +30,7 @@ TopicStub is to be created.
 %STARTINCLUDE%
 %TWISTY{
   mode="div"
-  link="%BUTTON{"%TRANSLATE{"Install"}%" icon="application_add"}%%CLEAR%"
+  link="%BUTTON{"%TRANSLATE{"Install"}%" icon="fa-hand-o-right"}%%CLEAR%"
 }%
 
 <form id="topicinstaller" action="%SCRIPTURLPATH{"save"}%/" method="post">
@@ -44,20 +44,18 @@ TopicStub is to be created.
 <input type="hidden" name="formtemplate" value="%FORM{default="Applications.TopicStub"}%" />
 <input type="hidden" name="TopicType" value="%IF{"defined TYPE" then="TopicStub, %TYPE%"  else="TopicStub"}%" />
 <input type="hidden" name="Target" value="%SOURCE{default="%BASEWEB%.%BASETOPIC%"}%" />
-<input type="hidden" name="WikiApplication" value="%WIKIAPP{default="%FLEXWEBLIST{include="%BASEWEB%" format="$name"}%"}%" />
+<input type="hidden" name="WikiApplication" value="%WIKIAPP{default="%EXTRACT{text="%BASEWEB%" pattern="^(?:.*[\./])?([^\./]+)$" format="$1"}%"}%" />
 %EXTRA{default="<!-- -->"}%
 <input type="hidden" name="topic" id="topic" value="%NAME{default="%BASETOPIC%"}%" />
 <div class="foswikiFormStep">
   <h3>Target web:</h3>
-  <select id="newweb" name="web" class="jqSelect2" data-width="30em"> 
-    <option></option>
-    %FLEXWEBLIST{
-      format="<option value='$web'>$web</option>"
-      webs="public,webtemplate" 
-      separator=" " 
-      exclude="Trash|Applications"
-    }%
-  </select>
+   %RENDERFOREDIT{
+      field="Web"
+      form="%SYSTEMWEB%.MoreFormfieldsPlugin"
+      Web_name="web"
+      Web_params="webs=\"public,webtemplate\""
+      format="$edit"
+  }%
   <div class="foswikiFormDescription">
     %TRANSLATE{"Select a web where to deploy this component."}%
   </div>
@@ -68,8 +66,7 @@ TopicStub is to be created.
 </div>
 </div>
 </form> 
-%ENDTWISTY%
-%JQREQUIRE{"select2"}%%ADDTOZONE{"script" id="TOPICINSTALLER" topic="%WEB%.%TOPIC%" section="init" requires="JQUERYPLUGIN"}%
+%ENDTWISTY%%ADDTOZONE{"script" id="TOPICINSTALLER" topic="%WEB%.%TOPIC%" section="init" requires="JQUERYPLUGIN"}%
 %STOPINCLUDE%
 </verbatim>
 

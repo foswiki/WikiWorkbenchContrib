@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -10,36 +10,37 @@ method was found.
 
 ---+++++ Parameters
    * OBJECT
+   * THEICON
+   * TITLEEXTRA
 
 %ENDSECTION{"documentation"}%
 
 ---++ Implementation
 <verbatim class="tml">
 %STARTINCLUDE%%DBQUERY{topic="%OBJECT%"
-   format="<div class='clsIndexItem clsTopicItem'>
+   format="<div class='clsIndexItem clsTopicItem clearfix'>
+      %IF{"defined THEICON" then="$percntJQICON{%THEICON%}$percnt"}%<!-- -->
       $percntDBCALL{\"$web.$topic->Applications.RenderTopicThumbnail\"  
          TYPE=\"plain\" 
          ALIGN=\"right\" 
-         CROP=\"west\" 
+         CROP=\"northwest\" 
       }$percnt<!-- --> 
-      <!-- -->[[$web.$topic][$expand(topictitle)]]&nbsp;$percntREDDOT{\"$web.$topic\"}$percnt
-      $expand('<div class=\"foswikiTopicSummary\">' and Summary and '</div>')<!-- -->
+      [[$web.$topic]]%TITLEEXTRA{default=""}%%IF{"context RedDotPluginEnabled" then="$dollarpercntREDDOT{\\"$web.$topic\\"}$dollarpercnt"}%
+      <div class='foswikiTopicSummary'>$expand(Summary)</div>
       <div class='foswikiTopicInfo'>
-         <!-- -->$formatTime(info.date) 
-         <!-- -->$percntUSERINFO{\"$expand(info.author)\"
-           format=\"<span class='foswikiRevisionSep'>&#124;</span> <nop>$dollarpercntGETTOPICTITLE{\\"$wikiusername\\"}$dollarpercnt\"
-         }$percnt
-         <!-- -->$percntIF{\"'$expand(total_likes)'>0\"
+         <span class='foswikiRevisionDate'>$formatTime(info.date)</span>
+         $percntUSERINFO{\"$expand(info.author)\"
+           format=\"<span class='foswikiRevisionSep'>&#124;</span> <span class='foswikiRevisionAuthor'>$dollarpercntGETTOPICTITLE{\\"$wikiusername\\"}$dollarpercnt</span>\"
+         }$percnt<!-- -->
+         $percntIF{\"'$expand(total_likes)'>0\"
             then=\"<span class='foswikiRevisionSep'>&#124;</span> <span class='clsLikeInfo'>$percntTRANSLATE{\"[quant,_1,like,likes]\" args=\"$expand(total_likes)\"}$percnt</span>\"
-         }$percnt
+         }$percnt<!-- -->
      </div></div>"
 }%%STOPINCLUDE%
 </verbatim>
 
 ---++ Test
-<div class="alt">
-%DBCALL{"%TOPIC%" OBJECT="%TOPIC%"}%
-</div>
+%DBCALL{"%TOPIC%->%TOPIC%"}%
 
 %META:FORM{name="TopicFunction"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%

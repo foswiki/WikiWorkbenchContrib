@@ -1,6 +1,6 @@
 # Module of Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# Copyright (C) 2007-2019 Michael Daum http://michaeldaumconsulting.com
+# Copyright (C) 2007-2025 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -21,9 +21,10 @@ use warnings;
 use Foswiki::Func();
 use Error qw(:try);
 
-our $VERSION = '5.00';
-our $RELEASE = '2 May 2019';
+our $VERSION = '6.00';
+our $RELEASE = '%$RELEASE%';
 our $SHORTDESCRIPTION = 'Framework for <nop>WikiApplications';
+our $LICENSECODE = '%$LICENSECODE%';
 
 sub convertTopicType {
   my ($session) = @_;
@@ -35,7 +36,9 @@ sub convertTopicType {
     throw Error::Simple("no class specified") unless defined $class;
     $class = 'Foswiki::Contrib::WikiWorkbenchContrib::'.$class unless $class =~ /^Foswiki::/;
 
-    eval "require $class";
+    my $path = $class . '.pm';
+    $path =~ s/::/\//g;
+    eval {require $path};
     throw Error::Simple($@) if $@;
 
     my $impl = $class->new();

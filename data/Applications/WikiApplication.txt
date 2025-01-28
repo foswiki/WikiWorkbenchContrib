@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 ---++ Documentation
 %STARTSECTION{"documentation"}%
@@ -10,7 +10,6 @@ See also: [[%TOPIC%Template]]
 ---++ Topis of type '%TOPIC%'
 %STARTINCLUDE%%DBCALL{"Applications.RenderSimpleTopicCreator" 
   TEXT="New application topic" 
-  VALUE="...App"
 }%
 
 %DBCALL{"Applications.RenderTopicsOfType"
@@ -19,15 +18,15 @@ See also: [[%TOPIC%Template]]
 %STOPINCLUDE%
 
 ---++ WikiApplication form
-| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
-| TopicType | label | 1 | WikiApplication, ApplicationTopic, WikiTopic | topic type  | | WikiApplication, ApplicationTopic, WikiTopic |
+| *Name:* | *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
+| TopicType | type | 1 | WikiApplication, ApplicationTopic, WikiTopic | topic type | h | |
 | <nop>TopicTitle | text | 75 | | title of this topic | | |
 | Summary | text | 75 | | short description of this topic | c | |
 | Version | text | 75 | | software release number/id/phase | c | |
 | Author | text | 75 | | application author(s) | c | %WIKINAME% |
 | Copyright | text | 75 | | Application version | | |
-| License | topic | 33 | TopicType="ApplicationLicense" web="Applications" | License of this application | | |
-| Dependencies | text | 75 |  | | | |
+| License | topic | 34 | TopicType="ApplicationLicense" web="Applications" | License of this application | | |
+| Dependencies | text | 75 | | | | |
 
 
 %META:FORM{name="Applications.TopicType"}%
@@ -37,6 +36,7 @@ See also: [[%TOPIC%Template]]
 %META:FIELD{name="Icon" title="Icon" value="fa-bank"}%
 %META:FIELD{name="Editor" title="Editor" value="Applications.ApplicationTopicEditTemplate"}%
 %META:FIELD{name="Template" title="Template" value="Applications.WikiApplicationTemplate"}%
+%META:FIELD{name="CreateAction" title="Create Action" value="edit"}%
 %META:FIELD{name="TopicNamingMode" title="Topic Naming Mode" value="default"}%
 %META:FIELD{name="TopicNameTemplate" title="Topic Name Template" value=""}%
 %META:FIELD{name="TopicNameSource" title="Topic Name Source" value="[name=TopicTitle]"}%

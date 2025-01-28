@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -8,45 +8,73 @@ This function renders a view for a wiki topic,
 showing its title and the summary line.
 
 ---+++ Parameters
-   * OBJECT: the topic to render the view for, defaults to %<nop>BASEWEB%.%<nop>BASETOPIC%
-   * TITLE_PREFIX: optional string put before the topic title
-   * TITLE_EXTRA: optional addition put behind the topic title
-   * DISPLAYREVISIONINFO: boolean flag to switch on/off revinfo rendered underneath the h1 element
+   * OBJECT: the topic to render the view for, defaults to =%<nop>BASEWEB%.%<nop>BASETOPIC%=
+   * TITLE_PREFIX: optional string put before the topic title. see [[Applications.RenderWikiTopicView]]
+   * TITLE_EXTRA: optional addition to the topic title. see [[Applications.RenderWikiTopicView]]
+   * TITLE_FIELDS: fields that make up the title aera, defaults to TopicTitle, Summary
+   * DISPLAYREVISIONINFO: boolean flag to switch on/off revinfo 
+   * EDITABLE: boolean flag switching on/off inline editing, defaults to on
 
 %ENDSECTION{"documentation"}%
 
 ---++ Implementation
 <verbatim class="tml">
-%STARTINCLUDE%<noautolink><h1 itemprop='headline'>%IF{
+%STARTINCLUDE%<noautolink>%DBCALL{"%WEB%.%TOPIC%" 
+   OBJECT="%OBJECT{default="%BASEWEB%.%BASETOPIC%"}%"
+   section="title"
+}%%IF{"'%DISPLAYREVISIONINFO{default="on"}%'='on'"
+   then="<span class='foswikiRevision'>$percntDBCALL{\"%WEB%.%TOPIC%\" 
+         OBJECT=\"%OBJECT{default="%BASEWEB%.%BASETOPIC%"}%\" 
+         section=\"revinfo\"
+      }$percnt</span>"
+}%</noautolink>%DEPRECATED%%STOPINCLUDE%
+</verbatim>
+
+---++ title
+<verbatim class="tml">
+%STARTSECTION{"title"}%<h1 itemprop='headline' class='inlineEditor inlineTitleEditor'>%IF{
    "defined TITLE_PREFIX and not isempty TITLE_PREFIX"
    then="<span class='foswikiTopicPrefix'>%TITLE_PREFIX%</span>"
-}%<a href="%DBQUERY{topic="%OBJECT{default="%BASEWEB%.%BASETOPIC%"}%" format="%SCRIPTURLPATH{"view"}%/$web/$topic"}%"><span itemprop='name'>%TRANSLATE{"%GETTOPICTITLE{topic="%OBJECT{default="%BASEWEB%.%BASETOPIC%"}%" rev="%URLPARAM{"rev"}%"}%"}%</span></a> %IF{
-   "defined TITLE_EXTRA and not isempty TITLE_EXTRA" 
-   then="<span class='foswikiTopicExtra'>%TITLE_EXTRA%</span>"
-}%%IF{
-   "'%OBJECT{default="%BASEWEB%.%BASETOPIC%"}%'/Summary"
-   then="<div class='foswikiTopicSummary'>$percntTRANSLATE{\"$percntFORMFIELD{\"Summary\" topic=\"%OBJECT{default="%BASEWEB%.%BASETOPIC%"}%\" rev=\"%URLPARAM{"rev"}%\"}$percnt\"}$percnt</div>"
-}%</h1>
-%IF{"'%DISPLAYREVISIONINFO{default="on"}%'='on'"
-   then="$percntDBCALL{\"%WEB%.%TOPIC%\" OBJECT=\"%OBJECT%\" section=\"revinfo\"}$percnt"
-}%</noautolink>%STOPINCLUDE%
+}%
+%RENDERFORDISPLAY{
+   topic="%OBJECT%"
+   fields="%TITLE_FIELDS{default="TopicTitle,Summary"}%"
+   TopicTitle_default="%DBQUERY{topic="%OBJECT%" format="$topic"}%"
+   editable="%EDITABLE{default="%IF{
+      "'%RENDERFORMDEF{
+         topic="%OBJECT%"
+         fields="%TITLE_FIELDS{default="TopicTitle,Summary"}%"
+         includetype="text"
+         format="$type"
+      }%'=~'^(text)+$'"
+      then="on"
+      else="off"
+   }%"}%"
+   excludeattr=""
+   hideempty="on"
+   format="<div class='$name'><span itemprop='name' class='inlineEditValue' data-formfield='$name' data-default='$default' data-format='$edit'>[[%OBJECT{default="%BASEWEB%.%BASETOPIC%"}%][$value]]  $editicon</span> %IF{
+         "defined TITLE_EXTRA and not isempty TITLE_EXTRA" 
+         then="<span class='foswikiTopicExtra'>%TITLE_EXTRA%</span>"
+      }%</div>"
+   Summary_format="<div class='$name'><div class='foswikiTopicSummary inlineEditValue' data-formfield='$name' data-format='$edit'>$value $editicon</div></div>"
+}%
+</h1>%DEPRECATED%%ENDSECTION{"title"}%
 </verbatim>
 
 ---++ Revision Info
 <verbatim class="tml">
-%STARTSECTION{"revinfo"}%<span class="foswikiRevision">
-   <span class='foswikiRevisionDate'>%JQICON{"fa-calendar"}%
+%STARTSECTION{"revinfo"}%<span class='foswikiRevisionDate'>%JQICON{"fa-calendar"}%
       %REVINFO{
-         "<a href='%SCRIPTURLPATH{"diff"}%/$web/$topic?rev=%CURREV{topic="%OBJECT{default="%BASEWEB%.%BASETOPIC%"}%"}%'>
+         "<a href='%SCRIPTURLPATH{"diff"}%/$web/$topic?rev=%CURREV{topic="%OBJECT%"}%'>
             <span itemprop='dateModified' content='$iso'>$date - $hour:$min</span>
          </a>" 
-         rev="%IF{"%NATMAXREV%!=%CURREV%" then="%CURREV%"}%" topic="%OBJECT{default="%BASEWEB%.%BASETOPIC%"}%"
+         rev="%IF{"%NATMAXREV%!=%CURREV%" then="%CURREV%"}%" topic="%OBJECT%"
       }%
   </span>
   <span class='foswikiRevisionSep'>&#124;</span>
   <span class='foswikiRevisionID'>
    %JQICON{"fa-flag"}%
-   %TRANSLATE{"Version [_1]" args="%REVINFO{"<span itemprop='version'>$rev</span>" rev="%IF{"%NATMAXREV%!=%CURREV%" then="%CURREV%"}%" topic="%OBJECT{default="%BASEWEB%.%BASETOPIC%"}%"}%"}%
+   %TRANSLATE{"Version [_1]" args="%REVINFO{"<span itemprop='version'>$rev</span>" rev="%IF{"%NATMAXREV%!=%CURREV%" then="%CURREV%"}%" topic="%OBJECT%"}%"}%
   </span>
   <span class='foswikiRevisionSep'>&#124;</span>
   <span class='foswikiRevisionAuthor' itemprop='author'>
@@ -54,23 +82,31 @@ showing its title and the summary line.
    %REVINFO{
       "$percntIF{
          \"istopic '$wikiusername'\"
-         then=\"[[$wikiusername][<span itemprop='name'>$percntGETTOPICTITLE{\"$wikiusername\"}$percnt</span>]]\"
+         then=\"<a href='$percntSCRIPTURLPATH{\"view\" topic=\"$wikiusername\"}$percnt' itemprop='name' class='foswikiUserField' data-wiki-name='$wikiname'>$percntGETTOPICTITLE{\"$wikiusername\"}$percnt</a>\"
          else=\"<nop>$wikiname\"
       }$percnt"
       rev="%IF{"%NATMAXREV%!=%CURREV%" then="%CURREV%"}%" 
-      topic="%OBJECT{default="%BASEWEB%.%BASETOPIC%"}%"}%</span> 
-  %DBQUERY{"total_likes>0"
-     topic="%OBJECT{default="%BASEWEB%.%BASETOPIC%"}%"
-     format="<span class='foswikiRevisionSep'>&#124;</span> %JQICON{"fa-thumbs-o-up" class="fa-flip-horizontal"}% $expand(total_likes)"
-  }%<!-- -->
-</span>%ENDSECTION{"revinfo"}%
+      topic="%OBJECT%"
+   }%
+  </span> 
+  %IF{"context LikePluginEnabled" 
+   then="$percntLIKE{ 
+            topic=\"%OBJECT%\" 
+            format=\"<span class='foswikiRevisionSep'>&#124;</span> <div class='jqLike jqLikeSimple %editable%' %params% style='margin:0'>%like%</div>\" 
+            likelabel=\"\" 
+            likeicon=\"fa-thumbs-o-up\" 
+            hidenull=\"on\" 
+         }$percnt" 
+  }%<!-- -->%DEPRECATED%%ENDSECTION{"revinfo"}%
 </verbatim>
 
 ---++ Test
-%DBCALL{"%TOPIC%" TITLE_EXTRA="(approved)"}%
+%STARTSECTION{"test"}%
+%DBCALL{"%TOPIC%" TITLE_EXTRA="<span class='foswikiNormal'>(approved)</span>"}%
+%ENDSECTION{"test"}%
 
 %META:FORM{name="TopicFunction"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%
-%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
-%META:FIELD{name="Summary" title="Summary" value=""}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value="RenderWikiTopicView"}%
+%META:FIELD{name="Summary" title="Summary" value="%25RED%25(deprecated)%25ENDCOLOR%25"}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

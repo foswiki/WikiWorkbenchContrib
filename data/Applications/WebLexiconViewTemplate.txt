@@ -1,26 +1,34 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
-%{<verbatim class="tml">}%
 %TMPL:INCLUDE{"Applications.WikiTopicView"}%
-%{</verbatim>}%
+%TMPL:DEF{"sidebar"}%%TMPL:END%
 
-%{<verbatim class="tml">}%
 %TMPL:DEF{"beforetext"}%%TMPL:PREV%%TMPL:P{"weblexicon"}%%TMPL:END%
-%{</verbatim>}%
 
-%{<verbatim class="tml">}%
-%TMPL:DEF{"weblexicon"}%%NEWMETADATA{"lexicon" title="%TRANSLATE{"Add translation"}%"}%
+%TMPL:DEF{"weblexicon"}%%NEWMETADATA{"lexicon" title="%TRANSLATE{"Add translation"}%"}%%EXPORTMETADATA{"lexicon" title="%TRANSLATE{"Export"}%" icon="fa-file-excel-o"}%
 
-<div class='jqDataTablesContainer foswikiFlatTable foswikiStripes' data-searching='true' data-order='[ [1, "asc"] ]'>
+%DATATABLESECTION{
+   class="foswikiFlatTable foswikiStripes lexiconTable" 
+   searching="on" 
+   sort="1" 
+   savestate="on" 
+   lengthmenu="10, 25, 50, 100" 
+   rows="10" 
+   paging="on"
+}%
 %RENDERMETADATA{
    "lexicon"
-   showindex="on"
+   showindex="off"
+   showchanged="on"
    sort="String"
 }%
-</div>
-
-%JQREQUIRE{"datatables"}%%TMPL:END%
-%{</verbatim>}%
+%ENDDATATABLESECTION%
+<style>
+.lexiconTable table {
+   table-layout:fixed;
+}
+</style>
+%TMPL:END%
 
 %META:FORM{name="TopicView"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%

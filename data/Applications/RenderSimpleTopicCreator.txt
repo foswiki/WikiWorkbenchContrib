@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -18,24 +18,27 @@ This function renders a topic creator form that holds a set of initial input ele
    * PARENT: parent topic for the new topic, defaults to the =BASETOPIC=
    * WHITEBOARD: switch on/off the whiteboard textarea
    * EXTRA: additional formfields
-   * SCRIPT: script to be used to create the topic, eg =save= or =edit=, defaults to =edit=
+   * SCRIPT: script to be used to create the topic, eg =save= or =edit=, defaults is specified in referring TopicType
    * EDITOR: TopicView to be used as an edit_template 
+   * ENABLETWISTY: boolean switch to use/hide a twisty to hide the form initially, defaults to =on=
+   * SHOWBUTTONS: boolean switch to show/hide the submit button of the form
+   * THEWEB: target web where to create the topic, defaults to =BASEWEB=
 
 %ENDSECTION{"documentation"}%
 
 ---++ Implementation
 
 <verbatim class="tml">
-%STARTINCLUDE%%IF{"'%BASEWEB%.%BASETOPIC%' allows 'CREATE'" 
-   then="$percntDBCALL{\"Applications.RenderSimpleTopicCreator\"
-            section=\"form\"
+%STARTINCLUDE%%IF{"'%BASEWEB%.%BASETOPIC%' allows 'CREATE' and not (context static)" 
+   then="$percntINCLUDE{\"Applications.RenderSimpleTopicCreator\"
+            section=\"%IF{"'%ENABLETWISTY{default="on"}%'='on'" then="twisty" else="form"}%\"
             TEXT=\"%TEXT{default="%TRANSLATE{"Create a new [_1]" args="%INCLUDINGTOPIC%"}%"}%\"
             LABEL=\"%LABEL{default="%TRANSLATE{"Title"}%"}%\"
             BUTTONTEXT=\"%BUTTONTEXT{default="%TRANSLATE{"New"}%"}%\"
             VALUE=\"%VALUE{default=""}%\"
             VALUES=\"%VALUES{default=""}%\"
             FORM=\"%FORM{default="%INCLUDINGWEB%.%INCLUDINGTOPIC%"}%\"
-            TEMPLATE=\"%TEMPLATE%\"
+            _TEMPLATE=\"%TEMPLATE%\"
             TYPE=\"%TYPE{
                   default="%RENDERFORMDEF{
                   form="%FORM{default="%INCLUDINGWEB%.%INCLUDINGTOPIC%"}%"
@@ -46,15 +49,17 @@ This function renders a topic creator form that holds a set of initial input ele
             PARENT=\"%PARENT{default="%BASETOPIC%"}%\"
             WHITEBOARD=\"%WHITEBOARD{default="on"}%\"
             EXTRA=\"%EXTRA{default="<!-- -->"}%\"
-            SCRIPT=\"%SCRIPT{default="edit"}%\"
+            SCRIPT=\"%SCRIPT{default="%FORMFIELD{"CreateAction" topic="%INCLUDINGWEB%.%INCLUDINGTOPIC%" default="edit" alttext="edit"}%"}%\"
             EDITOR=\"%EDITOR{default="%FORMFIELD{"Editor" topic="%FORM{default="%INCLUDINGWEB%.%INCLUDINGTOPIC%"}%"}%"}%\"
+            SHOWBUTTONS=\"%SHOWBUTTONS{default="on"}%\"
          }$percnt"
 }%%STOPINCLUDE%
 </verbatim>
 
 ---+++ form
+
 <verbatim class="tml">
-%STARTSECTION{"form"}%%TWISTY{
+%STARTSECTION{"twisty"}%%TWISTY{
     link="%BUTTON{
     "%BUTTONTEXT%"
     icon="fa-plus"
@@ -62,9 +67,9 @@ This function renders a topic creator form that holds a set of initial input ele
   mode="div"
 }%
 
-<form class='createTopicForm jqValidate' action="%SCRIPTURLPATH{"%SCRIPT%"}%/%BASEWEB%/" method="post">
+%STARTSECTION{"form"}%<form class='createTopicForm jqValidate' action="%SCRIPTURLPATH{"%SCRIPT%"}%/%THEWEB{default="%BASEWEB%"}%/" method="post">
 <div class='foswikiFormSteps'>
-<input type="hidden" name="web" value="%BASEWEB%" />
+<input type="hidden" name="web" value="%THEWEB{default="%BASEWEB%"}%" />
 <input type="hidden" name="onlynewtopic" value="on" />
 <input type="hidden" name="action" value="%IF{"$WHITEBOARD='off'" then="form"}%" />
 <input type="hidden" name="onlywikiname" value="off" />
@@ -82,6 +87,7 @@ This function renders a topic creator form that holds a set of initial input ele
 %RENDERFOREDIT{
   form="%FORM%"
   topic="%TEMPLATE{default=""}%"
+  web="%THEWEB{default="%BASEWEB%"}%"
   fields="%FORMATLIST{"%VALUES%"
       split=";"
       pattern="(.*)=(.*)"
@@ -103,14 +109,13 @@ This function renders a topic creator form that holds a set of initial input ele
       pattern="(.*)=(.*)"
       format="$1_value=\"$2\""
   }%
+}%%IF{"$'TEXT'!=''"
+   then="<h2 >%TEXT%</h2>"
 }%<!-- -->
-%IF{"$'TEXT'=''"
-   then="<!-- -->"
-   else="<h2 >%TEXT%</h2>"
-}%
 %RENDERFOREDIT{
   form="%FORM%"
   topic="%TEMPLATE{default=""}%"
+  web="%THEWEB{default="%BASEWEB%"}%"
   fields="TopicTitle"
   excludeattr="\bH\b"
   format="<div class='foswikiFormStep'><h3>$title:$mandatory</h3>$edit<div class='foswikiFormDescription'>$description</div></div>"
@@ -120,6 +125,7 @@ This function renders a topic creator form that holds a set of initial input ele
 %RENDERFOREDIT{
   form="%FORM%"
   topic="%TEMPLATE{default=""}%"
+  web="%THEWEB{default="%BASEWEB%"}%"
   exclude="^(TopicType|TopicTitle)$"
   includeattr="\bc\b"
   Summary_value=""
@@ -134,9 +140,10 @@ This function renders a topic creator form that holds a set of initial input ele
 %RENDERFOREDIT{
   form="%FORM%"
   topic="%TEMPLATE{default=""}%"
+  web="%THEWEB{default="%BASEWEB%"}%"
   fields="TopicType,WikiApplication,Summary"
   excludeattr="\bc\b"
-  WikiApplication_value="%FLEXWEBLIST{include="%BASEWEB%" format="$name"}%" 
+  WikiApplication_value="%EXTRACT{text="%BASEWEB%" pattern="^(?:.*[\./])?([^\./]+)$" format="$1"}%"
   TopicType_value="%TYPE%"
   Summary_value=""
   header=""
@@ -144,21 +151,23 @@ This function renders a topic creator form that holds a set of initial input ele
   format="<input type='hidden' name='$name' value='$value' />"
   separator="$n"
 }%
-  <div class="foswikiFormStep foswikiFormButtons">
-    %BUTTON{"%TRANSLATE{"Submit"}%" type="submit" icon="fa-check"}%
-    %CLEAR%
-  </div>
-</div>
-</form> 
-
-%ENDTWISTY%%JQREQUIRE{"wikiword"}%%ENDSECTION{"form"}%
+%IF{"'%SHOWBUTTONS%'='on'" 
+   then="<div class='foswikiFormStep foswikiFormButtons clearfix'>
+          $percntBUTTON{\"$percntTRANSLATE{\"Submit\"}$percnt\" type=\"submit\" icon=\"fa-check\"}$percnt
+         </div>"
+}%</div>
+</form>%JQREQUIRE{"wikiword"}%%ADDTOZONE{"head"
+   id="RENDERSIMPLETOPICCREATOR"
+   text="<style>.jqTagSuggestions {display:none !important}</style>"
+}%%ENDSECTION{"form"}%
+%ENDTWISTY%%ENDSECTION{"twisty"}%
 </verbatim>
 
 <verbatim>
 %STARTSECTION{"topicnaming"}%%IF{"'%mode%'=~'^(default)?$'"
    then="<input type='hidden' name='topic' class='jqWikiWord' data-source='input[name=TopicTitle]' data-transliterate='true' value='%value%' />$n"
 }%%IF{"'%mode%'='template'"
-   then="<input type='hidden' name='topic' value='%FORMFIELD{"TopicNameTemplate" topic="%form%"}%' value='%value%' />$n"
+   then="<input type='hidden' name='topic' value='%FORMFIELD{"TopicNameTemplate" topic="%form%"}%' />$n"
 }%%IF{"'%mode%'='derived'"
    then="<input type='hidden' name='topic' class='jqWikiWord' value='%value%' $percntDBQUERY{
                 topic=\"%form%\"
@@ -167,7 +176,23 @@ This function renders a topic creator form that holds a set of initial input ele
                          data-suffix='$formfield(TopicNameSuffix)' \
                          data-transliterate='$formfield(TopicNameTransliterate)'\"
               }$percnt/>"
+}%%IF{"'%mode%'='uuid'"
+   then="<input type='hidden' name='topic' class='jqUUID' value='' />$percntDBCALL{\"%WEB%.%TOPIC%\" section=\"uuid\"}$percnt"
 }%%ENDSECTION{"topicnaming"}%
+</verbatim>
+
+---++ uuid
+
+<verbatim>
+%STARTSECTION{"uuid"}%%ADDTOZONE{"script" id="uuid" requires="JQUERYPLUGIN::LIVEQUERY" text="
+<script>
+jQuery(function($) {
+   $('.jqUUID').livequery(function() {
+      $(this).val(crypto.randomUUID().toUpperCase());
+   });
+});
+</script>"
+}%%ENDSECTION{"uuid"}%
 </verbatim>
 
 ---++ Test

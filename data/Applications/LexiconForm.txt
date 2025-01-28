@@ -1,10 +1,10 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="DataForm"}%
 | *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* |
-| String | text | 80 | | | M |
-| English (en) | text | 80 | | | |
-| German (de) | text | 80 | | | |
-| French (fr) | text | 80 | | | |
+| String | text | 80 | | source string %JQREQUIRE{"deepl" warn="off"}% | M |
+| English (en) | text | 80 | | %IF{"context DeeplPluginEnabled" then="<a class='jqDeepl' data-source='input[name^=\"META:LEXICON:id\"][name$=\":String\"]' data-target='input[name^=\"META:LEXICON:id\"][name$=\":Englishen\"]' data-source-lang='en' data-target-lang='en' style='text-decoration:none' title='click to translate using deepl'>%JQICON{"fa-refresh"}% Translate source to English</a>" else="english translation"}% | | 
+| German (de) | text | 80 | | %IF{"context DeeplPluginEnabled" then="<a class='jqDeepl' data-source='input[name^=\"META:LEXICON:id\"][name$=\":String\"]' data-target='input[name^=\"META:LEXICON:id\"][name$=\":Germande\"]' data-source-lang='en' data-target-lang='de' style='text-decoration:none' title='click to translate using deepl'>%JQICON{"fa-refresh"}% Translate source to German</a>" else="german translation"}% | | 
+| French (fr) | text | 80 | | %IF{"context DeeplPluginEnabled" then="<a class='jqDeepl' data-source='input[name^=\"META:LEXICON:id\"][name$=\":String\"]' data-target='input[name^=\"META:LEXICON:id\"][name$=\":Frenchfr\"]' data-source-lang='en' data-target-lang='fr' style='text-decoration:none' title='click to translate using deepl'>%JQICON{"fa-refresh"}% Translate source to French</a>" else="french translation"}% | | 
 | Comment | textarea | 62x5 | | | |
 
 %META:FORM{name="DataForm"}%

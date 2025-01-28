@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -10,19 +10,18 @@ This is used to create a new WikiApplication
 
 ---++ Implementation
 <verbatim class="tml">
-%STARTINCLUDE%<!-- wikiapplicationfactory -->
+%STARTINCLUDE%<noautolink>
 %TWISTY{link="%BUTTON{"%TRANSLATE{"New WikiApplication"}%" icon="fa-plus"}%%CLEAR%" mode="div"}%
 
-<form id="newWikiAppForm" name="admin" action="%SCRIPTURLPATH{manage}%/%BASEWEB%/%HOMETOPIC%" method="post"">
-<input name="action" type="hidden" value="createweb" />
-<input type="hidden" name="baseweb" value="_WikiApplicationTemplate" />
-<input type="hidden" name="webbgcolor" value="#D0D0D0" size="16" />
+<form id="createNewWeb" class="jqAjaxForm" action="%SCRIPTURLPATH{jsonrpc}%/WebCreatorPlugin/create" method="post" data-message="%TRANSLATE{"Creating Web"}%">
+<input type="hidden" name="templateweb" value="_WikiApplicationTemplate" />
+<input type="hidden" name="parentweb" value="Applications" />
 <input name="newtopic" type="hidden" value="" />
 <input type="submit" style="display:none;" />
 <div class="foswikiFormSteps">
 <div class="foswikiFormStep">
-  <h3>Name:</h3>
-  <input class="foswikiInputField" id="newweb" name="newweb" type="text" value="" size="50" />
+  <h3>%TRANSLATE{"Name"}%:</h3>
+  <input class="foswikiInputField" id="newweb" name="newweb" type="text" value="%URLPARAM{"newapp"}%" size="50" />
   <div class="foswikiFormDescription">
     <noautolink>
     %TRANSLATE{"This is the name of the web that will hold the wiki application. It will become a subweb of the Applications web. Example values: MyCompanyApp, TestApp"}%
@@ -30,7 +29,7 @@ This is used to create a new WikiApplication
   </div>
 </div>
 <div class="foswikiFormStep">
-  <h3>Description:</h3>
+  <h3>%TRANSLATE{"Summary"}%:</h3>
   <input class="foswikiInputField" type="text" name="WEBSUMMARY" value="" size="50" />
   <div class="foswikiFormDescription">
     <noautolink>
@@ -44,29 +43,8 @@ This is used to create a new WikiApplication
 </div>
 </div>
 </form>
-%ENDTWISTY%
-%ADDTOZONE{"script" id="WW:NEWWEB" topic="%WEB%.%TOPIC%" section="init" requires="JQUERYPLUGIN"}%
-<!-- //wikiapplicationfactory-->%STOPINCLUDE%
-</verbatim>
-
----++ !JavaScript initialisation
-<verbatim class="tml">
-%STARTSECTION{"init"}%<literal>
-<script type='text/javascript'>
-jQuery(function($) {
-  $('#newWikiAppForm').bind('submit', function() {
-    var newweb = $('#newweb').val();
-    if (!newweb.match(/^Applications\./)) {
-      newweb = 'Applications.'+newweb;
-      $('#newweb').val(newweb);
-    }
-    if(typeof(foswikiStrikeOne) == 'function') {
-      foswikiStrikeOne(this);
-    }
-  });
-});
-</script>
-</literal>%ENDSECTION{"init"}%
+%ENDTWISTY%%JQREQUIRE{"ajaxform"}%
+</noautolink>%STOPINCLUDE%
 </verbatim>
 
 ---++ Test

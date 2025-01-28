@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -16,16 +16,13 @@ These are then called automatically using the =<literal>%<nop>DBCALL{"web.topic-
 ---++ Implementation
 <verbatim class="tml">
 %STARTINCLUDE%%DBQUERY{topic="%OBJECT%"
-   format="<item rdf:about=\"%SCRIPTURL{"view"}%/$web/$topic\">
+   datelanguage="en"
+   format="<item>
       <title>$expand(topictitle)</title>
-      <link>%SCRIPTURL{"view"}%/$web/$topic</link>
-      <dc:creator>$expand(@createauthor.topictitle)</dc:creator>
-      <dc:date>$formatTime(createdate, '$year-$mo-$dayT$hour:$minute:$secondsZ')</dc:date>
-      <dc:contributor>
-         <rdf:Description link='%SCRIPTURL{"view"}%/%USERSWEB%/$expand(info.author)'>
-            <rdf:value>$expand(info.author)</rdf:value>
-         </rdf:Description>
-      </dc:contributor>
+      <link>$percntSCRIPTURL{\"view\" topic=\"$web/$topic\"}$percnt</link>
+      <guid>$percntSCRIPTURL{\"view\" topic=\"$web/$topic\"}$percnt</guid>
+      <dc:creator>$percntGETTOPICTITLE{\"$percntUSERINFO{\"$expand(info.author)\" format=\"$wikiusername\"}$percnt\"}$percnt</dc:creator>
+      <dc:date>$formatTime(info.date, '$year-$mo-$dayT$hour:$minute:$secondsZ')</dc:date>
       <description> <![CDATA[
 $percntDBCALL{\"$web.$topic\"}$percnt
 <!-- -->

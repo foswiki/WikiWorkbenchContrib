@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 ---++ Documentation
@@ -25,13 +25,13 @@ See also: [[%TOPIC%Template]], [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
 %STOPINCLUDE%
 
 ---++ TopicStub form
-| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
-| TopicType | label | 1 | TopicStub, ApplicationTopic, WikiTopic  | topic type  | | TopicStub, ApplicationTopic, WikiTopic | 
-| <nop>TopicTitle | text | 75 | |  | | | 
-| Summary | text | 75 | | short description or tagline | | | 
-| WikiApplication| wikiapp | 1 | | application this topic belongs to | | | 
-| Target | text | 75 | | target web-topic | | | 
-| Section | text | 75 | | section inside the target topic | | | 
+| *Name:* | *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default:* |
+| TopicType | type | 1 | TopicStub, ApplicationTopic, WikiTopic | topic type | h | |
+| <nop>TopicTitle | text | 75 | | | | |
+| Summary | text | 75 | | short description or tagline | | |
+| WikiApplication | wikiapp | 1 | | application this topic belongs to | | |
+| Target | text | 75 | | target web-topic | | |
+| Section | text | 75 | | section inside the target topic | | |
 
 
 %META:FORM{name="Applications.TopicType"}%
@@ -41,6 +41,7 @@ See also: [[%TOPIC%Template]], [[%TOPIC%ViewTemplate]], [[%TOPIC%EditTemplate]]
 %META:FIELD{name="Icon" title="Icon" value="fa-long-arrow-right"}%
 %META:FIELD{name="Editor" title="Editor" value="Applications.TopicStubEditTemplate"}%
 %META:FIELD{name="Template" title="Template" value="Applications.TopicStubTemplate"}%
+%META:FIELD{name="CreateAction" title="Create Action" value="edit"}%
 %META:FIELD{name="TopicNamingMode" title="Topic Naming Mode" value="default"}%
 %META:FIELD{name="TopicNameTemplate" title="Topic Name Template" value=""}%
 %META:FIELD{name="TopicNameSource" title="Topic Name Source" value="[name=TopicTitle]"}%

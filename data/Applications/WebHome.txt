@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1" version="1"}%
 Welcome to the %WEB% web.
 This web contains a set of WikiApplications that can be used in
 different parts of your wiki site. It is used as a 
@@ -10,11 +10,10 @@ See the [[CompleteDocumentation]] to learn more about the !WikiWorkbench and all
 %DBCALL{"RenderWikiApplicationFactory"}%
 
 ---++ Installed <nop>WikiApplications
-%FORMATLIST{"%FLEXWEBLIST{include="Applications/.*" format="$web;$name" separator=", "}%" 
+%FORMATLIST{"%FLEXWEBLIST{include="^Applications\.[^\.]*$" format="$web;$name" separator=", "}%" 
   pattern="(.*);(.*)"
   format="   1 [[$1.WebHome]]: $percntVAR{\"WEBSUMMARY\" web=\"$1\"}$percnt"
   separator="$n"
-  exclude=".*Metainfo.*"
 }%
 
 

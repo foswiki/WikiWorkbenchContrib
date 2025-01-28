@@ -1,3 +1,17 @@
+# Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
+#
+# WikiWorkbenckContrib is Copyright (C) 2012-2020 Michael Daum http://michaeldaumconsulting.com
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details, published at
+# http://www.gnu.org/copyleft/gpl.html
 # See bottom of file for license and copyright information
 package Foswiki::Form::Wikiapp;
 
@@ -5,6 +19,7 @@ use strict;
 use warnings;
 
 use Foswiki::Form::Select ();
+use Foswiki::Func ();
 our @ISA = ('Foswiki::Form::Select');
 
 our $APPLICATIONS = 'Applications';
@@ -15,11 +30,9 @@ sub getOptions {
   my $vals = $this->{_options};
   return $vals if $vals;
 
-  require Foswiki::WebFilter;
-  my $f = new Foswiki::WebFilter('allowed');
   my @apps = ();
 
-  foreach my $app ($Foswiki::Plugins::SESSION->deepWebList($f)) {
+  foreach my $app (Foswiki::Func::getListOfWebs()) {
     next unless $app =~ /^$APPLICATIONS/;
     $app =~ s/\//./g;
     $app =~ s/.*\.(.+?)$/$1/;
@@ -74,29 +87,11 @@ sub getDisplayValue {
       $value = $APPLICATIONS . '.' . $value;
     }
 
-    $value = '<a href="%SCRIPTURLPATH{"view"}%/' . $value . '/' . $Foswiki::cfg{HomeTopicName} . '">' . $label . '</a>';
+    my $url = Foswiki::Func::getScriptUrl($value, $Foswiki::cfg{HomeTopicName}, "view");
+    $value = "<a href='$url'>$label</a>";
   }
 
   return $value;
 }
 
 1;
-__END__
-Foswiki - The Free and Open Source Wiki, http://foswiki.org/
-
-Copyright (C) 2012-2019 Michael Daum http://michaeldaumconsulting.com
-
-Additional copyrights apply to some or all of the code in this
-file as follows:
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version. For
-more details read LICENSE in the root of this distribution.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
-As per the GPL, removal of this notice is prohibited.

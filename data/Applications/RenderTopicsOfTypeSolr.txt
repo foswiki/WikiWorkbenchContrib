@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
+%META:TOPICINFO{author="micha" comment="" date="1733223477" format="1.1" reprev="6" version="10"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -10,15 +10,12 @@
    * FIELDS: columns of formfields to display, defaults to <nop>TopicTitle, Summary, !WikiApplication, Changed
    * HIDDENFIELDS: list of fields that are not shown
    * SORT: sorting of rows, defaults to _unsorted_
-   * PAGING: boolean to enable/disable paged results, defaults to on
-   * INFO: boolean to enable/disable infos for results, defaults to on
    * REVERSE: sorting direction, defaults to "off", defaults to "on" if SORT="Changed"
    * ROWS: number of rows to display initially, defauts to 10
    * FILTER: additional filter expression (optional)
    * THEWEB: web to examin, defaults to BASEWEB
    * TOPICS: list of topics to query per web, default: all
    * SAVESTATE: save state of sorting and filtering, defaults to "on"
-   * SEARCHING: boolean to enable/disable, defaults to on
    * ROWNUMBERS: boolean toggle to switch on/off row numbers
    * ROWGROUP: column by which to group rows, default none
    * ROWCLASS: javascript function to add a css class to the row
@@ -36,34 +33,27 @@
 Using [[System.JQDataTablesPlugin]]
 
 <verbatim class="tml">
-%STARTINCLUDE%<noautolink>%DBCALL{
-   "%WEB%.%TOPIC%"
-   section="%IF{"context static" then="static" else="dynamic"}%"
-}%</noautolink>%STOPINCLUDE%
-</verbatim>
-
----++ static
-<verbatim>
-%STARTSECTION{"dynamic"}%%DATATABLE{
-  connector="dbcache"
+%STARTINCLUDE%<noautolink>
+%DATATABLE{
+  connector="solr"
   class="foswikiFlatTable foswikiStripes foswikiHideOnPrint"
   form="%FORM{default="%DBCALL{"Applications.GetFormOfType" TYPE="%TYPE{default="%BASETOPIC%"}%"}%"}%"
-  query="TopicType=~'\b%TYPE{default="%BASETOPIC%"}%\b' %IF{"defined FILTER" then="AND %FILTER%"}%" 
+  query="field_TopicType_lst:%TYPE{default="%BASETOPIC%"}% %FILTER{default=""}%" 
   web="%THEWEB{default="%BASEWEB%"}%"
   topics="%TOPICS{default=""}%"
   topic="%BASEWEB%.%BASETOPIC%"
-  columns="%IF{"'%ROWNUMBERS{default="on"}%'='on'" then="index,"}%%FIELDS{default="TopicTitle,Summary,Changed,By"}%" 
+  columns="%IF{"'%ROWNUMBERS{default="on"}%'='on'" then="index,"}%%FIELDS{default="TopicTitle,Summary,WikiApplication,Changed"}%" 
   hidecolumns="%HIDDENFIELDS{default=""}%"
   rowgroup="%ROWGROUP{default=""}%"
   rowclass="%ROWCLASS{default=""}%"
   rowcallback="%ROWCALLBACK{default=""}%"
   rows="%ROWS{default="10"}%"
-  sort="%SORT{default="Changed"}%"
-  reverse="%REVERSE{default="%IF{"'%SORT{default="Changed"}%'='Changed'" then="on" else="off" }%"}%" 
-  paging="%PAGING{default="on"}%"
-  savestate="%SAVESTATE{default="on"}%"
-  searching="%SEARCHING{default="on"}%"
+  sort="%SORT{default=""}%"
   ordering="%ORDERING{default="on"}%"
+  reverse="%REVERSE{default="%IF{"'%SORT{default=""}%'='Changed'" then="on" else="off"}%"}%" 
+  paging="on" 
+  savestate="%SAVESTATE{default="on"}%"
+  searching="on"
   searchmode="%SEARCHMODE{default="global"}%"
   width="100%"
   info="on"
@@ -73,9 +63,7 @@ Using [[System.JQDataTablesPlugin]]
   TopicTitle_title="%TRANSLATE{"Title"}%"
   Summary_title="%TRANSLATE{"Summary"}%"
   Changed_title="%TRANSLATE{"Changed"}%"
-  By_title="%TRANSLATE{"By"}%"
   qmstate_title="%TRANSLATE{"Status"}%"
-  qmstate_progress_title="%TRANSLATE{"Progress"}%"
   %FORMATLIST{"%FIELDS{default="TopicTitle,Summary,WikiApplication,Changed"}%"
     split="\s*,\s*"
     pattern="^[#\/]?(.*)$"
@@ -95,56 +83,8 @@ Using [[System.JQDataTablesPlugin]]
   %IF{"'%SELECTING{default="off"}%'='on'"
    then="selecting=\"on\" selectionmode=\"multi\" selectproperty=\"Topic\""
   }%
-}%%ENDSECTION{"dynamic"}%
-</verbatim>
-
----++ static
-
-<verbatim>
-%STARTSECTION{"static"}%%DBQUERY{
-   "TopicType=~'\b%TYPE{default="%BASETOPIC%"}%\b' %IF{"defined FILTER" then="AND %FILTER%"}%" 
-   web="%THEWEB{default="%BASEWEB%"}%"
-   topics="%TOPICS{default=""}%"
-   reverse="%REVERSE{default="%IF{"'%SORT{default="Changed"}%'='Changed'" then="on" else="off" }%"}%" 
-   sort="%SORT{default="info.date"}%"
-   header="<table class='foswikiTable foswikiFlatTable foswikiStripes foswikiFullWidth'>
-      <thead><tr>
-      %IF{"'%ROWNUMBERS{default="on"}%'='on'" then="<th></th>"}%
-      %FORMATLIST{
-         "%FIELDS{default="TopicTitle,Summary,Changed,By"}%"
-         exclude="%FORMATLIST{"%HIDDENFIELDS{default=""}%" header="^(" format="$1" separator="|" footer=")$"}%"
-         format="<th>$percntTRANSLATE{\"$1\"}$percnt</th>"
-         separator=""
-         replace="%FORMATLIST{
-            "%FIELDS{default="TopicTitle,Summary,Changed,By"}%"
-            format="$1=$percnt$1_title{default=\"$1\"}$percnt"
-         }%"
-      }%</tr></thead><tbody>"
-   footer="</tbody></table>"
-   separator=""
-   format="<tr>
-      %IF{"'%ROWNUMBERS{default="on"}%'='on'" then="<td><b>$index</b></td>"}%
-      %FORMATLIST{
-         "%FIELDS{default="TopicTitle,Summary,Changed,By"}%"
-         exclude="%FORMATLIST{"%HIDDENFIELDS{default=""}%" header="^(" format="$1" separator="|" footer=")$"}%"
-         format="<td>$percntIF{
-                        \"'$1'='Changed'\" then=\"$formatTime(info.date, '$day $mon $year - $hour:$min')\"
-                     }$percnt$percntIF{
-                        \"'$1'='By'\" then=\"$expand(info.author)\"
-                     }$percnt$percntIF{
-                        \"'$1'='qmstate'\" then=\"$expand(qmstate.title)\"
-                     }$percnt$percntIF{
-                        \"'$1'='TopicTitle'\" then=\"[[$web.$topic][$expand(topictitle)]]\"
-                     }$percnt$percntIF{
-                        \"'$1'=~'^#'\" 
-                        then=\"[[$web.$topic][$displayValue($1)]]\"
-                    }$percnt$percntIF{
-                        \"'$1'=~'^(Changed|By|TopicTitle|qmstate)$'\"
-                        else=\"$displayValue($1)\"
-                    }$percnt</td>"
-         separator=""
-      }%</tr>"
-}%%ENDSECTION{"static"}%
+}%</noautolink>
+%STOPINCLUDE%
 </verbatim>
 
 ---++ Test
@@ -154,6 +94,6 @@ Using [[System.JQDataTablesPlugin]]
 
 %META:FORM{name="TopicFunction"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%
-%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value="RenderTopicsOfType (solr)"}%
 %META:FIELD{name="Summary" title="Summary" value="Display a table of topcis of a given type"}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%

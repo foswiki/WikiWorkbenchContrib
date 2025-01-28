@@ -1,3 +1,4 @@
+"use strict";
 jQuery(function($) {
   var defaults = {
     source: "",
@@ -6,7 +7,7 @@ jQuery(function($) {
     suffix: ""
   };
 
-  $(".jqTopicTitle:not(.jqTopicTitleInited)").livequery(function() {
+  $(".jqTopicTitle").livequery(function() {
     var $this = $(this), 
         opts = $.extend({}, defaults, $this.data());
 
@@ -25,7 +26,7 @@ jQuery(function($) {
       $this.val(topicTitle);
     }
 
-    $(opts.source).change(updateTopicTitle).keyup(updateTopicTitle);
+    $(opts.source).on("change", updateTopicTitle).on("keyup", updateTopicTitle);
     updateTopicTitle();
   });
 });

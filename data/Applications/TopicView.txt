@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicType"}%
 ---++ Documentation
 %STARTSECTION{"documentation"}%
@@ -30,9 +30,7 @@ Foswiki editor, or even implement a full substitute for its form data.
 
 ---++ Topics of type '%TOPIC%'
 %STARTINCLUDE%<!-- -->
-%DBCALL{"Applications.RenderSimpleTopicCreator" 
-  VALUE="...ViewTemplate"
-}%
+%DBCALL{"Applications.RenderSimpleTopicCreator"}%
 
 %DBCALL{"Applications.RenderTopicsOfType"
    _FIELDS="TopicTitle, TopicType, form, WikiApplication, Changed"
@@ -40,11 +38,11 @@ Foswiki editor, or even implement a full substitute for its form data.
 %STOPINCLUDE%
 
 ---++ <nop>%TOPIC% form
-| *Name:*| *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default: * |
-| TopicType | label | 1 | TopicView, ApplicationTopic, WikiTopic | topic type | | TopicView, ApplicationTopic, WikiTopic  |
+| *Name:* | *Type:* | *Size:* | *Values:* | *Description:* | *Attributes:* | *Default: * |
+| TopicType | type | 1 | TopicView, ApplicationTopic, WikiTopic | topic type | h | |
 | <nop>TopicTitle | text | 75 | | | | |
 | Summary | text | 75 | | short description or tagline | c | |
-| WikiApplication| wikiapp | 1 | | application this topic belongs to | | |
+| WikiApplication | wikiapp | 1 | | application this topic belongs to | | |
 
 %META:FORM{name="Applications.TopicType"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicType, DataForm, DocuTopic, ApplicationTopic, WikiTopic"}%
@@ -53,6 +51,7 @@ Foswiki editor, or even implement a full substitute for its form data.
 %META:FIELD{name="Icon" title="Icon" value="fa-eye"}%
 %META:FIELD{name="Editor" title="Editor" value="Applications.ApplicationTopicEditTemplate"}%
 %META:FIELD{name="Template" title="Template" value="Applications.TopicViewTemplate"}%
+%META:FIELD{name="CreateAction" title="Create Action" value="edit"}%
 %META:FIELD{name="TopicNamingMode" title="Topic Naming Mode" value="default"}%
 %META:FIELD{name="TopicNameTemplate" title="Topic Name Template" value=""}%
 %META:FIELD{name="TopicNameSource" title="Topic Name Source" value="[name=TopicTitle]"}%

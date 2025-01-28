@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicTemplate"}%
 %TOC{depth="2"}%
 
@@ -18,11 +18,13 @@
 </verbatim>
 
 ---++ Test
+%STARTSECTION{"test"}%
 %DBCALL{"%TOPIC%"}%
+%ENDSECTION{"test"}%
 
 
 %META:FORM{name="TopicTemplate"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicTemplate, ApplicationTopic, WikiTopic"}%
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
 %META:FIELD{name="Summary" title="Summary" value="Template to create TopicFunctions"}%
-%META:FIELD{name="ForTopicType" title="For TopicType" value="TopicFunction"}%
+%META:FIELD{name="ForTopicType" title="For <nop>TopicType" value="TopicFunction"}%

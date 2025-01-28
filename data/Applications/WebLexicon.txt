@@ -1,17 +1,23 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="WebHome"}%
 
 %META:FORM{name="Applications.WebTool"}%
 %META:FIELD{name="TopicType" title="TopicType" value="WebTool, ApplicationTopic, WikiTopic"}%
-%META:LEXICON{name="id1" Comment="" Englishen="" Frenchfr="" Germande="Titel" String="Title"}%
-%META:LEXICON{name="id2" Comment="" Englishen="" Frenchfr="" Germande="Zusammenfassung" String="Summary"}%
-%META:LEXICON{name="id3" Comment="ApplicationLicense" Englishen="" Frenchfr="" Germande="Lizenz für Wiki-Applikationen" String="License for WikiApplications"}%
-%META:LEXICON{name="id4" Comment="ApplicationTopic" Englishen="" Frenchfr="" Germande="Ein allgemeines Topic, das Teil einer Applikation ist" String="A general topic that is part of an application"}%
-%META:LEXICON{name="id5" Comment="" Englishen="" Frenchfr="" Germande="Übersetzung hinzufügen" String="Add translation"}%
-%META:LEXICON{name="id6" Comment="" Englishen="" Frenchfr="" Germande="Title dieses Topics" String="title of this topic"}%
-%META:LEXICON{name="id7" Comment="" Englishen="" Frenchfr="" Germande="Kurzebeschreibung für dieses Topic" String="short description of this topic"}%
-%META:LEXICON{name="id8" Comment="" Englishen="" Frenchfr="" Germande="Neue Wiki-Applikation" String="New WikiApplication"}%
-%META:LEXICON{name="id9" Comment="" Englishen="" Frenchfr="" Germande="Für Dokumenttyp" String="For <nop>TopicType" author="micha" createauthor="micha" createdate="1551447505" date="1551447505"}%
+%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Set" value="Applications.WebLexiconView"}%
+%META:LEXICON{name="id1" Comment="" Englishen="" Frenchfr="" Germande="Titel" String="Title" author="micha" date="1605979177"}%
+%META:LEXICON{name="id2" Comment="" Englishen="" Frenchfr="" Germande="Zusammenfassung" String="Summary" author="micha" date="1605979173"}%
+%META:LEXICON{name="id3" Comment="ApplicationLicense" Englishen="" Frenchfr="" Germande="Lizenz für Wiki-Applikationen" String="License for WikiApplications" author="micha" date="1605979162"}%
+%META:LEXICON{name="id4" Comment="ApplicationTopic" Englishen="" Frenchfr="" Germande="Ein allgemeines Topic, das Teil einer Applikation ist" String="A general topic that is part of an application" author="micha" date="1571309944"}%
+%META:LEXICON{name="id5" Comment="" Englishen="" Frenchfr="" Germande="Übersetzung hinzufügen" String="Add translation" author="micha" date="1571310391"}%
+%META:LEXICON{name="id6" Comment="" Englishen="" Frenchfr="" Germande="Title dieses Topics" String="title of this topic" author="micha" date="1605979180"}%
+%META:LEXICON{name="id7" Comment="" Englishen="" Frenchfr="" Germande="Kurzebeschreibung für dieses Topic" String="short description of this topic" author="micha" date="1605979169"}%
+%META:LEXICON{name="id8" Comment="" Englishen="" Frenchfr="" Germande="Neue Wiki-Applikation" String="New WikiApplication" author="micha" date="1605979165"}%
 %META:LEXICON{name="id10" Comment="" Englishen="" Frenchfr="" Germande="kurze Beschreibung oder Zusatzinformation" String="short description or tagline" author="micha" createauthor="micha" createdate="1551447529" date="1551447529"}%
 %META:LEXICON{name="id11" Comment="" Englishen="" Frenchfr="" Germande="Dokumenttyp, für den diese Vorlage benutzt werden soll" String="TopicType that this template can be used for" author="micha" createauthor="micha" createdate="1551447552" date="1551447552"}%
-%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Set" value="Applications.WebLexiconView"}%
+%META:LEXICON{name="id12" Comment="" Englishen="" Frenchfr="" Germande="Benutzer, die Topics dieses Typs anlegen dürfen" String="Users who may create a topic of this type" author="micha" createauthor="micha" createdate="1562327145" date="1562327145"}%
+%META:LEXICON{name="id13" Comment="" Englishen="Title" Frenchfr="" Germande="Titel" String="TopicTitle" author="micha" createauthor="micha" createdate="1585749280" date="1585749280"}%
+%META:LEXICON{name="id14" Comment="" Englishen="" Frenchfr="" Germande="Für TopicType" String="For TopicType" author="micha" createauthor="micha" createdate="1603211582" date="1605979266"}%
+%META:LEXICON{name="id15" Comment="" Englishen="" Frenchfr="Plusieurs titres 1 détectés. Veuillez n'utiliser que les titres 2, 3, ... à l'intérieur de la zone de contenu." Germande="Mehrere Überschriften 1 erkannt. Bitte verwenden Sie Überschrift 2, 3, … nur innerhalb des Inhaltsbereichs." String="Multiple heading 1 detected. Please only use heading 2, 3, … inside the content area." author="micha" createauthor="micha" createdate="1731431436" date="1731431463"}%
+%META:LEXICON{name="id16" Comment="" Englishen="" Frenchfr="Des références HTTP à ce domaine ont été trouvées. Veuillez utiliser les liens wiki appropriés." Germande="Es wurden HTTP-Verweise auf diese Domain gefunden. Bitte verwenden Sie korrekte Wiki-Links." String="HTTP references to this domain have been found. Please use proper wiki links." author="micha" createauthor="micha" createdate="1731431455" date="1731431455"}%
+%META:LEXICON{name="id17" Comment="" Englishen="" Frenchfr="Utilisation excessive de BR détectée. Veuillez utiliser d'autres moyens pour formater votre texte." Germande="Übermäßiger Gebrauch von BR entdeckt. Bitte verwenden Sie andere Mittel zur Formatierung Ihres Textes." String="Excessive use of BR detected. Please use other means to format your text." author="micha" createauthor="micha" createdate="1731431476" date="1731431476"}%
+%META:LEXICON{name="id18" Comment="" Englishen="" Frenchfr="Il existe une [[[_1]][page similaire]] portant le même titre. Veillez à ce que les pages soient clairement distingués." Germande="Es gibt ein [[[_1]][ähnliches Topic]] mit demselben Titel. Achten Sie bitte darauf, dass Topics klar unterscheidbar sind." String="There is a [[[_1]][similar topic]] with the same title. Please make sure that topics are clearly distinguishable." author="micha" createauthor="micha" createdate="1732266873" date="1732267746"}%
