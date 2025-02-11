@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1739281663" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -18,7 +18,7 @@ These are then called automatically using the =<literal>%<nop>DBCALL{"web.topic-
 %STARTINCLUDE%%DBQUERY{topic="%OBJECT%"
    datelanguage="en"
    format="<item>
-      <title>$expand(topictitle)</title>
+      <title><literal>$expand(topictitle)</literal></title>
       <link>$percntSCRIPTURL{\"view\" topic=\"$web/$topic\"}$percnt</link>
       <guid>$percntSCRIPTURL{\"view\" topic=\"$web/$topic\"}$percnt</guid>
       <dc:creator>$percntGETTOPICTITLE{\"$percntUSERINFO{\"$expand(info.author)\" format=\"$wikiusername\"}$percnt\"}$percnt</dc:creator>

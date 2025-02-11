@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1739281663" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -34,7 +34,7 @@
 </verbatim>
 
 ---++ Test
-%DBCALL{"%WIKIUSERNAME%->RenderTopicThumbnail" ALIGN="left"}%
+%DBCALL{"%WIKIUSERNAME%->RenderTopicThumbnail" ALIGN="right"}%
 
 %CLEAR%
 

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1739281663" format="1.1" version="1"}%
 ---+!! %TOPIC%
 %FORMFIELD{"Description"}%
 
@@ -153,6 +153,7 @@ target webs...
 ---++ Change History
 
 %TABLE{columnwidths="7em" tablewidth="100%"}%
+|  11 Feb 2025 | improved <nop>RssViewTemplate |
 |  28 Jan 2025 | new formfield =type= used for <nop>TopicType fields; \
                  support for =uuid= formfields; \
                  improved rss and atom view templates; \

@@ -1,13 +1,16 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1739281663" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %TMPL:P{"rsshead"}%%TMPL:P{"rssbody"}%%TMPL:P{"rssfooter"}%
 
 %TMPL:DEF{"rsshead"}%<?xml version="1.0" encoding="%CHARSET%" ?>
 <?xml-stylesheet href="%PUBURLPATH%/Applications/RssViewTemplate/pretty-feed.xsl" type="text/xsl" ?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+<noautolink>
 %TMPL:END%
 
-%TMPL:DEF{"rssbody"}%<channel>
+%TMPL:DEF{"rssbody"}%%TMPL:P{"rsschannel::header"}%%TMPL:P{"rsschannel::query"}%%TMPL:P{"rsschannel::footer"}%%TMPL:END%
+
+%TMPL:DEF{"rsschannel::header"}%<channel>
    <title>%WEB% - %WIKITOOLNAME%</title>
    <link>%SCRIPTURL{"view"}%/%WEB%</link>
    <atom:link href="%SCRIPTURL{"view" topic="%WEB%.%TOPIC%"}%" rel="self" type="application/rss+xml" />
@@ -19,22 +22,24 @@
    </image>
    <language>en-us</language>
    <copyright>%WEBRSSCOPYRIGHT%</copyright>
-%DBQUERY{"%FILTER{default=""}%" 
+%TMPL:END%
+
+%TMPL:DEF{"rsschannel::query"}%%DBQUERY{"%FILTER{default=""}%" 
    exclude="%EXCLUDE{default="^(Web.*|TopicType|TopicStub|.*ViewTemplate|.*SideBar|.*LeftBar)$"}%"
-   sort="%SORT{default="created"}%"  
+   sort="%SORT{default="modified"}%"  
    reverse="on" 
    limit="%LIMIT{default="10"}%" 
    separator="$n"
    absoluteurls="on"
    format="$percntDBCALL{\"$web.$topic->RenderRss\"}$percnt"
-}%
-</channel>%TMPL:END%
+}%%TMPL:END%
 
-%TMPL:DEF{"rssfooter"}%</rss>%TMPL:END%
+%TMPL:DEF{"rsschannel::footer"}%</channel>%TMPL:END%
+%TMPL:DEF{"rssfooter"}%</noautolink></rss>%TMPL:END%
 
 %META:FORM{name="TopicView"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%
 %META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
 %META:FIELD{name="Summary" title="Summary" value="View for the rss feeds"}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%
-%META:FILEATTACHMENT{name="pretty-feed.xsl" attachment="raw.githubusercontent.com_genmon_aboutfeeds_main_tools_pretty-feed-v3.xsl" attr="" comment="" date="1738067047" moveby="micha" movedto="Applications.RssViewTemplate.pretty-feed.xsl" movedwhen="1688377000" movefrom="Applications.RssViewTemplate.raw.githubusercontent.com_genmon_aboutfeeds_main_tools_pretty-feed-v3.xsl" size="80494" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="pretty-feed.xsl" attachment="raw.githubusercontent.com_genmon_aboutfeeds_main_tools_pretty-feed-v3.xsl" attr="" comment="" date="1739281663" moveby="micha" movedto="Applications.RssViewTemplate.pretty-feed.xsl" movedwhen="1688377000" movefrom="Applications.RssViewTemplate.raw.githubusercontent.com_genmon_aboutfeeds_main_tools_pretty-feed-v3.xsl" size="80494" user="ProjectContributor" version="1"}%

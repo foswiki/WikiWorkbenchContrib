@@ -21,7 +21,7 @@ use warnings;
 use Foswiki::Func();
 use Error qw(:try);
 
-our $VERSION = '6.00';
+our $VERSION = '6.10';
 our $RELEASE = '%$RELEASE%';
 our $SHORTDESCRIPTION = 'Framework for <nop>WikiApplications';
 our $LICENSECODE = '%$LICENSECODE%';

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1739281663" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %TMPL:INCLUDE{"view"}%
 %TMPL:DEF{"form"}%%TMPL:END% 
@@ -62,7 +62,7 @@
    Summary_format="<div class='$name'><div class='foswikiTopicSummary'>$value</div></div>"
 }%%TMPL:END%
 
-%TMPL:DEF{"topicinfo"}%<noautolink><div class='foswikiTopicInfo'><h1 itemprop='headline' class='inlineEditor inlineTitleEditor'>%TMPL:P{"topicinfo::prefix"}%%TMPL:P{"topicinfo::title"}%</h1>
+%TMPL:DEF{"topicinfo"}%<noautolink><div class='foswikiTopicInfo'><h1 itemprop='headline' class='inlineEditor inlineTitleEditor'>%TMPL:P{"topicinfo::prefix"}%%TMPL:P{"topicinfo::title"}%%TMPL:P{"topicinfo::suffix"}%</h1>
 %IF{
    "'%DISPLAYREVISIONINFO{default="on"}%'='on'"
    then="$percntTMPL:P{\"revinfo::impl\"}$percnt"
