@@ -11,3 +11,5 @@ pub/System/WikiWorkbenchContrib/jquery.topictitle.js
 /WikiWorkbenchContrib.zip
 /WikiWorkbenchContrib_installer
 /WikiWorkbenchContrib_installer.pl
+data/**/.store
+pub/**/.store

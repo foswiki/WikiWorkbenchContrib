@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1765543397" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -140,7 +140,7 @@ Using [[System.JQDataTablesPlugin]]
                         then=\"[[$web.$topic][$displayValue($1)]]\"
                     }$percnt$percntIF{
                         \"'$1'=~'^(Changed|By|TopicTitle|qmstate)$'\"
-                        else=\"$displayValue($1)\"
+                        else=\" $displayValue($1) \"
                     }$percnt</td>"
          separator=""
       }%</tr>"

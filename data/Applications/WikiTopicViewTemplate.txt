@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1739281663" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1765543397" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %TMPL:INCLUDE{"view"}%
 %TMPL:DEF{"form"}%%TMPL:END% 
@@ -15,6 +15,12 @@
    then="$percntTMPL:P{\"qualitychecks\"}$percnt"
 }%%TMPL:END%
 
+%TMPL:DEF{"topicinfo"}%<noautolink><div class='foswikiTopicInfo'><h1 itemprop='headline' class='inlineEditor inlineTitleEditor'>%TMPL:P{"topicinfo::prefix"}%%TMPL:P{"topicinfo::title"}%%TMPL:P{"topicinfo::suffix"}%</h1>
+%IF{
+   "'%DISPLAYREVISIONINFO{default="on"}%'='on'"
+   then="$percntTMPL:P{\"revinfo::impl\"}$percnt"
+}%</div></noautolink>%TMPL:END%
+
 %TMPL:DEF{"topicinfo::prefix"}%%TMPL:P{"titleicon"}%%TMPL:END%
 %TMPL:DEF{"topicinfo::extra"}%%TMPL:P{"titleextra"}%%TMPL:END%
 %TMPL:DEF{"topicinfo::fields"}%TopicTitle,Summary%TMPL:END%
@@ -22,6 +28,7 @@
 %TMPL:DEF{"topicinfo::editable"}%%IF{
    "'%RENDERFORMDEF{
       topic="%WEB%.%TOPIC%"
+      ignoreerror="on"
       fields="%TMPL:P{"topicinfo::fields"}%"
       format="$type"
       separator=","
@@ -44,8 +51,8 @@
    footer=""
    format="<span class='$name'><span class='inlineEditValue' data-formfield='$name' data-default='$default' data-format='$edit'>$value $editicon</span></span>"
    separator=""
-   TopicTitle_default="$percntGETTOPICTITLE{encode=\"entity\"}$percnt"
-   TopicTitle_format="<span class='$name'><span itemprop='name' class='inlineEditValue' data-formfield='$name' data-default='$default' data-format='$edit'><a href='%SCRIPTURLPATH{"view" topic="%WEB%.%TOPIC%"}%'>$value</a>  $editicon</span> $percntTMPL:P{\"topicinfo::extra\"}$percnt</span>"
+   TopicTitle_default="$percntGETTOPICTITLE{encode=\"entity\" translate=\"on\"}$percnt"
+   TopicTitle_format="<span class='$name'><span itemprop='name' class='inlineEditValue' data-formfield='$name' data-default='$default' data-format='$edit'><a href='%SCRIPTURLPATH{"view" topic="%WEB%.%TOPIC%"}%'>$percntTRANSLATE{\"$value\"}$percnt</a>  $editicon</span> $percntTMPL:P{\"topicinfo::extra\"}$percnt</span>"
    Summary_format="<div class='$name'><div class='foswikiTopicSummary inlineEditValue' data-formfield='$name' data-format='$edit'>$value $editicon</div></div>"
 }%%TMPL:END%
 
@@ -57,16 +64,10 @@
    footer=""
    format="<span class='$name'><span class='inlineEditValue' data-formfield='$name' data-default='$default' data-format='$edit'>$value $editicon</span></span>"
    separator=""
-   TopicTitle_default="$percntGETTOPICTITLE{encode=\"entity\"}$percnt"
+   TopicTitle_default="$percntGETTOPICTITLE{encode=\"entity\" translate=\"on\"}$percnt"
    TopicTitle_format="<span class='$name'><span itemprop='name'><a href='%SCRIPTURLPATH{"view" topic="%WEB%.%TOPIC%"}%'>$value</a></span> $percntTMPL:P{\"topicinfo::extra\"}$percnt</span>"
    Summary_format="<div class='$name'><div class='foswikiTopicSummary'>$value</div></div>"
 }%%TMPL:END%
-
-%TMPL:DEF{"topicinfo"}%<noautolink><div class='foswikiTopicInfo'><h1 itemprop='headline' class='inlineEditor inlineTitleEditor'>%TMPL:P{"topicinfo::prefix"}%%TMPL:P{"topicinfo::title"}%%TMPL:P{"topicinfo::suffix"}%</h1>
-%IF{
-   "'%DISPLAYREVISIONINFO{default="on"}%'='on'"
-   then="$percntTMPL:P{\"revinfo::impl\"}$percnt"
-}%</div></noautolink>%TMPL:END%
 
 %TMPL:DEF{"qualitychecks"}%%IF{
   "$'ENABLEQUALITYCHECK'=~'\b(on|h1)\b'" 
@@ -107,7 +108,7 @@
 %TMPL:DEF{"qualitycheck::br::message"}%%TRANSLATE{"Excessive use of BR detected. Please use other means to format your text."}%%TMPL:END%
 
 %TMPL:DEF{"qualitycheck::topictitle"}%%DBQUERY{
-   "%TMPL:P{"qualitycheck::topictitle::filter"}% AND TopicTitle='%ENCODE{"%FORMFIELD{"TopicTitle" default="%TOPIC%"}%" old=" " new=".?"}%' AND topic!='%TOPIC%'"
+   "%TMPL:P{"qualitycheck::topictitle::filter"}% AND TopicTitle='%ENCODE{"%FORMFIELD{"TopicTitle" default="%TOPIC%"}%" old=" ,'" new=".?,.?"}%' AND topic!='%TOPIC%'"
    limit="1"
    format="<p class='%TMPL:P{"qualitycheck::warning::class"}% foswikiHideOnPrint'>$percntTMPL:P{\"qualitycheck::topictitle::message\" topic=\"$web.$topic\"}$percnt</p>"
 }%%TMPL:END%

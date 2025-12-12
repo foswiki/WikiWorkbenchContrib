@@ -53,6 +53,7 @@ data/Applications/TopicTypeTemplate.txt 0644
 data/Applications/TopicType.txt 0644
 data/Applications/TopicViewTemplate.txt 0644
 data/Applications/TopicView.txt 0644
+data/Applications/TopicViewViewTemplate.txt 0644
 data/Applications/WebChanges.txt 0644
 data/Applications/WebHome.txt 0644
 data/Applications/WebLeftBar.txt 0644

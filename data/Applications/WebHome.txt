@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1765543397" format="1.1"  version="1"}%
 Welcome to the %WEB% web.
 This web contains a set of WikiApplications that can be used in
 different parts of your wiki site. It is used as a 
@@ -10,16 +10,16 @@ See the [[CompleteDocumentation]] to learn more about the !WikiWorkbench and all
 %DBCALL{"RenderWikiApplicationFactory"}%
 
 ---++ Installed <nop>WikiApplications
-%FORMATLIST{"%FLEXWEBLIST{include="^Applications\.[^\.]*$" format="$web;$name" separator=", "}%" 
-  pattern="(.*);(.*)"
-  format="   1 [[$1.WebHome]]: $percntVAR{\"WEBSUMMARY\" web=\"$1\"}$percnt"
+%FLEXWEBLIST{
+  include="^Applications\.[^\.]*$" 
+  format="   1 [[$web.WebHome]]: $summary"
   separator="$n"
 }%
 
 
 %META:FORM{name="Applications.ApplicationTopic"}%
 %META:FIELD{name="TopicType" title="TopicType" value="ApplicationTopic, WikiTopic"}%
-%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value="Applications"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
 %META:FIELD{name="Summary" title="Summary" value="Library of all WikiApplications installed on %25WIKITOOLNAME%25"}%
 %META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%
 %META:PREFERENCE{name="DISPLAYFORM" title="DISPLAYFORM" type="Local" value="off"}%

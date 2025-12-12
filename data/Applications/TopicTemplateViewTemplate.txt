@@ -1,6 +1,16 @@
-%META:TOPICINFO{author="ProjectContributor" date="1738067047" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1765543397" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %TMPL:INCLUDE{"Applications.ApplicationTopicView"}%
+
+%TMPL:DEF{"beforetext"}%%TMPL:PREV%%TMPL:P{"messagebox"}%
+%TMPL:END%
+
+%TMPL:DEF{"messagebox"}%<div class="foswikiErrorMessage foswikiSticky" style="margin-top:var(--margin)">
+%TRANSLATE{
+   "Warning: Don't change this template. Instead click on \"New\" and select \"[_1]\" to create a new topic using this template."
+   arg1="%GETTOPICTITLE{"%FORMFIELD{"ForTopicType"}%"}%"
+}%
+</div>%TMPL:END%
 
 %META:FORM{name="Applications.TopicView"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%

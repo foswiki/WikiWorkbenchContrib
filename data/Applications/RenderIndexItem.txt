@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1765543397" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -18,12 +18,12 @@ method was found.
 ---++ Implementation
 <verbatim class="tml">
 %STARTINCLUDE%%DBQUERY{topic="%OBJECT%"
-   format="<div class='clsIndexItem clsTopicItem clearfix'>
+   format="<div class='clsIndexItem clsTopicItem clearfix hyphenate'>
       %IF{"defined THEICON" then="$percntJQICON{%THEICON%}$percnt"}%<!-- -->
       $percntDBCALL{\"$web.$topic->Applications.RenderTopicThumbnail\"  
          TYPE=\"plain\" 
          ALIGN=\"right\" 
-         CROP=\"northwest\" 
+         CROP=\"center\" 
       }$percnt<!-- --> 
       [[$web.$topic]]%TITLEEXTRA{default=""}%%IF{"context RedDotPluginEnabled" then="$dollarpercntREDDOT{\\"$web.$topic\\"}$dollarpercnt"}%
       <div class='foswikiTopicSummary'>$expand(Summary)</div>

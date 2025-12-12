@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1739281663" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1765543397" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -18,9 +18,9 @@ These are then called automatically using the =<literal>%<nop>DBCALL{"web.topic-
 %STARTINCLUDE%%DBQUERY{topic="%OBJECT%"
    datelanguage="en"
    format="<item>
-      <title><literal>$expand(topictitle)</literal></title>
+      <title><literal>$expandEncoded(topictitle)</literal></title>
       <link>$percntSCRIPTURL{\"view\" topic=\"$web/$topic\"}$percnt</link>
-      <guid>$percntSCRIPTURL{\"view\" topic=\"$web/$topic\"}$percnt</guid>
+      <guid>$percntSCRIPTURL{\"view\" topic=\"$web/$topic\"}$percnt?_t=$expand(info.date)</guid>
       <dc:creator>$percntGETTOPICTITLE{\"$percntUSERINFO{\"$expand(info.author)\" format=\"$wikiusername\"}$percnt\"}$percnt</dc:creator>
       <dc:date>$formatTime(info.date, '$year-$mo-$dayT$hour:$minute:$secondsZ')</dc:date>
       <description> <![CDATA[

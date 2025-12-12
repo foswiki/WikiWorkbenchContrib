@@ -1,0 +1,14 @@
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1765543397" format="1.1" version="1"}%
+%META:TOPICPARENT{name="TopicView"}%
+%TMPL:INCLUDE{"Applications.WikiTopicView"}%
+
+%TMPL:DEF{"beforetext"}%%TMPL:PREV%
+%TOC%
+%TMPL:END%
+
+%META:FORM{name="Applications.TopicView"}%
+%META:FIELD{name="TopicType" title="TopicType" value="TopicView, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="view for topic views"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="none"}%
+%META:PREFERENCE{name="CREATED_WITH_TEMPLATETOPIC" title="CREATED_WITH_TEMPLATETOPIC" type="Local" value="Applications.TopicViewTemplate"}%

@@ -1,9 +1,8 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1765543397" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="WebHome"}%
 
 %META:FORM{name="Applications.WebTool"}%
 %META:FIELD{name="TopicType" title="TopicType" value="WebTool, ApplicationTopic, WikiTopic"}%
-%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Set" value="Applications.WebLexiconView"}%
 %META:LEXICON{name="id1" Comment="" Englishen="" Frenchfr="" Germande="Titel" String="Title" author="micha" date="1605979177"}%
 %META:LEXICON{name="id2" Comment="" Englishen="" Frenchfr="" Germande="Zusammenfassung" String="Summary" author="micha" date="1605979173"}%
 %META:LEXICON{name="id3" Comment="ApplicationLicense" Englishen="" Frenchfr="" Germande="Lizenz für Wiki-Applikationen" String="License for WikiApplications" author="micha" date="1605979162"}%
@@ -21,3 +20,6 @@
 %META:LEXICON{name="id16" Comment="" Englishen="" Frenchfr="Des références HTTP à ce domaine ont été trouvées. Veuillez utiliser les liens wiki appropriés." Germande="Es wurden HTTP-Verweise auf diese Domain gefunden. Bitte verwenden Sie korrekte Wiki-Links." String="HTTP references to this domain have been found. Please use proper wiki links." author="micha" createauthor="micha" createdate="1731431455" date="1731431455"}%
 %META:LEXICON{name="id17" Comment="" Englishen="" Frenchfr="Utilisation excessive de BR détectée. Veuillez utiliser d'autres moyens pour formater votre texte." Germande="Übermäßiger Gebrauch von BR entdeckt. Bitte verwenden Sie andere Mittel zur Formatierung Ihres Textes." String="Excessive use of BR detected. Please use other means to format your text." author="micha" createauthor="micha" createdate="1731431476" date="1731431476"}%
 %META:LEXICON{name="id18" Comment="" Englishen="" Frenchfr="Il existe une [[[_1]][page similaire]] portant le même titre. Veillez à ce que les pages soient clairement distingués." Germande="Es gibt ein [[[_1]][ähnliches Topic]] mit demselben Titel. Achten Sie bitte darauf, dass Topics klar unterscheidbar sind." String="There is a [[[_1]][similar topic]] with the same title. Please make sure that topics are clearly distinguishable." author="micha" createauthor="micha" createdate="1732266873" date="1732267746"}%
+%META:LEXICON{name="id19" Comment="" Englishen="" Frenchfr="Avertissement : Ne modifiez pas ce modèle. Cliquez plutôt sur %22Nouveau%22 et sélectionnez %22[_1]%22 pour créer un nouveau topic en utilisant ce modèle." Germande="Warnung: Ändern Sie diese Vorlage nicht. Klicken Sie stattdessen auf %22Neu%22 und wählen Sie %22[_1]%22, um ein neues Topic mit dieser Vorlage zu erstellen." String="Warning: Don't change this template. Instead click on %22New%22 and select %22[_1]%22 to create a new topic using this template." author="micha" createauthor="micha" createdate="1758007531" date="1758010021"}%
+%META:LEXICON{name="id20" Comment="" Englishen="" Frenchfr="" Germande="bar" String="foo" author="micha" createauthor="micha" createdate="1758009853" date="1758009853"}%
+%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Set" value="Applications.WebLexiconView"}%

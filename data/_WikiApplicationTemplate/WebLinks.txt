@@ -1,2 +1,11 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1485161807" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1765543397" format="1.1" version="1"}%
+%META:TOPICPARENT{name="WebTool"}%
+<verbatim>
 %STARTINCLUDE%%DBCALL{"Applications.RenderSideBar"}%%STOPINCLUDE%
+</verbatim>
+
+%META:FORM{name="Applications.WebTool"}%
+%META:FIELD{name="TopicType" title="TopicType" value="WebTool, ApplicationTopic, WikiTopic"}%
+%META:FIELD{name="TopicTitle" title="<nop>TopicTitle" value=""}%
+%META:FIELD{name="Summary" title="Summary" value="Navigation for the NatSkin WebSideBar"}%
+%META:FIELD{name="WikiApplication" title="WikiApplication" value="WikiWorkbench"}%
