@@ -1,11 +1,12 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1765543397" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1779876134" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %TMPL:INCLUDE{"Applications.WikiTopicView"}%
 %TMPL:DEF{"sidebar"}%%TMPL:END%
 
 %TMPL:DEF{"beforetext"}%%TMPL:PREV%%TMPL:P{"weblexicon"}%%TMPL:END%
 
-%TMPL:DEF{"weblexicon"}%%NEWMETADATA{"lexicon" title="%TRANSLATE{"Add translation"}%"}%%EXPORTMETADATA{"lexicon" title="%TRANSLATE{"Export"}%" icon="fa-file-excel-o"}%
+%TMPL:DEF{"weblexicon"}%%NEWMETADATA{"lexicon" title="%TRANSLATE{"Add translation"}%"}%
+%EXPORTMETADATA{"lexicon" title="%TRANSLATE{"Export"}%" icon="fa-file-excel-o"}%
 
 %DATATABLESECTION{
    class="foswikiFlatTable foswikiStripes foswikiFullWidth lexiconTable" 

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1765543397" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1779876134" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -27,7 +27,7 @@
       size=\"%SIZE{default="48x48^"}%\"
       type=\"%TYPE{default="simple"}%\"
       crop=\"%CROP{default="center"}%\"
-      output=\"png\"
+      output=\"webp\"
       tooltip=\"%TOOLTIP{default="on"}%\"
    }$percnt"
 }%%STOPINCLUDE%

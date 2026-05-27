@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1779876134" format="1.1" version="1"}%
 %DBCALL{"RenderTopicInstaller" TYPE="TopicType" PARENT="TopicType"}%
 ---++ Documentation
 %STARTSECTION{"documentation"}%
@@ -54,7 +54,7 @@ create <nop>TopicTypes for each.
 
 <verbatim class="tml">
 %STARTSECTION{"editors"}%<literal>%DBQUERY{
-   "TopicType=~'\bTopicView\b' AND topic~'EditTemplate$' AND %FORMATLIST{
+   "topic~'EditTemplate$' AND %FORMATLIST{
       "%IF{
         "'%URLPARAM{"q"}%'=''" 
         then="." 
@@ -64,6 +64,7 @@ create <nop>TopicTypes for each.
       format="lc(topic)=~lc('$1')" 
       separator=" AND "
    }%"
+   TopicType="TopicView"
    web="%URLPARAM{"baseWeb"}%" 
    skip="%CALCULATE{"$EVAL(%URLPARAM{"limit" default="10"}%*(%URLPARAM{"page" default="1"}%-1))"}%"
    limit="%URLPARAM{"limit" default="10"}%"
@@ -81,7 +82,7 @@ create <nop>TopicTypes for each.
 
 <verbatim class="tml">
 %STARTSECTION{"templates"}%<literal>%DBQUERY{
-   "TopicType=~'\bTopicTemplate\b' AND %FORMATLIST{
+   "%FORMATLIST{
       "%IF{
         "'%URLPARAM{"q"}%'=''" 
         then="." 
@@ -91,6 +92,7 @@ create <nop>TopicTypes for each.
       format="lc(topic)=~lc('$1')" 
       separator=" AND "
    }%"
+   TopicType="TopicTemplate"
    web="%URLPARAM{"baseWeb"}%" 
    skip="%CALCULATE{"$EVAL(%URLPARAM{"limit" default="10"}%*(%URLPARAM{"page" default="1"}%-1))"}%"
    limit="%URLPARAM{"limit" default="10"}%"

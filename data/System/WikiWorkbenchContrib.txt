@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1765543397" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1779876134" format="1.1" version="1"}%
 ---+!! %TOPIC%
 %FORMFIELD{"Description"}%
 
@@ -153,6 +153,9 @@ target webs...
 ---++ Change History
 
 %TABLE{columnwidths="7em" tablewidth="100%"}%
+|  27 May 2026 | removed unused service scripts =convertTopicType= and =twikiworkbench2wikiworkbench=; \
+                 make use of reverse indexes in wiki apps where possible; \
+                 default to webp instead of png thumbnail images  |
 |  12 Dec 2025 | new <nop>TopicView <nop>ViewTemplate;\
                  better croping in topic thumbnails; \
                  improved display of inheritance graph; \
@@ -210,7 +213,7 @@ target webs...
 
 %META:FORM{name="PackageForm"}%
 %META:FIELD{name="Author" title="Author" value="Michael Daum"}%
-%META:FIELD{name="Copyright" title="Copyright" value="2007-2025 Michael Daum"}%
+%META:FIELD{name="Copyright" title="Copyright" value="2007-2026 Michael Daum"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
 %META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/WikiWorkbenchContrib"}%
 %META:FIELD{name="License" title="License" value="GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]])"}%

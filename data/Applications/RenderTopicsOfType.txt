@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1765543397" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1779876134" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -48,7 +48,8 @@ Using [[System.JQDataTablesPlugin]]
   connector="dbcache"
   class="foswikiFlatTable foswikiStripes foswikiHideOnPrint"
   form="%FORM{default="%DBCALL{"Applications.GetFormOfType" TYPE="%TYPE{default="%BASETOPIC%"}%"}%"}%"
-  query="TopicType=~'\b%TYPE{default="%BASETOPIC%"}%\b' %IF{"defined FILTER" then="AND %FILTER%"}%" 
+  query="%FILTER{default=""}%" 
+  TopicType="%TYPE{default="%BASETOPIC%"}%"
   web="%THEWEB{default="%BASEWEB%"}%"
   topics="%TOPICS{default=""}%"
   topic="%BASEWEB%.%BASETOPIC%"
@@ -102,7 +103,8 @@ Using [[System.JQDataTablesPlugin]]
 
 <verbatim>
 %STARTSECTION{"static"}%%DBQUERY{
-   "TopicType=~'\b%TYPE{default="%BASETOPIC%"}%\b' %IF{"defined FILTER" then="AND %FILTER%"}%" 
+   "%FILTER{default=""}%" 
+   TopicType="%TYPE{default="%BASETOPIC%"}%" 
    web="%THEWEB{default="%BASEWEB%"}%"
    topics="%TOPICS{default=""}%"
    reverse="%REVERSE{default="%IF{"'%SORT{default="Changed"}%'='Changed'" then="on" else="off" }%"}%" 
@@ -148,9 +150,13 @@ Using [[System.JQDataTablesPlugin]]
 </verbatim>
 
 ---++ Test
-%DBCALL{"%TOPIC%" TYPE="TopicType" FORM=""
+%STARTSECTION{"test"}%
+%DBCALL{"%TOPIC%" 
+  TYPE="TopicType" 
+  FORM="Applications.TopicType"
   WikiApplication_title="App"
 }%
+%ENDSECTION{"test"}%
 
 %META:FORM{name="TopicFunction"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%

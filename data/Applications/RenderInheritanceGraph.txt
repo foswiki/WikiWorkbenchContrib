@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1765543397" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1779876134" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -16,7 +16,7 @@ This function requires [[%SYSTEMWEB%.GraphvizPlugin]]
 <literal>
 %GRAPHVIZ{
    topic="%BASEWEB%.%BASETOPIC%" 
-   format="png" 
+   format="webp" 
    section="dot" 
    expand="on"
    inline="on"

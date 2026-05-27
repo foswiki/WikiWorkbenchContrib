@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1556788680" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1779876134" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -13,9 +13,8 @@
 <verbatim class="tml">
 %STARTINCLUDE%<noautolink>
 %DBQUERY{
-   "TopicType=~'\bDataForm\b' 
-    AND text=~'\n\| *.*\b%ATTR{default="%BASETOPIC%"}%\b.* *\|'
-   "
+   "text=~'\n\| *.*\b%ATTR{default="%BASETOPIC%"}%\b.* *\|'"
+   TopicType="DataForm" 
    web="%THEWEB{default="%BASEWEB%"}%"
    hidenull="on"
    header="<h2>%TRANSLATE{"<nop>DataForms that use the '[_1]' attribute" args="%ATTR{default="%BASETOPIC%"}%"}%</h2>

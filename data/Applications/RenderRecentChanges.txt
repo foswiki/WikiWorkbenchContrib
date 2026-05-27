@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1779876134" format="1.1"  version="1"}%
 %META:TOPICPARENT{name="TopicFunction"}%
 %TOC{depth="2"}%
 
@@ -12,6 +12,7 @@ This uses solr and infintescroll to create a frontpage widget.
    * PAGE: from which page to start rendering
    * THEWEB: the web to render recent changes for
    * FILTER: filter to be added to the search query
+   * SHOWICONS: boolean to switch on/off icons per item, defaults to "off"
    * CLASS
 
 %ENDSECTION{"documentation"}%
@@ -28,16 +29,16 @@ This uses solr and infintescroll to create a frontpage widget.
 }%
 </div>
 <div class="jqInfiniteScrollNavi foswikiHidden">
-  <a href="%SCRIPTURLPATH{"view" topic="%WEB%.%TOPIC%" page="1" section="backend" skin="text" template="view" web="%THEWEB{default="%BASEWEB%"}%" filter="%FILTER{default="TopicType!~'\bTopicStub\b'"}%" limit="%LIMIT{default="20"}%"}%" class='jqInfiniteScrollNext'>More</a>
+  <a href="%SCRIPTURLPATH{"view" topic="%WEB%.%TOPIC%" page="1" section="backend" skin="text" template="view" web="%THEWEB{default="%BASEWEB%"}%" showicons="%SHOWICONS{default="off"}%" filter="%FILTER{default="TopicType!~'\bTopicStub\b'"}%" limit="%LIMIT{default="20"}%"}%" class='jqInfiniteScrollNext'>More</a>
 </div>
-<literal><style>
+<style>
 .recentChanges {
   overflow-x:hidden;
   overflow-y:auto;
   padding-right:1em;
   height:%HEIGHT{default="40em"}%;
 }
-</style></literal>
+</style>
 <!-- %JQREQUIRE{"infinitescroll" warn="off"}% -->%STOPINCLUDE%
 </verbatim>
 
@@ -51,14 +52,24 @@ This uses solr and infintescroll to create a frontpage widget.
   limit="%URLPARAM{"limit" default="%LIMIT{default="20"}%"}%" 
   sort="modified"
   reverse="on"
-  format="$percntDBCALL{\"$web.$topic->RenderIndexItem\"}$percnt"
+  format="$percntDBCALL{\"$web.$topic->RenderIndexItem\"
+               %IF{"'%SHOWICONS{default="%URLPARAM{"showicons" default="off"}%"}%'='on'"
+                  then="THEICON=\\"$dollarpercntDBQUERY{
+                                    web=\\"$web\\"
+                                    topic=\\"$expand(form.name)\\"
+                                    format=\\"$dollardollarexpand(Icon or @Target.Icon)\\"  
+                        }$dollarpercnt\\""
+              }%
+          }$percnt"
   separator="$n"
 }%</noautolink>%ENDSECTION{"backend"}%
 </verbatim>
 
----++ Test
+---++ Test 1
 %DBCALL{"%TOPIC%" HEIGHT="20em"}%
 
+---++ Test 2
+%DBCALL{"%TOPIC%" HEIGHT="20em" SHOWICONS="on"}%
 
 %META:FORM{name="TopicFunction"}%
 %META:FIELD{name="TopicType" title="TopicType" value="TopicFunction, DocuTopic, ApplicationTopic, WikiTopic"}%

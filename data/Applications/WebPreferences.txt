@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1765543397" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1779876134" format="1.1" version="1"}%
 ---+!! %TOPIC%
 %TOC%
 
@@ -7,7 +7,7 @@
 
 ---++ Editing
    * Set NOWYSIWYG = on
-   * Set NATEDIT_PURIFY = false
+   * Set NATEDIT_SECURITY = false
 
 ---++ Naming
    * Set WEBSUMMARY = Applications Library

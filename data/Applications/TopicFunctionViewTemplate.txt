@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1738067047" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1779876134" format="1.1" version="1"}%
 %META:TOPICPARENT{name="TopicView"}%
 %TMPL:INCLUDE{"Applications.ApplicationTopicView"}%
 
@@ -8,7 +8,8 @@
    else="$percntTMPL:P{\"copyright\"}$percnt"
 }%%TMPL:END%
 
-%TMPL:DEF{"copyright"}%%DBQUERY{"TopicType=~'\bWikiApplication\b'" 
+%TMPL:DEF{"copyright"}%%DBQUERY{
+   TopicType="WikiApplication" 
    limit="1"
    header="<h2 >Copyright</h2>"
    format="$expand(Copyright)$n

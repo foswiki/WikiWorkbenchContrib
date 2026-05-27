@@ -1,6 +1,6 @@
 Foswiki::Plugins::AttachContentPlugin,>=2.40,perl,Required
 Foswiki::Plugins::AutoTemplatePlugin,>=6.02,perl,Optional
-Foswiki::Plugins::DBCachePlugin,>=12.00,perl,Required
+Foswiki::Plugins::DBCachePlugin,>=18.00,perl,Required
 Foswiki::Plugins::FilterPlugin,>=5.30,perl,Required 
 Foswiki::Plugins::FlexFormPlugin,>=6.00,perl,Required
 Foswiki::Plugins::FlexWebListPlugin,>=2.10,perl,Required
